@@ -1,4 +1,4 @@
-# Sample Code for Model Design with TF Disribution Strategy
+# Sample Code for Model Design with TF Disribution Strategy with Multi-GPU
 
 ```
 import tensorflow as tf
@@ -37,7 +37,7 @@ modelx.summary()
 Sample Output
 ![alt text](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/images/jupyter-mgpu-modelsample-01.png)<br>
 
-# Sample Code for Model Training with TF Disribution Strategy
+# Sample Code for Model Training with TF Disribution Strategy with Multi-GPU
 ```
 epochs = 3
 history = modelx.fit(X_train, y_train, epochs=epochs, \
