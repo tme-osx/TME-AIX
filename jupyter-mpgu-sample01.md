@@ -45,3 +45,7 @@ history = modelx.fit(X_train, y_train, epochs=epochs, \
                     verbose = True, class_weight = class_weights)
 print("Training of model is complete")
 ```
+<br>
+
+Sample Output
+![alt text](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/images/jupyter-mgpu-modelsample-02.png)<br>
