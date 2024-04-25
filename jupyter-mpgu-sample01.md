@@ -35,6 +35,8 @@ modelx.summary()
 <br>
 ![alt text](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/images/jupyter-mgpu-modelsample-01.png)<br>
 
+ArgoCD 5GRAN 
+![alt text](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/images/jupyter-mgpu-modelsample-01.png)<br>
 
 # Sample Code for Model Exec with TF Disribution Strategy
 ```
