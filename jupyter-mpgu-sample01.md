@@ -33,6 +33,10 @@ with strategy.scope():
 modelx.summary()
 ```
 <br>
+
+ArgoCD 5GCore 
+![alt text](https://raw.githubusercontent.com/fenar/cnvopen5gcore/main/pics/argo.png)<br>
+
 Sample Output
 ![alt text](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/images/jupyter-mgpu-modelsample-01.png)<br>
 
