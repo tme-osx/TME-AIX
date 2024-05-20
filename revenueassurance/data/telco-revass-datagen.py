@@ -39,6 +39,7 @@ def generate_synthetic_data(num_samples):
         'Last_Time_Pin_Used': last_time_pin_used,
         'Avg_Call_Duration': avg_call_duration,
         'Avg_Data_Usage': avg_data_usage,
+        'Avg_Cost': avg_cost,
         'Fraud': np.random.choice([0, 1], size=num_samples, p=[0.8, 0.2])
     })
     
