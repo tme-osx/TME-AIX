@@ -48,7 +48,7 @@ def generate_synthetic_data(num_samples):
 telecom_data_with_new_features = generate_synthetic_data(num_samples)
 
 # Save the synthetic dataset to a CSV file
-output_path = "data/telecom_revass_data.csv"
+output_path = "telecom_revass_data.csv"
 telecom_data_with_new_features.to_csv(output_path, index=False)
 
 print(f"Dataset saved to {output_path}")
