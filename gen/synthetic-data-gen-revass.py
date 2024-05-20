@@ -1,4 +1,6 @@
 #Author: Fatih E. NAR
+#Synthetic data for revenue assurance
+#
 
 import numpy as np
 import pandas as pd
