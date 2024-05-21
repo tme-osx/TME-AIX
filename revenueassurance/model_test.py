@@ -33,8 +33,11 @@ def predict():
     # Make predictions using the loaded model
     prediction = model.predict(input_data)
     
+    # Map the prediction to a more user-friendly response
+    prediction_label = 'Fraud' if prediction[0] == 1 else 'Non-Fraud'
+    
     # Return the prediction result as JSON
-    return jsonify({'prediction': int(prediction[0])})
+    return jsonify({'prediction': f'Prediction: {prediction_label}'})
 
 # Run the Flask app
 if __name__ == '__main__':
