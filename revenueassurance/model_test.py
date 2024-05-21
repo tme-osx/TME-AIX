@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 import pickle
 
 # Load the trained model and feature names from the .pkl file
-with open('models/model1.pkl', 'rb') as model_file:
+with open('revenueassurance/models/model1.pkl', 'rb') as model_file:
     model, feature_names = pickle.load(model_file)
 
 # Ensure the loaded object is indeed a RandomForestClassifier
