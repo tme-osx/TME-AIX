@@ -12,7 +12,7 @@ Note: The trained models' accuracy is low due to used data is not necessarily ho
 ## Steps to Run:<br>
 (1) (Obviously) Clone the Repo :-)  <br>
 (2) Open revenueassurance/telco-revass.ipynb and Run-All. This would install all required libs, extract data from data/telecom_revass_data.csv.xz and load it for two models training {model1=RandomForestClassifier, model2=BalancedRandomForestClassifier }, evaluate them and save them under models/ directory. <br>
-(3) Run model_test.py which loads the model1=RandomForestClassifier and serves on http://localhost:5000/predict url. <br>
+(3) Run model_test.py which loads the model2=BalancedRandomForestClassifier (better model for fraud classification) and serves on http://localhost:5000/predict url. <br>
 (4) From a cli , do a curl query: <br>
 ![Revenue Assurance Test Result](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/testresult.png)<br>
 (A) Potential Fraud Test: <br>
