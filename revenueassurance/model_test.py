@@ -2,8 +2,8 @@ import pandas as pd
 from flask import Flask, request, jsonify
 import pickle
 
-# Load the trained model and feature names from the .pkl file
-with open('revenueassurance/models/model1.pkl', 'rb') as model_file:
+# Load the trained BalancedRandomForestClassifier model and feature names from the .pkl file
+with open('revenueassurance/models/model2.pkl', 'rb') as model_file:
     model, feature_names = pickle.load(model_file)
 
 # Ensure the loaded object is indeed a RandomForestClassifier
