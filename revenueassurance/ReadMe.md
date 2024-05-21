@@ -50,4 +50,5 @@ curl -X POST -H "Content-Type: application/json" -d '{
     "Avg_Data_Usage": 350
 }' http://localhost:5000/predict
 ```
-## Deploy as k8s pod: Docker folder has the required manifests to build a image for model server.
+## Deploy as k8s pod: Add model.pkl to Docker folder -> Then you would have all the required files to build a image for model server.
+![Docker-Build](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/docker.png)<br>
