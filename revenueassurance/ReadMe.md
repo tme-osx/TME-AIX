@@ -14,7 +14,25 @@ Note: The trained models' accuracy is low due to used data is not necessarily ho
 (2) Open revenueassurance/telco-revass.ipynb and Run-All. This would install all required libs, extract data from data/telecom_revass_data.csv.xz and load it for two models training {model1=RandomForestClassifier, model2=BalancedRandomForestClassifier }, evaluate them and save them under models/ directory. <br>
 (3) Run model_test.py which loads the model1=RandomForestClassifier and serves on http://localhost:5000/predict url. <br>
 (4) From a cli , do a curl query: <br>
-
+![Revenue Assurance Test Result](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/testresult.png)<br>
+(A) Potential Fraud Test: <br>
+```
+curl -X POST -H "Content-Type: application/json" -d '{
+    "Call_Duration": 300,
+    "Data_Usage": 10000,
+    "Sms_Count": 50,
+    "Roaming_Indicator": 1,
+    "MobileWallet_Use": 1,
+    "Plan_Type_prepaid": 1,
+    "Plan_Type_postpaid": 0,
+    "Cost": 500,
+    "Cellular_Location_Distance": 100,
+    "Last_Time_Pin_Used": 1, 
+    "Avg_Call_Duration": 50,
+    "Avg_Data_Usage": 8000
+}' http://localhost:5000/predict
+```
+(B) Potential Non-Fraud Test: <br>
 ```
 curl -X POST -H "Content-Type: application/json" -d '{
     "Call_Duration": 10,
@@ -31,3 +49,4 @@ curl -X POST -H "Content-Type: application/json" -d '{
     "Avg_Data_Usage": 350
 }' http://localhost:5000/predict
 ```
+
