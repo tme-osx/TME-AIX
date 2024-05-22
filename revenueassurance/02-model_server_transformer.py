@@ -1,3 +1,6 @@
+# Author: Fatih E. NAR
+# Note: Use Responsibly
+#
 from flask import Flask, request, jsonify
 import torch
 import torch.nn as nn
