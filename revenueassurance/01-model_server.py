@@ -1,3 +1,6 @@
+# Author: Fatih E. NAR
+# Note: Use Responsibly
+#
 import pandas as pd
 from flask import Flask, request, jsonify
 import pickle
