@@ -1,5 +1,7 @@
 ## Revenue Assurance with AI for Telco 
-Fraud is mainly a classification problem, hence we picked RandomForestClassifier & BalancedRandomForestClassifier which are  appropriate due to their ability to handle complex, non-linear relationships and provide robust performance even with imbalanced data. <br>
+Fraud detection is a domain where traditional machine learning models, such as tree-based methods, often perform very well. Specifically, models like the Balanced Random Forest  (01-xxx worx) can be advantageous due to their inherent ability to handle class imbalance and their interpretability.<br>
+
+We have gave a chance for a Transformer-NN (02-xxx worx) model with same dataset but it has been a miserable experience, as such models needs much more data to capturing complex patterns and interactions and also requires significantly more computational power and time for training. <br>
 
 #Data Characteristics:<br>
 ![Revenue Assurance Data Structure](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/rev_ass_data.png)<br>
