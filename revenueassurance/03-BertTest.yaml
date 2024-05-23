@@ -8,12 +8,12 @@ fenar@macpro71 etc-ai-wrx % curl -X POST http://localhost:5000/predict \
         "MobileWallet_Use": 1,
         "Plan_Type": "postpaid",
         "Cost": 5000,
-        "Cellular_Location_Distance": 500,
+        "Cellular_Location_Distance": 5000,
         "Personal_Pin_Used": 0,
         "Avg_Call_Duration": 200,
         "Avg_Data_Usage": 8000,
         "Avg_Cost": 3000,
-        "Fraud": 1,
+        "Fraud": 0,
         "threshold": 0.48
     }'
 
@@ -29,11 +29,11 @@ fenar@macpro71 etc-ai-wrx % curl -X POST http://localhost:5000/predict \
         "Plan_Type": "prepaid",
         "Cost": 5,
         "Cellular_Location_Distance": 1,
-        "Personal_Pin_Used": 10,
+        "Personal_Pin_Used": 1,
         "Avg_Call_Duration": 1,
         "Avg_Data_Usage": 45,
         "Avg_Cost": 4,
-        "Fraud": 0,
+        "Fraud": 1,
         "threshold": 0.48
     }'
 
