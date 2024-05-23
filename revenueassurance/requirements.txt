@@ -290,3 +290,4 @@ scikit-learn
 pandas
 numpy
 peft
+bitsandbytes
