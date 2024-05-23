@@ -1,0 +1,28 @@
+fenar@macpro71 etc-ai-wrx % curl -X POST http://localhost:5000/predict \
+    -H "Content-Type: application/json" \
+    -d '{
+        "input_ids": [[101, 2054, 2003, 1996, 4824, 102]],
+        "attention_mask": [[1, 1, 1, 1, 1, 1]],
+        "token_type_ids": [[0, 0, 0, 0, 0, 0]]
+    }'
+
+{
+  "prediction": "Non-Fraud with 51.849% probability"
+}
+fenar@macpro71 etc-ai-wrx % curl -X POST http://localhost:5000/predict \
+    -H "Content-Type: application/json" \
+    -d '{
+        "input_ids": [
+            [101, 3630, 3676, 2003, 2504, 1996, 6313, 2005, 1037, 2005, 2487, 1037, 1006, 2096, 3940, 2162, 1997, 1037, 1006, 102]
+        ],
+        "attention_mask": [
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        ],
+        "token_type_ids": [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ]
+    }'
+
+{
+  "prediction": "Fraud with 51.235% probability"
+}
