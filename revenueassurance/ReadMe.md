@@ -34,7 +34,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
     "Plan_Type_postpaid": 0,
     "Cost": 500,
     "Cellular_Location_Distance": 100,
-    "Personal_Pin_Used": 1, 
+    "Personal_Pin_Used": 0, 
     "Avg_Call_Duration": 50,
     "Avg_Data_Usage": 8000
 }' http://localhost:5000/predict
@@ -51,7 +51,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
     "Plan_Type_postpaid": 0,
     "Cost": 50,
     "Cellular_Location_Distance": 3,
-    "Personal_Pin_Used": 20,
+    "Personal_Pin_Used": 1,
     "Avg_Call_Duration": 12,
     "Avg_Data_Usage": 350
 }' http://localhost:5000/predict
