@@ -1,28 +1,40 @@
 fenar@macpro71 etc-ai-wrx % curl -X POST http://localhost:5000/predict \
     -H "Content-Type: application/json" \
     -d '{
-        "input_ids": [[101, 2054, 2003, 1996, 4824, 102]],
-        "attention_mask": [[1, 1, 1, 1, 1, 1]],
-        "token_type_ids": [[0, 0, 0, 0, 0, 0]]
+        "Call_Duration": 300,
+        "Data_Usage": 10000,
+        "Sms_Count": 100,
+        "Roaming_Indicator": 1,
+        "MobileWallet_Use": 1,
+        "Plan_Type": "postpaid",
+        "Cost": 5000,
+        "Cellular_Location_Distance": 500,
+        "Last_Time_Pin_Used": 0,
+        "Avg_Call_Duration": 200,
+        "Avg_Data_Usage": 8000,
+        "Avg_Cost": 3000,
+        "Fraud": 1,
+        "threshold": 0.48
     }'
 
-{
-  "prediction": "Non-Fraud with 51.849% probability"
-}
+{"prediction":"Non-Fraud with 47.195% probability","probabilities":[[0.5280455350875854,0.47195446491241455]]}
 fenar@macpro71 etc-ai-wrx % curl -X POST http://localhost:5000/predict \
     -H "Content-Type: application/json" \
     -d '{
-        "input_ids": [
-            [101, 3630, 3676, 2003, 2504, 1996, 6313, 2005, 1037, 2005, 2487, 1037, 1006, 2096, 3940, 2162, 1997, 1037, 1006, 102]
-        ],
-        "attention_mask": [
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-        ],
-        "token_type_ids": [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ]
+        "Call_Duration": 2,
+        "Data_Usage": 50,
+        "Sms_Count": 0,
+        "Roaming_Indicator": 0,
+        "MobileWallet_Use": 0,
+        "Plan_Type": "prepaid",
+        "Cost": 5,
+        "Cellular_Location_Distance": 1,
+        "Last_Time_Pin_Used": 10,
+        "Avg_Call_Duration": 1,
+        "Avg_Data_Usage": 45,
+        "Avg_Cost": 4,
+        "Fraud": 0,
+        "threshold": 0.48
     }'
 
-{
-  "prediction": "Fraud with 51.235% probability"
-}
+{"prediction":"Fraud with 49.148% probability","probabilities":[[0.5085157752037048,0.49148428440093994]]}
