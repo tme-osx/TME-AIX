@@ -3,7 +3,7 @@
 
 >> We gave a chance for a Transformer-NN (02-xxx worx) model with same dataset but it has not been a great experience, as such models needs much more data to capturing complex patterns and interactions and also requires significantly more computational power and time for training. <br> [ Test Accuracy: 0.999325] <br>
 
->> We have fine-tuned bert with parameter efficient fine tuning using LoRA approach, (03-xxx worx) we managed to optimize based on cuda/mps/cpu use with small batch data usages, model build and served via a model server we implemented, however we are not much satisfied with the test results (see; 03-BertTest.yaml).<br>
+>> We have fine-tuned bert with parameter efficient fine tuning using LoRA approach, (03-xxx worx) we managed to optimize based on cuda/mps/cpu use with small batch data usages, model build and served via a model server we implemented, however we are not much satisfied with the test results (see; 03-BertTest.yaml).<br> [ Test Accuracy: Pretty Prety Bad Rabbit Poop] <br>
 
 Winner (So Far) is: [Balanced Random Forest] with the data we have for training/fine-tuning.
 
