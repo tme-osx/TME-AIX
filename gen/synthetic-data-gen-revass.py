@@ -1,7 +1,6 @@
 #Author: Fatih E. NAR
 #Synthetic data for revenue assurance
 #
-
 import numpy as np
 import pandas as pd
 import lzma
@@ -22,7 +21,7 @@ def generate_synthetic_data(num_samples):
     plan_type = np.random.choice(['prepaid', 'postpaid'], size=num_samples, p=[0.5, 0.5])
     cost = np.random.exponential(scale=50, size=num_samples)
     cellular_location_distance = np.random.exponential(scale=5, size=num_samples)
-    last_time_pin_used = np.random.exponential(scale=30, size=num_samples)
+    personal_pin_used = np.random.choice([0, 1], size=num_samples, p=[0.8, 0.2])
     
     # Add correlated features
     avg_call_duration = call_duration + np.random.normal(0, 2, size=num_samples)
@@ -31,6 +30,12 @@ def generate_synthetic_data(num_samples):
 
     # Conditional distributions
     data_usage[plan_type == 'postpaid'] += np.random.exponential(scale=100, size=(plan_type == 'postpaid').sum())
+
+    # Define the fraud logic
+    fraud = ((call_duration > 100) | (data_usage > 1000) & (roaming_indicator == 1)) | \
+            ((mobilewallet_use == 1) & (roaming_indicator == 1) & (cost > 100)) | \
+            ((cellular_location_distance > 100) & (mobilewallet_use == 1) & (cost > 100)) | \
+            (personal_pin_used == 0)
     
     # Create DataFrame
     telecom_data = pd.DataFrame({
@@ -40,13 +45,13 @@ def generate_synthetic_data(num_samples):
         'Roaming_Indicator': roaming_indicator,
         'MobileWallet_Use': mobilewallet_use,
         'Plan_Type': plan_type,
-        'Cost': avg_cost,
+        'Cost': cost,
         'Cellular_Location_Distance': cellular_location_distance,
-        'Last_Time_Pin_Used': last_time_pin_used,
+        'Personal_Pin_Used': personal_pin_used,
         'Avg_Call_Duration': avg_call_duration,
         'Avg_Data_Usage': avg_data_usage,
         'Avg_Cost': avg_cost,
-        'Fraud': np.random.choice([0, 1], size=num_samples, p=[0.75, 0.25])
+        'Fraud': fraud.astype(int)
     })
     
     return telecom_data
