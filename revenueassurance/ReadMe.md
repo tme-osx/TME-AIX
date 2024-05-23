@@ -1,7 +1,7 @@
 ## Revenue Assurance with AI for Telco 
 >> Revenue Assurance is a domain where traditional machine learning models, such as tree-based methods, often perform very well. Specifically, models like the Balanced Random Forest  (01-xxx worx) can be advantageous due to their inherent ability to handle class imbalance and their interpretability.<br>[ Test Accuracy: 0.9999833] <br>
 
->> We gave a chance for a Transformer-NN (02-xxx worx) model with same dataset but it has been a not a great experience, as such models needs much more data to capturing complex patterns and interactions and also requires significantly more computational power and time for training. <br> [ Test Accuracy: 0.999325] <br>
+>> We gave a chance for a Transformer-NN (02-xxx worx) model with same dataset but it has not been a great experience, as such models needs much more data to capturing complex patterns and interactions and also requires significantly more computational power and time for training. <br> [ Test Accuracy: 0.999325] <br>
 
 >> We have fine-tuned bert with parameter efficient fine tuning using LoRA approach, (03-xxx worx) we managed to optimize based on cuda/mps/cpu use with small batch data usages, model build and served via a model server we implemented, however we are not much satisfied with the test results (see; 03-BertTest.yaml).<br>
 
