@@ -7,7 +7,7 @@ curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -
     "Plan_Type": "prepaid",
     "Cost": 50.75,
     "Cellular_Location_Distance": 1.2,
-    "Personal_Pin_Used": 3.5,
+    "Personal_Pin_Used": 1,
     "Avg_Call_Duration": 4.3,
     "Avg_Data_Usage": 120.6,
     "Avg_Cost": 45.7
@@ -25,7 +25,7 @@ curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -
     "Plan_Type": "prepaid",
     "Cost": 5000,
     "Cellular_Location_Distance": 1000,
-    "Personal_Pin_Used": 0.01,
+    "Personal_Pin_Used": 0,
     "Avg_Call_Duration": 600,
     "Avg_Data_Usage": 45000,
     "Avg_Cost": 4500
