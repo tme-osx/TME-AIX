@@ -40,7 +40,7 @@ def predict():
     prediction_label = 'Fraud' if prediction[0] == 1 else 'Non-Fraud'
     
     # Return the prediction result as JSON
-    return jsonify({'prediction': f'Prediction: {prediction_label}'})
+    return jsonify({'Prediction Result': f': {prediction_label}'})
 
 # Run the Flask app
 if __name__ == '__main__':
