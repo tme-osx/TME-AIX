@@ -47,7 +47,7 @@ preprocessor = ColumnTransformer(
     transformers=[
         ('num', numerical_transformer, ['Call_Duration', 'Data_Usage', 'Sms_Count', 'Roaming_Indicator',
                                         'MobileWallet_Use', 'Cost', 'Cellular_Location_Distance',
-                                        'Last_Time_Pin_Used', 'Avg_Call_Duration', 'Avg_Data_Usage', 'Avg_Cost']),
+                                        'Personal_Pin_Used', 'Avg_Call_Duration', 'Avg_Data_Usage', 'Avg_Cost']),
         ('cat', categorical_transformer, ['Plan_Type'])
     ])
 
