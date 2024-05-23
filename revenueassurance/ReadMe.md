@@ -3,7 +3,9 @@
 
 >> We gave a chance for a Transformer-NN (02-xxx worx) model with same dataset but it has been a miserable experience, as such models needs much more data to capturing complex patterns and interactions and also requires significantly more computational power and time for training. <br>
 
->> We are working on fine-tuned bert to be used for revenue assurance (03-xxx worx) but that guy is killing our machines even for fine-tuning. We will keep you posted on this one. <br>
+>> We have fine-tuned bert with parameter efficient fine tuning using LoRA approach, (03-xxx worx) we managed to optimize based on cuda/mps/cpu use with small batch data usages, model build and served via a model server we implemented, however we are not much satisfied with the test results.<br>
+
+Winner (So Far) is: [Balanced Random Forest] with the data we have for training/fine-tuning.
 
 #Data Characteristics:<br>
 ![Revenue Assurance Data Structure](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/rev_ass_data.png)<br>
