@@ -12,7 +12,7 @@ The dataset is saved in a compressed CSV file: `data/telecom_sevass_data.csv.xz`
 
 ## Model
 
-The model is based on a Transformer neural network, which is well-suited for sequential data. The architecture includes:
+The model is based on a Transformer neural network (175K parms), which is well-suited for sequential data. The architecture includes:
 - Embedding layer to convert input sequences.
 - Transformer blocks with multi-head attention.
 - Fully connected layers for regression output.
