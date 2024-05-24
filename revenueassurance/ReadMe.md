@@ -1,10 +1,10 @@
-# Revenue Assurance Fraud Detection using Multi-Model Options
+# Revenue Assurance Fraud Detection using Multimodal Approach
 
 ## Project Overview
 
 This project aims to deliver a service assurance insights model using a Transformer neural network. The model is trained on synthetic telecom data to predict network performance metrics and identify potential anomalies. The goal is to provide proactive network management and enhance customer experience.
 
-## Multi-Model Approach
+## Multimodal Approach
 (1) >> Revenue Assurance is a domain where traditional machine learning models, such as tree-based methods, often perform very well. Specifically, models like the Balanced Random Forest  (01-xxx worx) can be advantageous due to their inherent ability to handle class imbalance and their interpretability.<br>[ Test Accuracy: 0.9999833] <br>
 
 (2) >> We gave a chance for a Transformer-NN (02-xxx worx) model with same dataset but it has not been a great experience, as such models needs much more data to capturing complex patterns and interactions and also requires significantly more computational power and time for training. <br> [ Test Accuracy: 0.999325] <br>
