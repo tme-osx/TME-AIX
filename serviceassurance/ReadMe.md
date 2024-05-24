@@ -18,11 +18,7 @@ The model is based on a Transformer neural network, which is well-suited for seq
 - Fully connected layers for regression output.
 
 ### Transformer Block
-
-A custom Transformer block includes:
-- Multi-head attention mechanism.
-- Feed-forward network.
-- Layer normalization and dropout for regularization.
+![Service Assurance Data Structure](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/serviceassurance/data/sevass-nn.png)<br>
 
 ## Training and Evaluation
 
