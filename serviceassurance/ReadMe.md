@@ -51,10 +51,6 @@ The model's performance is evaluated using the Mean Absolute Percentage Error (M
 
 The model predictions are compared against actual values for key metrics like latency. The MAPE value is calculated and printed, providing a quantitative measure of the model's performance.
 
-## Visualization
-
-The project includes visualizations to compare the actual and predicted values for network latency. The plots provide a clear view of the model's prediction accuracy.
-
 ## Summary
 
 This project demonstrates the application of Transformer neural networks for predicting network performance metrics in a telecom environment. The use of synthetic data and the evaluation of the model using MAPE provide a comprehensive approach to service assurance insights.
