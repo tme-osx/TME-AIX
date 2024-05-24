@@ -6,18 +6,18 @@ Data Structure: <br>
 
 ```
     revass_data = pd.DataFrame({
-        'Call_Duration': call_duration,
-        'Data_Usage': data_usage,
-        'Sms_Count': sms_count,
-        'Roaming_Indicator': roaming_indicator,
-        'MobileWallet_Use': mobilewallet_use,
-        'Plan_Type': plan_type,
-        'Cost': cost,
-        'Cellular_Location_Distance': cellular_location_distance,
-        'Personal_Pin_Used': personal_pin_used,
-        'Avg_Call_Duration': avg_call_duration,
-        'Avg_Data_Usage': avg_data_usage,
-        'Avg_Cost': avg_cost,
-        'Fraud': fraud.astype(int)
+        'Call_Duration',
+        'Data_Usage',
+        'Sms_Count',
+        'Roaming_Indicator',
+        'MobileWallet_Use',
+        'Plan_Type',
+        'Cost',
+        'Cellular_Location_Distance',
+        'Personal_Pin_Used',
+        'Avg_Call_Duration',
+        'Avg_Data_Usage',
+        'Avg_Cost',
+        'Fraud_Flag'
     })
 ```
