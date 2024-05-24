@@ -33,6 +33,7 @@ The model's performance is evaluated using the Mean Absolute Percentage Error (M
 ## Results
 
 The model predictions are compared against actual values for key metrics like latency. The MAPE value is calculated and printed, providing a quantitative measure of the model's performance.
+![Service Assurance Result](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/serviceassurance/data/sevass-nps.png)<br>
 
 ## Summary
 
