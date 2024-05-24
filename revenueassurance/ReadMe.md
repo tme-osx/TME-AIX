@@ -1,4 +1,4 @@
-# Revenue Assurance Fraud Detection using Transformer Neural Network
+# Revenue Assurance Fraud Detection using Multi-Model Options
 
 ## Project Overview
 
