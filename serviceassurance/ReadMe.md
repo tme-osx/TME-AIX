@@ -6,20 +6,7 @@
 This project aims to deliver a service assurance insights model using a Transformer neural network. The model is trained on synthetic telecom data to predict network performance metrics and identify potential anomalies. The goal is to provide proactive network management and enhance customer experience.
 
 ## Data
-
-The synthetic telecom data includes the following key metrics:
-- **Timestamp**: Date and time of the record.
-- **Latency**: Network latency in milliseconds.
-- **Jitter**: Variation in packet delay.
-- **Packet Loss**: Percentage of packets lost.
-- **Throughput**: Data transfer rate.
-- **MTU**: Maximum Transmission Unit size.
-- **CPU Usage**: CPU usage percentage.
-- **Memory Usage**: Memory usage percentage.
-- **Port Speed**: Network port speed in Gbps.
-- **Alarm**: Boolean indicating if an alarm was triggered.
-- **Traffic Volume**: Volume of network traffic.
-- **Data Speed**: Data transfer speed.
+![Service Assurance Data Structure](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/serviceassurance/data/sevass-data.png)<br>
 
 The dataset is saved in a compressed CSV file: `data/telecom_sevass_data.csv.xz`.
 
