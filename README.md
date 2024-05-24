@@ -1,1 +1,2 @@
-# This is a collaborative workspace repo for various telco use-cases to be build around offerings of RH-OCP AI capabilities and Open Data.
+# Telco Media Entertainment AI eXperiements
+This is a collaborative workspace repo for various tme use-cases to be build around of AI capabilities & Open Data.
