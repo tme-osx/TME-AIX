@@ -21,7 +21,7 @@ The synthetic telecom data includes the following key metrics:
 - **Traffic Volume**: Volume of network traffic.
 - **Data Speed**: Data transfer speed.
 
-The dataset is saved in a compressed CSV file: `data/telecom_revass_data_v6.csv.xz`.
+The dataset is saved in a compressed CSV file: `data/telecom_sevass_data.csv.xz`.
 
 ## Model
 
