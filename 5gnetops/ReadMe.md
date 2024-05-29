@@ -1,4 +1,4 @@
-# Fine-Tuning GPT-J with PEFT and LoRA
+# 5G Network Predictions with Fine-Tuning GPT-J using PEFT & LoRA
 
 This repository guides you through fine-tuning the GPT-J model using Parameter-Efficient Fine-Tuning (PEFT) with Low-Rank Adaptation (LoRA) to reduce computational and memory requirements.
 
