@@ -1,0 +1,11 @@
+numpy
+pandas
+matplotlib
+tensorflow
+scikit-learn
+onnx 
+tf2onnx 
+torch
+requests
+transformers
+datasets
