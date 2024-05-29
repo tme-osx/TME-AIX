@@ -9,3 +9,4 @@ torch
 requests
 transformers
 datasets
+peft
