@@ -3,7 +3,7 @@
 
 ## Project Overview
 
-This project aims to deliver a service assurance insights model using a Transformer neural network. The model is trained on synthetic telecom data to predict network performance metrics and identify potential anomalies. The goal is to provide proactive network management and enhance customer experience.
+This project aims to deliver a service assurance insights (net promoter score -NPS- for business growth predicted based on performance of the telco service architecture) model using a Transformer neural network. The model is trained on synthetic telecom  network stack data to predict network performance metrics and predict NPS. The goal is to provide business vs network performance correlation for planned growth.
 
 ## Data
 ![Service Assurance Data Structure](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/serviceassurance/data/sevass-data.png)<br>
