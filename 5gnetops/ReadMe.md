@@ -16,6 +16,7 @@ Set the environment variable for MAC with AMD GPUs: (PyTorch uses the new Metal 
 ```sh
 export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
 ```
+![macmpsgpu](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/macmpsgpu.png)<br> 
 
 ## Setup
 
