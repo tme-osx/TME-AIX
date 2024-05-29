@@ -8,7 +8,9 @@ This project aims to deliver a service assurance insights (net promoter score -N
 ## Data
 ![Service Assurance Data Structure](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/serviceassurance/data/sevass-data.png)<br>
 
-The dataset is saved in a compressed CSV file: `data/telecom_sevass_data.csv.xz`.
+The dataset is saved in a compressed CSV file: `data/telecom_sevass_data.csv.xz`. This data set is correlated child of following two real world datasets and feature engineered for the remaining ones: <br>
+[>>FCC Customer Complaints Data Set](https://opendata.fcc.gov/Consumer/CGB-Consumer-Complaints-Data/3xyp-aqkj/about_data)<br>
+[>>OpenWeather Data Set](https://openweathermap.org/)<br>
 
 ## Model
 
