@@ -46,6 +46,7 @@ def tokenize_function(examples):
 tokenized_dataset = hf_dataset.map(tokenize_function, batched=True)
 tokenized_dataset.set_format(type='torch', columns=['input_ids', 'attention_mask', 'labels'])
 ```
+![5G Data Set Snapshot](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/5gdatasetsnapshot.png)<br>
 
 ### Apply LoRA with PEFT
 
