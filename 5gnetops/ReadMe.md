@@ -14,7 +14,7 @@ pip install torch transformers datasets peft
 Set the environment variable for MAC with AMD GPUs: (PyTorch uses the new Metal Performance Shaders (MPS) backend for GPU training acceleration. This MPS backend extends the PyTorch framework, providing scripts and capabilities to set up and run operations on Mac. )
 
 ```sh
-export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
+export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.9
 ```
 ![macmpsgpu](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/macmpsgpu.png)<br> 
 
