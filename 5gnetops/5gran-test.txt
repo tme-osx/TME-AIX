@@ -1,0 +1,4 @@
+curl -X POST "http://localhost:5000/predict" -H "Content-Type: application/json" -d '{
+    "input_data": "Cell Availability: 99.5% MTTR: 1.2 hours Throughput: 60 Mbps Latency: 30 ms Packet Loss Rate: 0.2% Call Drop Rate: 0.05% Handover Success Rate: 99.8% Parameter Changes: 1 Successful Configuration Changes: 99% Data Usage: 45 GB User Count: 100 Signal Strength: -65 dBm Jitter: 8 ms Connection Setup Success Rate: 99.5% Security Incidents: 0 Authentication Failures: 1 Temperature: 25°C Humidity: 50% Weather: Cloudy State: TX", 
+    "question": "Given the current network metrics, how likely are we to encounter a critical alarm today? What preventative measures can we take to avoid potential issues?"
+}'
