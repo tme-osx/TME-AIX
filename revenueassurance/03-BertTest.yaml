@@ -14,7 +14,7 @@ fenar@macpro71 etc-ai-wrx % curl -X POST http://localhost:5000/predict \
         "Avg_Data_Usage": 8000,
         "Avg_Cost": 3000,
         "Fraud": 0,
-        "threshold": 0.48
+        "threshold": 0.82
     }'
 
 {"prediction":"Fraud with 47.195% probability","probabilities":[[0.5280455350875854,0.47195446491241455]]}
@@ -34,7 +34,7 @@ fenar@macpro71 etc-ai-wrx % curl -X POST http://localhost:5000/predict \
         "Avg_Data_Usage": 45,
         "Avg_Cost": 4,
         "Fraud": 1,
-        "threshold": 0.48
+        "threshold": 0.82
     }'
 
 {"prediction":"Non-Fraud with 49.148% probability","probabilities":[[0.5085157752037048,0.49148428440093994]]}
