@@ -1,6 +1,4 @@
-fenar@macpro71 etc-ai-wrx % curl -X POST http://localhost:5000/predict \
-    -H "Content-Type: application/json" \
-    -d '{
+(app-root) (app-root) curl -X POST http://localhost:5000/predict     -H "Content-Type: application/json"     -d '{
         "Call_Duration": 300,
         "Data_Usage": 10000,
         "Sms_Count": 100,
@@ -16,25 +14,23 @@ fenar@macpro71 etc-ai-wrx % curl -X POST http://localhost:5000/predict \
         "Fraud": 0,
         "threshold": 0.82
     }'
+{"prediction":"Fraud with 82.362% probability","probabilities":[[0.176381915807724,0.8236181139945984]]}
 
-{"prediction":"Fraud with 47.195% probability","probabilities":[[0.5280455350875854,0.47195446491241455]]}
-fenar@macpro71 etc-ai-wrx % curl -X POST http://localhost:5000/predict \
-    -H "Content-Type: application/json" \
-    -d '{
+(app-root) (app-root) curl -X POST http://localhost:5000/predict     -H "Content-Type: application/json"     -d '{
         "Call_Duration": 2,
         "Data_Usage": 50,
         "Sms_Count": 0,
         "Roaming_Indicator": 0,
         "MobileWallet_Use": 0,
         "Plan_Type": "prepaid",
-        "Cost": 5,
+        "Cost": 5,   
         "Cellular_Location_Distance": 1,
         "Last_Time_Pin_Used": 1,
         "Avg_Call_Duration": 1,
-        "Avg_Data_Usage": 45,
-        "Avg_Cost": 4,
+        "Avg_Data_Usage": 4,
+        "Avg_Cost": 1,
         "Fraud": 1,
         "threshold": 0.82
     }'
-
-{"prediction":"Non-Fraud with 49.148% probability","probabilities":[[0.5085157752037048,0.49148428440093994]]}
+{"prediction":"Non-Fraud with 81.349% probability","probabilities":[[0.18650518357753754,0.8134948015213013]]}
+(app-root) (app-root) 
