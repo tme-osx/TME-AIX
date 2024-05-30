@@ -1,0 +1,14 @@
+numpy
+pandas
+matplotlib
+tensorflow
+scikit-learn
+onnx 
+tf2onnx 
+requests
+transformers
+datasets
+peft
+flask
+torch
+torchvision
