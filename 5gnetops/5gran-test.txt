@@ -1,4 +1,10 @@
-curl -X POST "http://localhost:5000/predict" -H "Content-Type: application/json" -d '{
-    "input_data": "Cell Availability: 99.5% MTTR: 1.2 hours Throughput: 60 Mbps Latency: 30 ms Packet Loss Rate: 0.2% Call Drop Rate: 0.05% Handover Success Rate: 99.8% Parameter Changes: 1 Successful Configuration Changes: 99% Data Usage: 45 GB User Count: 100 Signal Strength: -65 dBm Jitter: 8 ms Connection Setup Success Rate: 99.5% Security Incidents: 0 Authentication Failures: 1 Temperature: 25°C Humidity: 50% Weather: Cloudy State: TX", 
-    "question": "Given the current network metrics, how likely are we to encounter a critical alarm today? What preventative measures can we take to avoid potential issues?"
+
+curl -X POST http://0.0.0.0:5000/predict -H "Content-Type: application/json" -d '{
+  "input_data": "It is expected to have following kpis: Cell Availability: 45.5, MTTR: 100.1, Throughput: 50.5, Latency: 105, Packet Loss Rate: 0.45, Call Drop Rate: 0.42, Handover Success Rate: 59.8,Data Usage: 5000, User Count: 150000, Signal Strength: -70, Jitter: 100, Connection Setup Success Rate: 59.7, Security Incidents: 10, Temperature: 45, Humidity: 90 Weather: Cloudy, City: San Francisco, State: CA, Zip: 94105",
+  "question": "What would be the expected Fault Occurrence Rate?"
+}'
+
+curl -X POST http://0.0.0.0:5000/predict -H "Content-Type: application/json" -d '{
+  "input_data": "It is expected to have following kpis: Cell Availability: 99.5 MTTR: 2.1 Throughput: 100.5 Latency: 45 Packet Loss Rate: 0.05 Call Drop Rate: 0.02 Handover Success Rate: 99.8 Data Usage: 500 User Count: 1500 Signal Strength: -70 Jitter: 10 Connection Setup Success Rate: 99.7 Security Incident Temperature: 25 Humidity: 60 Weather: Clear Issue Reported: No City: San Francisco State: CA Zip: 94105",
+  "question": "What would be the expected Fault Occurrence Rate?"
 }'
