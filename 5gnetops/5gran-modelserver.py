@@ -1,3 +1,6 @@
+# Author: Fatih E. NAR
+# Note: Use Responsibly
+#
 import os
 import torch
 from flask import Flask, request, jsonify
@@ -44,7 +47,15 @@ def predict():
         # Generate predictions
         try:
             with torch.no_grad():
-                outputs = model.generate(**inputs, max_length=512, num_return_sequences=1)
+                outputs = model.generate(
+                    **inputs, 
+                    max_length=512, 
+                    num_return_sequences=1,
+                    do_sample=True,  # Enable sampling
+                    temperature=0.7,  # Lower temperature for less randomness
+                    top_k=50,  # Consider only top k tokens
+                    top_p=0.9  # Consider only top p cumulative probability
+                )
             logging.debug(f"Model outputs: {outputs}")
         except Exception as e:
             logging.error(f"Error during model generation: {e}")
@@ -56,6 +67,14 @@ def predict():
 
         # Extract the answer part
         answer = generated_text.split("Answer:")[-1].strip()
+
+        # Post-process to remove repetitions
+        answer_sentences = answer.split('. ')
+        unique_sentences = []
+        for sentence in answer_sentences:
+            if sentence not in unique_sentences:
+                unique_sentences.append(sentence)
+        answer = '. '.join(unique_sentences)
 
         return jsonify({'answer': answer})
     except Exception as e:
