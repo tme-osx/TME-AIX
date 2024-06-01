@@ -4,7 +4,6 @@ This project contains a machine learning model for predicting fault occurrence r
 
 ## Project Structure
 
-## Training
 - `5gran-predictions.ipynb`: Jupyter notebook used for training the model.
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/5gdatasetsnapshot.png)<br>
 - `models/5g_oss_model/`: Directory where the trained model and tokenizer are saved.
