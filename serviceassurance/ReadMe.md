@@ -1,5 +1,5 @@
 
-# Service Assurance Insights using Transformer Neural Network
+# AI Assisted Service Assurance Insights/Predictions
 
 ## Project Overview
 
