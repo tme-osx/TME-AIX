@@ -7,7 +7,8 @@ This project contains a machine learning model for predicting fault occurrence r
 - `5gran-predictions.ipynb`: Jupyter notebook used for training the model.
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/5gdatasetsnapshot.png)<br>
 - `models/5g_oss_model/`: Directory where the trained model and tokenizer are saved.
-![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/5gtrainingresults.png)<br>
+![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/trainingresults200K.png)<br>
+![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/evalresults200K.png)<br>
 - `5gran-modelserver.py`: Flask application to serve the model predictions.
-![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/5gmodelserver.png)<br>
+![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/testresults.png)<br>
 
