@@ -1,7 +1,7 @@
 # 5G RAN Fault Prediction with AI Assistance
 
-This project contains a machine learning model for predicting fault occurrence rates in a 5G radio network based on various network KPIs. The model is fine-tuned on a dataset containing network KPIs and fault occurrence rates. The server is built using Flask to provide predictions through a REST API.
-
+This project contains a machine learning model for predicting fault occurrence rates in a 5G radio network based on various network KPIs. The model is fine-tuned on a dataset containing network KPIs and fault occurrence rates. The server is built using Flask to provide predictions through a REST API. <br>
+Model-Card: https://huggingface.co/google-t5/t5-small <br>
 ## Project Structure
 
 - `5gran-predictions.ipynb`: Jupyter notebook used for training the model.
