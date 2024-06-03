@@ -7,6 +7,9 @@ from flask import Flask, request, jsonify
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 import logging
 
+# Set environment variables to handle OpenMP library conflicts
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+
 app = Flask(__name__)
 
 # Setup logging
