@@ -1,13 +1,13 @@
 # 5G RAN Fault Prediction with AI Assistance
 
 This project contains a machine learning model for predicting fault occurrence rates in a 5G radio network based on various network KPIs. The model is fine-tuned on a dataset containing network KPIs and fault occurrence rates. The server is built using Flask to provide predictions through a REST API. <br>
-Model-Card: https://huggingface.co/google-t5/t5-small <br>
+Model-Card: https://huggingface.co/google-t5/t5-small <br><br>
 Data Sources:  <br> 
 (1) https://opendata.fcc.gov/Consumer/CGB-Consumer-Complaints-Data/3xyp-aqkj/about_data<br> 
 (2) https://openweathermap.org/<br>
-(3) Custom Data Synthesizer<br><br>
-## Project Structure
+(3) Custom Data Synthesizer<br>
 
+## Project Structure
 - `5gran-predictions.ipynb`: Jupyter notebook used for training the model.
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/5gdatasetsnapshot.png)<br>
 - `models/5g_oss_model/`: Directory where the trained model and tokenizer are saved.
