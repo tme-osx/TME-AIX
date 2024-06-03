@@ -4,7 +4,7 @@
 import os
 import torch
 from flask import Flask, request, jsonify
-from transformers import T5ForConditionalGeneration, T5Tokenizer
+from transformers import T5Tokenizer, T5ForConditionalGeneration
 import logging
 
 app = Flask(__name__)
@@ -18,12 +18,12 @@ tokenizer = T5Tokenizer.from_pretrained(model_path)
 model = T5ForConditionalGeneration.from_pretrained(model_path)
 
 # Ensure the model is on the correct device
-device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+device = torch.device("mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
 @app.route('/')
 def home():
-    return "5G Model Serving"
+    return "T5-small 5G Model Serving"
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -41,7 +41,7 @@ def predict():
         input_text = f"Data: {input_data}\nQuestion: {question}\nAnswer:"
 
         # Tokenize the input text
-        inputs = tokenizer(input_text, return_tensors='pt').to(device)
+        inputs = tokenizer(input_text, return_tensors='pt', padding='max_length', truncation=True, max_length=512).to(device)
         logging.debug(f"Tokenized inputs: {inputs}")
 
         # Generate predictions
@@ -49,7 +49,7 @@ def predict():
             with torch.no_grad():
                 outputs = model.generate(
                     **inputs, 
-                    max_length=512, 
+                    max_length=150,  # Increase max_length for more room to generate
                     num_return_sequences=1,
                     do_sample=True,  # Enable sampling
                     temperature=0.7,  # Lower temperature for less randomness
@@ -68,7 +68,8 @@ def predict():
         # Extract the answer part
         answer = generated_text.split("Answer:")[-1].strip()
 
-        # Post-process to remove repetitions
+        # Post-process to remove repetitions and <pad> tokens
+        answer = answer.replace('<pad>', '').strip()
         answer_sentences = answer.split('. ')
         unique_sentences = []
         for sentence in answer_sentences:
