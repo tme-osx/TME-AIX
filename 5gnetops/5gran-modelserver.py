@@ -4,7 +4,7 @@
 import os
 import torch
 from flask import Flask, request, jsonify
-from transformers import GPT2LMHeadModel, AutoTokenizer
+from transformers import T5ForConditionalGeneration, T5Tokenizer
 import logging
 
 app = Flask(__name__)
@@ -14,8 +14,8 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Load the trained model and tokenizer
 model_path = "models/5g_oss_model"
-tokenizer = AutoTokenizer.from_pretrained(model_path)
-model = GPT2LMHeadModel.from_pretrained(model_path)
+tokenizer = T5Tokenizer.from_pretrained(model_path)
+model = T5ForConditionalGeneration.from_pretrained(model_path)
 
 # Ensure the model is on the correct device
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
@@ -23,7 +23,7 @@ model.to(device)
 
 @app.route('/')
 def home():
-    return "GPT-2 5G Model Serving"
+    return "5G Model Serving"
 
 @app.route('/predict', methods=['POST'])
 def predict():

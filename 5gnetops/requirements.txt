@@ -12,3 +12,4 @@ peft
 flask
 torch
 torchvision
+sentencepiece
