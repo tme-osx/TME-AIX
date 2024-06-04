@@ -8,11 +8,12 @@ Data Sources:This data set is correlated child of following two real world datas
 [>>OpenWeather Data Set](https://openweathermap.org/)<br>
 
 ## Project Structure
-- `5gran-predictions.ipynb`: Jupyter notebook used for training the model.
+- Training with 5g Operation KPI Data Structures:
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/5gdatasetsnapshot2.png)<br>
-- `models/5g_oss_model/`: Directory where the trained model and tokenizer are saved.
-![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/trainingresults200K.png)<br>
-![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/evalresults200K.png)<br>
-- `5gran-modelserver.py`: Flask application to serve the model predictions.
+- Training Args:
+![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/trainingargs.png)<br>
+- Training Perf Results:
+![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/trainingperf.png)<br>
+- Model Server Experience (Perfect Day vs Rainy-Miserable Day in New York):
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/testresults2.png)<br>
 
