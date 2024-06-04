@@ -1,10 +1,13 @@
+Example Questions
 
-curl -X POST http://0.0.0.0:5000/predict -H "Content-Type: application/json" -d '{
-  "input_data": "It is expected to have following kpis: Cell Availability: 45.5, MTTR: 100.1, Throughput: 50.5, Latency: 105, Packet Loss Rate: 0.45, Call Drop Rate: 0.42, Handover Success Rate: 59.8,Data Usage: 5000, User Count: 150000, Signal Strength: -70, Jitter: 100, Connection Setup Success Rate: 59.7, Security Incidents: 10, Temperature: 45, Humidity: 90 Weather: Cloudy, City: San Francisco, State: CA, Zip: 94105",
-  "question": "What would be the expected Fault Occurrence Rate?"
-}'
+1. [Sunny Perfect Day]
+   curl -X POST http://0.0.0.0:5000/predict -H "Content-Type: application/json" -d '{
+     "input_data": "Cell Availability: 99.99, MTTR: 0.01, Throughput: 100.5, Latency: 0.1, Packet Loss Rate: 0.0, Call Drop Rate: 0.0, Handover Success Rate: 99.99, Data Usage: 500, User Count: 15, Signal Strength: -70, Jitter: 10, Connection Setup Success Rate: 99.9, Security Incidents: 0, Authentication Failures: 0, Temperature: 25, Humidity: 60, Weather: Clear, Issue Reported: No, City: New York, State: NY, Zip: 10001",
+     "question": "What would be the Fault Occurrence Rate?"
+   }'
 
-curl -X POST http://0.0.0.0:5000/predict -H "Content-Type: application/json" -d '{
-  "input_data": "It is expected to have following kpis: Cell Availability: 99.5 MTTR: 2.1 Throughput: 100.5 Latency: 45 Packet Loss Rate: 0.05 Call Drop Rate: 0.02 Handover Success Rate: 99.8 Data Usage: 500 User Count: 1500 Signal Strength: -70 Jitter: 10 Connection Setup Success Rate: 99.7 Security Incident Temperature: 25 Humidity: 60 Weather: Clear Issue Reported: No City: San Francisco State: CA Zip: 94105",
-  "question": "What would be the expected Fault Occurrence Rate?"
-}'
+2. [Rainy Miserable Day]
+   curl -X POST http://0.0.0.0:5000/predict -H "Content-Type: application/json" -d '{
+     "input_data": "Cell Availability: 70.0, MTTR: 4.0, Throughput: 50.0, Latency: 1000, Packet Loss Rate: 0.96, Call Drop Rate: 0.97, Handover Success Rate: 77.0, Data Usage: 7000, User Count: 9000, Signal Strength: -80, Jitter: 600, Connection Setup Success Rate: 83.0, Security Incidents: 5, Authentication Failures: 5, Temperature: 10, Humidity: 70, Weather: Rain, Issue Reported: Yes, City: New York, State: NY, Zip: 10001",
+     "question": "What would be the Fault Occurrence Rate?"
+   }'
