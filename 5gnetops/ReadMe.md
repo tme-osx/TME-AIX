@@ -14,5 +14,5 @@ Data Sources:This data set is correlated child of following two real world datas
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/trainingresults200K.png)<br>
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/evalresults200K.png)<br>
 - `5gran-modelserver.py`: Flask application to serve the model predictions.
-![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/testresults.png)<br>
+![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/testresults2.png)<br>
 
