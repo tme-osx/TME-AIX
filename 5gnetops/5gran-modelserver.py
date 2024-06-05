@@ -49,12 +49,13 @@ def predict():
             with torch.no_grad():
                 outputs = model.generate(
                     **inputs, 
-                    max_length=150,  # Increase max_length for more room to generate
+                    max_length=512,  # Increase max_length for more room to generate
                     num_return_sequences=1,
                     do_sample=True,  # Enable sampling
                     temperature=1.9,  # Adjust temperature for more variability
                     top_k=50,  # Consider only top k tokens
-                    top_p=0.95  # Consider only top p cumulative probability
+                    top_p=0.95,  # Consider only top p cumulative probability
+                    repetition_penalty=1.5  # Penalize repetition more heavily
                 )
             logging.debug(f"Model outputs: {outputs}")
         except Exception as e:
