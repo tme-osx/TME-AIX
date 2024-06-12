@@ -77,5 +77,10 @@ def predict():
     # Return the prediction result as JSON
     return jsonify({'prediction': prediction_label})
 
+# Function to run the Flask app in a separate thread
+def run_app():
+    app.run(debug=False, host='0.0.0.0', port=35000)
+
+# Start the Flask app in a separate thread
 if __name__ == '__main__':
-    app.run(debug=True)
+    threading.Thread(target=run_app).start()
