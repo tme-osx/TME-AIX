@@ -2,22 +2,22 @@
 # Note: Use Responsibly
 #
 import os
-
+import threading
 import pandas as pd
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 import pickle
+from sklearn.ensemble import RandomForestClassifier
 
 load_dotenv(override=True)
 
-base_model = os.getenv("MODEL_TO_LOAD", "revenueassurance/models/brfc_model.pkl")
+base_model = os.getenv("MODEL_TO_LOAD", "models/brfc_model.pkl")
 
 # Load the trained BalancedRandomForestClassifier model and feature names from the .pkl file
 with open(base_model, 'rb') as model_file:
     model, feature_names = pickle.load(model_file)
 
 # Ensure the loaded object is indeed a RandomForestClassifier
-from sklearn.ensemble import RandomForestClassifier
 assert isinstance(model, RandomForestClassifier), "Loaded model is not a RandomForestClassifier"
 
 # Initialize Flask application
@@ -49,6 +49,10 @@ def predict():
     # Return the prediction result as JSON
     return jsonify({'Prediction Result': f': {prediction_label}'})
 
-# Run the Flask app
+# Function to run the Flask app in a separate thread
+def run_app():
+    app.run(debug=False, host='0.0.0.0', port=35000)
+
+# Start the Flask app in a separate thread
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    threading.Thread(target=run_app).start()
