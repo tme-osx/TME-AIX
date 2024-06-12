@@ -5,17 +5,19 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Copy the requirements file into the container
-COPY requirements.txt requirements.txt
+COPY docker/requirements.txt requirements.txt
 
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the current directory contents into the container at /app
-COPY . .
+COPY --from=image-registry.openshift-image-registry.svc:5000/revenueassurance/model:1-1.0 model.pkl model.pkl
 
 # Expose port 5000 for Flask
 EXPOSE 5000
 
+# Copy the python app
+COPY 01-randomforest-model_server.py app.py
 # Define environment variable for Flask
 ENV FLASK_APP=app.py
 

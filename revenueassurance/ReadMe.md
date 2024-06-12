@@ -19,6 +19,8 @@ Winner (So Far) is: [Balanced Random Forest] with the data we have for training/
 ## Results:
 ![Revenue Assurance Accuracy](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/rev_ass_models_accuracy.png)<br>
 
+## [Steps for end to end MLOps setup](mlops.md)
+
 ## Steps to Run
 #(1) (Obviously) Clone the Repo :-)  <br>
 #(2) Open revenueassurance/01-telco-revass-ensemble.ipynb and Run-All. This would install all required libs, extract data from data/telecom_revass_data.csv.xz and load it for two models training {model1=RandomForestClassifier, model2=BalancedRandomForestClassifier }, evaluate them and save them under models/ directory. <br>

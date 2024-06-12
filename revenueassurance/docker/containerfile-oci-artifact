@@ -1,0 +1,21 @@
+FROM registry.access.redhat.com/ubi8/ubi-minimal:latest as model
+
+RUN microdnf install -y python3 python3-pip \
+  && microdnf clean all \
+  && pip3 --disable-pip-version-check install -U --compile --no-cache-dir awscli
+
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+ARG BUCKET_NAME
+ARG KUBEFLOW_PIPELINE_ID
+ARG TASK_NAME
+ARG OUTPUT_FILE
+  
+RUN mkdir /opt/data \
+  && AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY aws s3 --endpoint=https://s3-openshift-storage.apps.ca-central.adetalhouet.ca cp s3://$BUCKET_NAME/pipeline/$KUBEFLOW_PIPELINE_ID/$TASK_NAME/$OUTPUT_FILE /opt/data
+
+FROM scratch
+
+COPY --from=model /opt/data/* model.pkl
+
+CMD ["/bin/sh"]

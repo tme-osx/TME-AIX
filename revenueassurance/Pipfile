@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+kfp = "*"
+kfp-kubernetes = "*"
+python-dotenv = "*"
+scikit-learn = "*"
+pandas = "*"
+skl2onnx = "*"
+onnxruntime = "*"
+imblearn = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
