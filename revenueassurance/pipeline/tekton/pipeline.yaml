@@ -1,0 +1,146 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: revenueassurance
+  namespace: revenueassurance
+spec:
+  params:
+    - default: 'https://github.com/adetalhouet/TME-AIX.git'
+      description: Repo URL
+      name: GIT_URL
+      type: string
+    - default: main
+      name: GIT_REVISION
+      type: string
+    - default: 3.11-ubi9
+      name: PYTHON_IMAGE
+      type: string
+    - default: >-
+        image-registry.openshift-image-registry.svc:5000/revenueassurance/environment
+      name: TARGET_IMAGE
+      type: string
+    - default: 'https://ds-pipeline-dspa.revenueassurance.svc.cluster.local:8443'
+      name: KUBEFLOW_ENDPOINT
+      type: string
+    - default: ArNwQYuHCN2dHxuAhXHh
+      name: AWS_ACCESS_KEY_ID
+      type: string
+    - default: PI1YSfnGRR7rOzJfMfwTl0VH2tlar36pXt5HVdgB
+      name: AWS_SECRET_ACCESS_KEY
+      type: string
+    - default: pipeline-a7b10231-fa0c-40a5-8e8f-1599b95c2dc4
+      name: BUCKET_NAME
+      type: string
+  tasks:
+    - name: git-clone
+      params:
+        - name: url
+          value: $(params.GIT_URL)
+        - name: revision
+          value: $(params.GIT_REVISION)
+        - name: gitInitImage
+          value: >-
+            registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:868966ef9d4b54952d8a74eb83bba40eb1f52c0148994fa704efd0e3797c61c5
+      taskRef:
+        kind: ClusterTask
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: source
+    - name: s2i-python
+      params:
+        - name: VERSION
+          value: $(params.PYTHON_IMAGE)
+        - name: PATH_CONTEXT
+          value: revenueassurance
+        - name: IMAGE
+          value: $(params.TARGET_IMAGE)
+      runAfter:
+        - git-clone
+      taskRef:
+        kind: ClusterTask
+        name: s2i-python
+      workspaces:
+        - name: source
+          workspace: source
+    - name: execute-kubeflow-pipeline
+      params:
+        - name: IMAGE
+          value: $(params.TARGET_IMAGE)
+        - name: TAG
+          value: latest
+        - name: SCRIPT
+          value: 01-telco-revass-randomforest-pipeline.py
+        - name: KUBEFLOW_ENDPOINT
+          value: $(params.KUBEFLOW_ENDPOINT)
+      runAfter:
+        - s2i-python
+      taskRef:
+        kind: Task
+        name: execute-kubeflow-pipeline
+    - name: build-and-push-application
+      params:
+        - name: IMAGE
+          value: 'image-registry.openshift-image-registry.svc:5000/revenueassurance/app1-1.0'
+        - name: BUILDER_IMAGE
+          value: >-
+            registry.redhat.io/rhel8/buildah@sha256:b48f410efa0ff8ab0db6ead420a5d8d866d64af846fece5efb185230d7ecf591
+        - name: STORAGE_DRIVER
+          value: vfs
+        - name: DOCKERFILE
+          value: $(workspaces.source.path)/revenueassurance/docker/containerfile-app
+        - name: CONTEXT
+          value: $(workspaces.source.path)/revenueassurance
+        - name: TLSVERIFY
+          value: 'true'
+        - name: FORMAT
+          value: oci
+        - name: BUILD_EXTRA_ARGS
+          value: ''
+        - name: PUSH_EXTRA_ARGS
+          value: ''
+        - name: SKIP_PUSH
+          value: 'false'
+      runAfter:
+        - build-and-push-oci-artifact
+      taskRef:
+        kind: ClusterTask
+        name: buildah
+      workspaces:
+        - name: source
+          workspace: source
+    - name: build-and-push-oci-artifact
+      params:
+        - name: IMAGE
+          value: 'image-registry.openshift-image-registry.svc:5000/revenueassurance/model:1-1.0'
+        - name: BUILDER_IMAGE
+          value: >-
+            registry.redhat.io/rhel8/buildah@sha256:b48f410efa0ff8ab0db6ead420a5d8d866d64af846fece5efb185230d7ecf591
+        - name: STORAGE_DRIVER
+          value: vfs
+        - name: DOCKERFILE
+          value: $(workspaces.source.path)/revenueassurance/docker/containerfile-oci-artifact
+        - name: CONTEXT
+          value: .
+        - name: TLSVERIFY
+          value: 'true'
+        - name: FORMAT
+          value: oci
+        - name: BUILD_EXTRA_ARGS
+          value: '--build-arg AWS_ACCESS_KEY_ID=$(params.AWS_ACCESS_KEY_ID) --build-arg AWS_SECRET_ACCESS_KEY=$(params.AWS_SECRET_ACCESS_KEY) --build-arg BUCKET_NAME=$(params.BUCKET_NAME) --build-arg KUBEFLOW_PIPELINE_ID="913fa0c3-3c0a-4fb5-a0f7-de35a43c7697" --build-arg TASK_NAME="train-model" --build-arg OUTPUT_FILE="model_file"'
+        - name: PUSH_EXTRA_ARGS
+          value: ''
+        - name: SKIP_PUSH
+          value: 'false'
+      runAfter:
+        - execute-kubeflow-pipeline
+      taskRef:
+        kind: ClusterTask
+        name: buildah
+      workspaces:
+        - name: source
+          workspace: source
+  workspaces:
+    - name: source
+      optional: false
+  finally: []

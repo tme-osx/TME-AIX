@@ -1,12 +1,19 @@
 # Author: Fatih E. NAR
 # Note: Use Responsibly
 #
+import os
+
 import pandas as pd
 from flask import Flask, request, jsonify
+from dotenv import load_dotenv
 import pickle
 
+load_dotenv(override=True)
+
+base_model = os.getenv("MODEL_TO_LOAD", "revenueassurance/models/brfc_model.pkl")
+
 # Load the trained BalancedRandomForestClassifier model and feature names from the .pkl file
-with open('revenueassurance/models/brfc_model.pkl', 'rb') as model_file:
+with open(base_model, 'rb') as model_file:
     model, feature_names = pickle.load(model_file)
 
 # Ensure the loaded object is indeed a RandomForestClassifier
