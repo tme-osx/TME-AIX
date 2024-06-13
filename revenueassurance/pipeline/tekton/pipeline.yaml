@@ -15,10 +15,6 @@ spec:
     - default: 3.11-ubi9
       name: PYTHON_IMAGE
       type: string
-    - default: >-
-        image-registry.openshift-image-registry.svc:5000/revenueassurance/environment
-      name: TARGET_IMAGE
-      type: string
     - default: 'https://ds-pipeline-dspa.revenueassurance.svc.cluster.local:8443'
       name: KUBEFLOW_ENDPOINT
       type: string
@@ -39,8 +35,7 @@ spec:
         - name: revision
           value: $(params.GIT_REVISION)
         - name: gitInitImage
-          value: >-
-            registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:868966ef9d4b54952d8a74eb83bba40eb1f52c0148994fa704efd0e3797c61c5
+          value: 'registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:868966ef9d4b54952d8a74eb83bba40eb1f52c0148994fa704efd0e3797c61c5'
       taskRef:
         kind: ClusterTask
         name: git-clone
@@ -54,8 +49,8 @@ spec:
         - name: PATH_CONTEXT
           value: revenueassurance
         - name: IMAGE
-          value: $(params.TARGET_IMAGE)
-      runAfter:
+          value: 'image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/environment'
+     runAfter:
         - git-clone
       taskRef:
         kind: ClusterTask
@@ -66,7 +61,7 @@ spec:
     - name: execute-kubeflow-pipeline
       params:
         - name: IMAGE
-          value: $(params.TARGET_IMAGE)
+          value: image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/environment
         - name: TAG
           value: latest
         - name: SCRIPT
@@ -81,10 +76,9 @@ spec:
     - name: build-and-push-application
       params:
         - name: IMAGE
-          value: 'image-registry.openshift-image-registry.svc:5000/revenueassurance/app1-1.0'
+          value: 'image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/app:1-1.0'
         - name: BUILDER_IMAGE
-          value: >-
-            registry.redhat.io/rhel8/buildah@sha256:b48f410efa0ff8ab0db6ead420a5d8d866d64af846fece5efb185230d7ecf591
+          value: 'registry.redhat.io/rhel8/buildah@sha256:b48f410efa0ff8ab0db6ead420a5d8d866d64af846fece5efb185230d7ecf591'
         - name: STORAGE_DRIVER
           value: vfs
         - name: DOCKERFILE
@@ -112,10 +106,9 @@ spec:
     - name: build-and-push-oci-artifact
       params:
         - name: IMAGE
-          value: 'image-registry.openshift-image-registry.svc:5000/revenueassurance/model:1-1.0'
+          value: 'image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/model:1-1.0'
         - name: BUILDER_IMAGE
-          value: >-
-            registry.redhat.io/rhel8/buildah@sha256:b48f410efa0ff8ab0db6ead420a5d8d866d64af846fece5efb185230d7ecf591
+          value: 'registry.redhat.io/rhel8/buildah@sha256:b48f410efa0ff8ab0db6ead420a5d8d866d64af846fece5efb185230d7ecf591'
         - name: STORAGE_DRIVER
           value: vfs
         - name: DOCKERFILE
@@ -142,5 +135,3 @@ spec:
           workspace: source
   workspaces:
     - name: source
-      optional: false
-  finally: []
