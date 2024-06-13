@@ -13,3 +13,4 @@ python-dotenv
 flask
 flask_cors
 onnxruntime
+imbalanced-learn
