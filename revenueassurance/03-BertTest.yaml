@@ -11,7 +11,6 @@ curl -X POST http://localhost:35000/predict     -H "Content-Type: application/js
         "Avg_Call_Duration": 200,
         "Avg_Data_Usage": 8000,
         "Avg_Cost": 3000,
-        "Fraud": 0,
         "threshold": 0.82
     }'
     
@@ -30,7 +29,6 @@ curl -X POST http://localhost:35000/predict     -H "Content-Type: application/js
         "Avg_Call_Duration": 1,
         "Avg_Data_Usage": 4,
         "Avg_Cost": 1,
-        "Fraud": 1,
         "threshold": 0.82
     }'
     
