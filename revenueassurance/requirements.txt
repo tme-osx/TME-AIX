@@ -14,3 +14,7 @@ flask
 flask_cors
 onnxruntime
 imbalanced-learn
+datasets 
+accelerate 
+peft 
+bitsandbytes
