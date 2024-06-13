@@ -65,8 +65,8 @@ def predict():
         # Dynamic threshold from request or use default
         threshold = data.get('threshold', 0.5)
         
-        prediction = "Fraud" if probabilities[0][1] >= threshold else "Non-Fraud"
-        probability = probabilities[0][1] * 100
+        prediction = "Fraud" if probabilities[0][0] >= threshold else "Non-Fraud"
+        probability = probabilities[0][0] * 100
 
         # Log the probabilities for analysis
         print(f"Probabilities: {probabilities}, Threshold: {threshold}")
