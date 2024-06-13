@@ -12,3 +12,4 @@ accelerate
 python-dotenv
 flask
 flask_cors
+onnxruntime
