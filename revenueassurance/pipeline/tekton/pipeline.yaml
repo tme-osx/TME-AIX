@@ -18,6 +18,9 @@ spec:
     - default: 'https://ds-pipeline-dspa.revenueassurance.svc.cluster.local:8443'
       name: KUBEFLOW_ENDPOINT
       type: string
+    - default: 'https://minio.apps.mgmt2.npss.bos2.lab'
+      name: S3_ENDPOINT
+      type: string
     - default: ArNwQYuHCN2dHxuAhXHh
       name: AWS_ACCESS_KEY_ID
       type: string
