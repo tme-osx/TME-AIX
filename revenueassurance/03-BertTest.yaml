@@ -4,14 +4,14 @@ curl -X POST http://localhost:35000/predict     -H "Content-Type: application/js
         "Sms_Count": 100,
         "Roaming_Indicator": 1,
         "MobileWallet_Use": 1,
-        "Plan_Type": "postpaid",
+        "Plan_Type": "prepaid",
         "Cost": 5000,
         "Cellular_Location_Distance": 5000,
         "Last_Time_Pin_Used": 0,
         "Avg_Call_Duration": 200,
         "Avg_Data_Usage": 8000,
         "Avg_Cost": 3000,
-        "threshold": 0.82
+        "threshold": 0.81
     }'
     
 {"prediction":"Fraud with 82.362% probability","probabilities":[[0.176381915807724,0.8236181139945984]]}
@@ -29,8 +29,8 @@ curl -X POST http://localhost:35000/predict     -H "Content-Type: application/js
         "Avg_Call_Duration": 1,
         "Avg_Data_Usage": 4,
         "Avg_Cost": 1,
-        "threshold": 0.82
+        "threshold": 0.81
     }'
     
-{"prediction":"Non-Fraud with 81.349% probability","probabilities":[[0.18650518357753754,0.8134948015213013]]}
+{"prediction":"Non-Fraud with 80.733% probability","probabilities":[[0.807331383228302,0.1926686316728592]]}
 
