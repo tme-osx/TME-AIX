@@ -6,6 +6,8 @@ scikit-learn
 onnx 
 tf2onnx 
 torch
+torchvision
 transformers
 accelerate
 python-dotenv
+flask
