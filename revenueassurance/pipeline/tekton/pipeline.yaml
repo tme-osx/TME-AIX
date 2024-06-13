@@ -50,8 +50,8 @@ spec:
           value: revenueassurance
         - name: IMAGE
           value: 'image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/environment'
-     runAfter:
-        - git-clone
+      runAfter:
+          - git-clone
       taskRef:
         kind: ClusterTask
         name: s2i-python

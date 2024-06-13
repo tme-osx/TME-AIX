@@ -1,0 +1,30 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: revenueassurance-api
+  namespace: revenueassurance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: revenueassurance-api
+  template:
+    metadata:
+      labels:
+        app: revenueassurance-api
+    spec:
+      containers:
+        - name: container
+          image: 'image-registry.openshift-image-registry.svc:5000/revenueassurance/app1-1.0'
+          ports:
+            - containerPort: 35000
+              protocol: TCP
+          env:
+            - name: MODEL_TO_LOAD
+              value: model.pkl
+          imagePullPolicy: Always
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%

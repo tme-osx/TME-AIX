@@ -103,4 +103,4 @@ After a few minutes, you should see the pipeline sucessful.
 At this point, the following container images have been created and stored in the OpenShift internal registry:
 - `image-registry.openshift-image-registry.svc:5000/revenueassurance/environment`: environment used to execute kubeflow pipeline tasks.
 - `image-registry.openshift-image-registry.svc:5000/revenueassurance/model:1-1.0`: OCI artifact containing the built model
-- `image-registry.openshift-image-registry.svc:5000/revenueassurance/app1-1.0`: model serving application
+- `image-registry.openshift-image-registry.svc:5000/revenueassurance/app:1-1.0`: model serving application

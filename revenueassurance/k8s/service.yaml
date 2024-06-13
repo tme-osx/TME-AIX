@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: revenueassurance-api
+  namespace: revenueassurance
+spec:
+  ports:
+    - protocol: TCP
+      port: 35000
+      targetPort: 35000
+  type: ClusterIP
+  selector:
+    app: revenueassurance-api

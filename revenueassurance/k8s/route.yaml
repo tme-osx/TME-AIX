@@ -1,0 +1,15 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: revenueassurance-serving
+  namespace: revenueassurance
+spec:
+  to:
+    kind: Service
+    name: revenueassurance-api
+    weight: 100
+  port:
+    targetPort: 35000
+  tls:
+    termination: edge
+  wildcardPolicy: None

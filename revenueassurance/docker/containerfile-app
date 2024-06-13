@@ -13,13 +13,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the current directory contents into the container at /app
 COPY --from=image-registry.openshift-image-registry.svc:5000/revenueassurance/model:1-1.0 model.pkl model.pkl
 
-# Expose port 5000 for Flask
-EXPOSE 5000
+# Expose port 35000 for Flask
+EXPOSE 35000
 
 # Copy the python app
 COPY 01-randomforest-model_server.py app.py
-# Define environment variable for Flask
-ENV FLASK_APP=app.py
 
 # Command to run the Flask application
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["python", "app.py"]
