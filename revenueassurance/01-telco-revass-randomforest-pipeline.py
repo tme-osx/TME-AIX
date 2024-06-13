@@ -190,29 +190,6 @@ def evaluate_model(
 
 @dsl.component(
     base_image=base_image,
-    packages_to_install=["pandas", "skl2onnx"],
-)
-def model_to_onnx(model_file: dsl.Input[dsl.Model], onnx_model_file: dsl.Output[dsl.Model]):
-    
-    import pickle
-    from skl2onnx import to_onnx
-    from skl2onnx.common.data_types import FloatTensorType
-
-    def load_model(object_file):
-        with open(object_file, "rb") as f:
-            target_object, feature_names = pickle.load(f)  # noqa: S301
-        return target_object
-
-    model = load_model(model_file.path)
-
-    initial_type = [("float_input", FloatTensorType([None, 4]))]
-    onnx_model = to_onnx(model, initial_types=initial_type)
-
-    with open(onnx_model_file.path, "wb") as f:
-        f.write(onnx_model.SerializeToString())
-
-@dsl.component(
-    base_image=base_image,
     packages_to_install=["pandas"],
 )
 def validate_model(model_file: dsl.Input[dsl.Model]):
@@ -265,10 +242,6 @@ def pipeline(model_obc: str = "model"):
     evaluate_model_task = evaluate_model(
         x_test_file=data_prep_task.outputs["x_test_file"],
         y_test_file=data_prep_task.outputs["y_test_file"],
-        model_file=train_model_task.output,
-    )
-
-    model_to_onnx_task = model_to_onnx(
         model_file=train_model_task.output,
     )
 
