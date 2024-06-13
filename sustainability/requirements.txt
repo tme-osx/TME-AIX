@@ -1,0 +1,17 @@
+numpy
+pandas
+scikit-learn
+joblib
+flask
+matplotlib
+tensorflow
+torch
+torchvision
+onnx
+tf2onnx
+transformers
+datasets
+peft
+sentencepiece
+requests
+seaborn
