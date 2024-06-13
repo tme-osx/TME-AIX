@@ -5,7 +5,7 @@ metadata:
   namespace: revenueassurance
 spec:
   params:
-    - default: 'https://github.com/adetalhouet/TME-AIX.git'
+    - default: 'https://github.com/fenar/TME-AIX.git'
       description: Repo URL
       name: GIT_URL
       type: string
