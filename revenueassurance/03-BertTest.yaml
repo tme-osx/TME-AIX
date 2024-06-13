@@ -1,4 +1,4 @@
-(app-root) (app-root) curl -X POST http://localhost:35000/predict     -H "Content-Type: application/json"     -d '{
+curl -X POST http://localhost:35000/predict     -H "Content-Type: application/json"     -d '{
         "Call_Duration": 300,
         "Data_Usage": 10000,
         "Sms_Count": 100,
@@ -14,9 +14,10 @@
         "Fraud": 0,
         "threshold": 0.82
     }'
+    
 {"prediction":"Fraud with 82.362% probability","probabilities":[[0.176381915807724,0.8236181139945984]]}
-
-(app-root) (app-root) curl -X POST http://localhost:35000/predict     -H "Content-Type: application/json"     -d '{
+-----
+curl -X POST http://localhost:35000/predict     -H "Content-Type: application/json"     -d '{
         "Call_Duration": 2,
         "Data_Usage": 50,
         "Sms_Count": 0,
@@ -32,5 +33,6 @@
         "Fraud": 1,
         "threshold": 0.82
     }'
+    
 {"prediction":"Non-Fraud with 81.349% probability","probabilities":[[0.18650518357753754,0.8134948015213013]]}
-(app-root) (app-root) 
+
