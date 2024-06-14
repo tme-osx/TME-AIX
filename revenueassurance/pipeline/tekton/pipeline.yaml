@@ -96,7 +96,7 @@ spec:
         - name: FORMAT
           value: oci
         - name: BUILD_EXTRA_ARGS
-          value: ''
+          value: '--build-arg NAMESPACE=$(context.pipelineRun.namespace)'
         - name: PUSH_EXTRA_ARGS
           value: ''
         - name: SKIP_PUSH
