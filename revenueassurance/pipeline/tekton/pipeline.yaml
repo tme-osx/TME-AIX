@@ -92,7 +92,7 @@ spec:
         - name: CONTEXT
           value: $(workspaces.source.path)/revenueassurance
         - name: TLSVERIFY
-          value: 'true'
+          value: 'false'
         - name: FORMAT
           value: oci
         - name: BUILD_EXTRA_ARGS
