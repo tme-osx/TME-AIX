@@ -15,7 +15,7 @@ spec:
     - default: 3.11-ubi9
       name: PYTHON_IMAGE
       type: string
-    - default: 'http://ds-pipeline-dspa.tme-aix.svc.cluster.local:8888'
+    - default: 'https://ds-pipeline-dspa.tme-aix.svc.cluster.local:8443'
       name: KUBEFLOW_ENDPOINT
       type: string
     - default: 'http://minio.tme-aix.svc.cluster.local:9000'
