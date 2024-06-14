@@ -30,6 +30,9 @@ spec:
     - default: revenue-pipeline
       name: BUCKET_NAME
       type: string
+    - default: 'c40335e4-4349-4f76-bc0a-b738e4864fbf'
+      name: KUBEFLOW_PIPELINE_ID
+      type: string
   tasks:
     - name: git-clone
       params:
@@ -123,7 +126,7 @@ spec:
         - name: FORMAT
           value: oci
         - name: BUILD_EXTRA_ARGS
-          value: '--build-arg S3_ENDPOINT=$(params.S3_ENDPOINT) --build-arg AWS_ACCESS_KEY_ID=$(params.AWS_ACCESS_KEY_ID) --build-arg AWS_SECRET_ACCESS_KEY=$(params.AWS_SECRET_ACCESS_KEY) --build-arg BUCKET_NAME=$(params.BUCKET_NAME) --build-arg KUBEFLOW_PIPELINE_ID="913fa0c3-3c0a-4fb5-a0f7-de35a43c7697" --build-arg TASK_NAME="train-model" --build-arg OUTPUT_FILE="model_file"'
+          value: '--build-arg S3_ENDPOINT=$(params.S3_ENDPOINT) --build-arg AWS_ACCESS_KEY_ID=$(params.AWS_ACCESS_KEY_ID) --build-arg AWS_SECRET_ACCESS_KEY=$(params.AWS_SECRET_ACCESS_KEY) --build-arg BUCKET_NAME=$(params.BUCKET_NAME) --build-arg KUBEFLOW_PIPELINE_ID=$(params.KUBEFLOW_PIPELINE_ID) --build-arg TASK_NAME="train-model" --build-arg OUTPUT_FILE="model_file"'
         - name: PUSH_EXTRA_ARGS
           value: ''
         - name: SKIP_PUSH
