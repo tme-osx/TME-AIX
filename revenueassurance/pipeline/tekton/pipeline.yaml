@@ -2,33 +2,36 @@ apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
   name: revenueassurance
-  namespace: revenueassurance
+  namespace: tme-aix
 spec:
   params:
     - default: 'https://github.com/fenar/TME-AIX.git'
       description: Repo URL
       name: GIT_URL
       type: string
-    - default: main
+    - default: ali-changes
       name: GIT_REVISION
       type: string
     - default: 3.11-ubi9
       name: PYTHON_IMAGE
       type: string
-    - default: 'https://ds-pipeline-dspa.revenueassurance.svc.cluster.local:8443'
+    - default: 'https://ds-pipeline-dspa.tme-aix.svc.cluster.local:8443'
       name: KUBEFLOW_ENDPOINT
       type: string
-    - default: 'https://minio.apps.mgmt2.npss.bos2.lab'
+    - default: 'http://minio.minio.svc.cluster.local:9000'
       name: S3_ENDPOINT
       type: string
-    - default: ArNwQYuHCN2dHxuAhXHh
+    - default: 5j5OQxvJ5einAVDZairW
       name: AWS_ACCESS_KEY_ID
       type: string
-    - default: PI1YSfnGRR7rOzJfMfwTl0VH2tlar36pXt5HVdgB
+    - default: xVY1f4Bk2RhNvpEVqT23rZAuUuNCbj8OPwfC03Ph
       name: AWS_SECRET_ACCESS_KEY
       type: string
-    - default: pipeline-a7b10231-fa0c-40a5-8e8f-1599b95c2dc4
+    - default: revenue-pipeline
       name: BUCKET_NAME
+      type: string
+    - default: 'c40335e4-4349-4f76-bc0a-b738e4864fbf'
+      name: KUBEFLOW_PIPELINE_ID
       type: string
   tasks:
     - name: git-clone
@@ -93,7 +96,7 @@ spec:
         - name: FORMAT
           value: oci
         - name: BUILD_EXTRA_ARGS
-          value: ''
+          value: '--build-arg NAMESPACE=$(context.pipelineRun.namespace)'
         - name: PUSH_EXTRA_ARGS
           value: ''
         - name: SKIP_PUSH
@@ -123,7 +126,7 @@ spec:
         - name: FORMAT
           value: oci
         - name: BUILD_EXTRA_ARGS
-          value: '--build-arg AWS_ACCESS_KEY_ID=$(params.AWS_ACCESS_KEY_ID) --build-arg AWS_SECRET_ACCESS_KEY=$(params.AWS_SECRET_ACCESS_KEY) --build-arg BUCKET_NAME=$(params.BUCKET_NAME) --build-arg KUBEFLOW_PIPELINE_ID="913fa0c3-3c0a-4fb5-a0f7-de35a43c7697" --build-arg TASK_NAME="train-model" --build-arg OUTPUT_FILE="model_file"'
+          value: '--build-arg S3_ENDPOINT=$(params.S3_ENDPOINT) --build-arg AWS_ACCESS_KEY_ID=$(params.AWS_ACCESS_KEY_ID) --build-arg AWS_SECRET_ACCESS_KEY=$(params.AWS_SECRET_ACCESS_KEY) --build-arg BUCKET_NAME=$(params.BUCKET_NAME) --build-arg KUBEFLOW_PIPELINE_ID=$(params.KUBEFLOW_PIPELINE_ID) --build-arg TASK_NAME="train-model" --build-arg OUTPUT_FILE="model_file"'
         - name: PUSH_EXTRA_ARGS
           value: ''
         - name: SKIP_PUSH

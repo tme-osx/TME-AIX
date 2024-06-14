@@ -10,8 +10,10 @@ COPY docker/requirements.txt requirements.txt
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+ARG NAMESPACE
+
 # Copy the current directory contents into the container at /app
-COPY --from=image-registry.openshift-image-registry.svc:5000/revenueassurance/model:1-1.0 model.pkl model.pkl
+COPY --from=image-registry.openshift-image-registry.svc:5000/$NAMESPACE/model:1-1.0 model.pkl model.pkl
 
 # Expose port 35000 for Flask
 EXPOSE 35000
