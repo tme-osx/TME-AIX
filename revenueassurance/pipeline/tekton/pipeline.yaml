@@ -24,7 +24,7 @@ spec:
     - default: xVY1f4Bk2RhNvpEVqT23rZAuUuNCbj8OPwfC03Ph
       name: AWS_SECRET_ACCESS_KEY
       type: string
-    - default: revenue-pipeline
+    - default: pipeline-artifacts
       name: BUCKET_NAME
       type: string
     - default: 'c40335e4-4349-4f76-bc0a-b738e4864fbf'
