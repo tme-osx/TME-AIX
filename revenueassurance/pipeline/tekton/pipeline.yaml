@@ -122,7 +122,7 @@ spec:
         - name: CONTEXT
           value: .
         - name: TLSVERIFY
-          value: 'true'
+          value: 'false'
         - name: FORMAT
           value: oci
         - name: BUILD_EXTRA_ARGS
