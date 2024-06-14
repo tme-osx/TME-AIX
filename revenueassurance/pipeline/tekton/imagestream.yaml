@@ -1,5 +1,5 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: revenueassurance
-  namespace: revenueassurance
+  name: tme-aix
+  namespace: tme-aix

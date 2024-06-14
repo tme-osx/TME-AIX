@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1
 kind: Task
 metadata:
   name: execute-kubeflow-pipeline
-  namespace: revenueassurance
+  namespace: tme-aix
 spec:
   description: 'This task will execute a python script, triggering a kubeflow pipeline'
   params:
