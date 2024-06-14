@@ -30,9 +30,6 @@ spec:
     - default: pipeline-artifacts
       name: BUCKET_NAME
       type: string
-    - default: 'c40335e4-4349-4f76-bc0a-b738e4864fbf'
-      name: KUBEFLOW_PIPELINE_ID
-      type: string
   tasks:
     - name: git-clone
       params:
