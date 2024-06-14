@@ -18,10 +18,10 @@ spec:
     - default: 'http://minio.minio.svc.cluster.local:9000'
       name: S3_ENDPOINT
       type: string
-    - default: 5j5OQxvJ5einAVDZairW
+    - default: T09QInleq4mA_Z4P
       name: AWS_ACCESS_KEY_ID
       type: string
-    - default: xVY1f4Bk2RhNvpEVqT23rZAuUuNCbj8OPwfC03Ph
+    - default: DrkayJjcyGtnT_cybQBWm605gMMOY4mO
       name: AWS_SECRET_ACCESS_KEY
       type: string
     - default: pipeline-artifacts
