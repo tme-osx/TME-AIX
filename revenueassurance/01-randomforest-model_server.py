@@ -7,18 +7,20 @@ import pandas as pd
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 import pickle
-from sklearn.ensemble import RandomForestClassifier
+#from sklearn.ensemble import RandomForestClassifier
+from imblearn.ensemble import BalancedRandomForestClassifier
 
 load_dotenv(override=True)
 
-base_model = os.getenv("MODEL_TO_LOAD", "models/brfc_model.pkl")
+#base_model = os.getenv("MODEL_TO_LOAD", "models/brfc_model.pkl")
+base_model = os.getenv("MODEL_TO_LOAD", "model.pkl")
 
 # Load the trained BalancedRandomForestClassifier model and feature names from the .pkl file
 with open(base_model, 'rb') as model_file:
     model, feature_names = pickle.load(model_file)
 
 # Ensure the loaded object is indeed a RandomForestClassifier
-assert isinstance(model, RandomForestClassifier), "Loaded model is not a RandomForestClassifier"
+#assert isinstance(model, RandomForestClassifier), "Loaded model is not a RandomForestClassifier"
 
 # Initialize Flask application
 app = Flask(__name__)
