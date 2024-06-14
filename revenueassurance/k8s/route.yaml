@@ -2,7 +2,7 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: revenueassurance-serving
-  namespace: revenueassurance
+  namespace: tme-aix
 spec:
   to:
     kind: Service

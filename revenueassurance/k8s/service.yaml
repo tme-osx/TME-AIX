@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: revenueassurance-api
-  namespace: revenueassurance
+  namespace: tme-aix
 spec:
   ports:
     - protocol: TCP

@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: revenueassurance-api
-  namespace: revenueassurance
+  namespace: tme-aix
 spec:
   replicas: 1
   selector:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: container
-          image: 'image-registry.openshift-image-registry.svc:5000/revenueassurance/app1-1.0'
+          image: 'image-registry.openshift-image-registry.svc:5000/tme-aix/app:1-1.0'
           ports:
             - containerPort: 35000
               protocol: TCP
