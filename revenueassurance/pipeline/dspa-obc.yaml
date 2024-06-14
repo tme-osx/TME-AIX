@@ -2,10 +2,9 @@ apiVersion: objectbucket.io/v1alpha1
 kind: ObjectBucketClaim
 metadata:
   name: pipeline
-  namespace: revenueassurance
+  namespace: tme-aix
 spec:
-  additionalConfig:
-    bucketclass: noobaa-default-bucket-class
-  generateBucketName: pipeline
-  objectBucketName: obc-revenueassurance-pipeline
-  storageClassName: openshift-storage.noobaa.io
+  objectBucketName: pipeline-artifacts
+  storageClassName: lvms-vg1
+
+

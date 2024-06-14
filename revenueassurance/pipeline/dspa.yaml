@@ -2,7 +2,7 @@ apiVersion: datasciencepipelinesapplications.opendatahub.io/v1alpha1
 kind: DataSciencePipelinesApplication
 metadata:
   name: dspa
-  namespace: revenueassurance
+  namespace: tme-aix
 spec:
   apiServer:
     stripEOF: true

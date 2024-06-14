@@ -9,8 +9,8 @@ from kfp import dsl
 
 load_dotenv(override=True)
 
-kubeflow_endpoint = os.getenv("KUBEFLOW_ENDPOINT", "http://ds-pipeline-dspa.revenueassurance.svc.cluster.local:8888")
-base_image = os.getenv("BASE_IMAGE", "image-registry.openshift-image-registry.svc:5000/revenueassurance/environment:latest")
+kubeflow_endpoint = os.getenv("KUBEFLOW_ENDPOINT", "http://ds-pipeline-dspa.tme-aix.svc.cluster.local:8888")
+base_image = os.getenv("BASE_IMAGE", "image-registry.openshift-image-registry.svc.cluster.local:5000/revenueassurance/environment:latest")
 
 @dsl.component(
     base_image=base_image,
