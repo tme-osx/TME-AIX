@@ -16,7 +16,7 @@ spec:
     - description: The location of the script to be executed
       name: SCRIPT
       type: string
-    - default: 'https://ds-pipeline-dspa.tme-aix.svc.cluster.local:8443'
+    - default: 'https://ds-pipeline-dspa-tme-aix.apps.acmhub2.narlabs.io'
       description: The endpoint URL for Kubeflow
       name: KUBEFLOW_ENDPOINT
       type: string
