@@ -15,10 +15,10 @@ spec:
     - default: 3.11-ubi9
       name: PYTHON_IMAGE
       type: string
-    - default: 'https://ds-pipeline-dspa-tme-aix.apps.acmhub2.narlabs.io'
+    - default: 'https://ds-pipeline-dspa.tme-aix.svc.cluster.local:8443'
       name: KUBEFLOW_ENDPOINT
       type: string
-    - default: 'https://minio-s3-tme-aix.apps.acmhub2.narlabs.io'
+    - default: 'http://ds-pipeline-dspa.tme-aix.svc.cluster.local:9000'
       name: S3_ENDPOINT
       type: string
     - default: T09QInleq4mA_Z4P
