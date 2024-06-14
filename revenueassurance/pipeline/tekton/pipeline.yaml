@@ -18,7 +18,7 @@ spec:
     - default: 'https://ds-pipeline-dspa.tme-aix.svc.cluster.local:8443'
       name: KUBEFLOW_ENDPOINT
       type: string
-    - default: 'https://minio.apps.mgmt2.npss.bos2.lab'
+    - default: 'http://minio.minio.svc.cluster.local:9000'
       name: S3_ENDPOINT
       type: string
     - default: 5j5OQxvJ5einAVDZairW
