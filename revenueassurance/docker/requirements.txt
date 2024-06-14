@@ -3,3 +3,4 @@ pandas
 scikit-learn
 numpy
 python-dotenv
+imbalanced-learn
