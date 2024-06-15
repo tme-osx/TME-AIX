@@ -33,4 +33,4 @@ spec:
       name: execute-python
       script: |
         python $(inputs.params.SCRIPT) > log
-        tail -n 1 log | awk '{ print $6 }' > "$(results.pipeline-id.path)"
+        tail -n 1 log | awk '{ print $6 }'| tr -d '\n' > "$(results.pipeline-id.path)"

@@ -10,7 +10,7 @@ from kfp import dsl
 load_dotenv(override=True)
 
 kubeflow_endpoint = os.getenv("KUBEFLOW_ENDPOINT", "http://ds-pipeline-dspa.tme-aix.svc.cluster.local:8888")
-base_image = os.getenv("BASE_IMAGE", "image-registry.openshift-image-registry.svc.cluster.local:5000/revenueassurance/environment:latest")
+base_image = os.getenv("BASE_IMAGE", "image-registry.openshift-image-registry.svc.cluster.local:5000/tme-aix/environment:latest")
 
 @dsl.component(
     base_image=base_image,
@@ -274,3 +274,4 @@ if __name__ == "__main__":
     )
     result = client.create_run_from_pipeline_func(pipeline, arguments={}, experiment_name="revass")
     print(f"Starting pipeline run with run_id: {result.run_id}")
+    client.wait_for_run_completion(result.run_id, 300) #timeout after 5 mn
