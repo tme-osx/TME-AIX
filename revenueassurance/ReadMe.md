@@ -67,3 +67,6 @@ curl -X POST -H "Content-Type: application/json" -d '{
 ## Deploying as k8s pod: 
 Add model2.pkl to Docker folder -> Then you would have all the required files to build a image for model server. <br>
 ![Docker-Build](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/docker.png)<br>
+
+## MLOps with Tekton & OpenshiftAI Pipelines:
+(https://github.com/fenar/TME-AIX/blob/main/revenueassurance/mlops.md)
