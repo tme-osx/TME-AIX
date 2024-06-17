@@ -11,7 +11,7 @@ Data Sources:This data set is correlated child of following two real world datas
 - Training with 5g Operation KPI Data Structures:
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/5gdatasetsnapshot2.png)<br>
 - Training Args & Perf Results:
-![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/trainingargs.png)<br>
+![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/trainingargs3.png)<br>
 - Model Server Experience (Perfect Day vs Rainy-Miserable Day in New York):
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/modelserver.png)<br>
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/testresults.png)<br>
