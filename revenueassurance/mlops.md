@@ -104,3 +104,8 @@ At this point, the following container images have been created and stored in th
 - `image-registry.openshift-image-registry.svc:5000/revenueassurance/environment`: environment used to execute kubeflow pipeline tasks.
 - `image-registry.openshift-image-registry.svc:5000/revenueassurance/model:1-1.0`: OCI artifact containing the built model
 - `image-registry.openshift-image-registry.svc:5000/revenueassurance/app:1-1.0`: model serving application
+
+## Credits
+- [Kubeflow Pipeline Examples](https://github.com/redhat-ai-services/kubeflow-pipelines-examples/tree/main)
+- [Red Hat OpenShift AI Accelerator](https://github.com/redhat-ai-services/ai-accelerator/tree/main/tenants/ai-example)
+- [Trevor Royer](https://github.com/strangiato)
