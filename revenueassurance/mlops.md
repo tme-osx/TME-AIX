@@ -12,6 +12,7 @@
   - [Create Tekton Pipeline](#create-tekton-pipeline)
   - [Run Tekton Pipeline](#run-tekton-pipeline)
   - [Pipeline results](#pipeline-results)
+- [Credits](#credits)
 
 ## Prerequisite
 - OpenShift AI 2.9
