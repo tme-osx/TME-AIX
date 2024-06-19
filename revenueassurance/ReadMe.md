@@ -22,8 +22,8 @@ The winner (So Far) is [Balanced Random Forest] with the data we have for traini
 
 ## Steps to Run
 #(1) (Obviously) Clone the Repo :-)  <br>
-#(2) Open revenueassurance/01-telco-revass-ensemble.ipynb and Run-All. This would install all required libs, extract data from data/telecom_revass_data.csv.xz and load it for two models training {model1=RandomForestClassifier, model2=BalancedRandomForestClassifier }, evaluate them and save them under models/ directory. <br>
-#(3) Run 01-model_server.py which loads the model2=BalancedRandomForestClassifier (better model for fraud classification) and serves on http://localhost:5000/predict url. <br>
+#(2) Open revenueassurance/01-telco-revass-randomforest.ipynb and Run-All. This would install all required libs, extract data from data/telecom_revass_data.csv.xz and load it for the model training {BalancedRandomForestClassifier }, evaluate it and save it under models/ directory. <br>
+#(3) Run 01-model_server.py which loads the BalancedRandomForestClassifier and serves on http://localhost:5000/predict url. <br>
 ![Model-Server](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/modelserver.png)<br>
 #(4) From a cli , do a curl query: <br>
 ![Revenue Assurance Test Result](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/testresult.png)<br>
@@ -64,7 +64,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
 }' http://localhost:5000/predict
 ```
 ## Deploying as k8s pod: 
-Add model2.pkl to Docker folder -> Then you would have all the required files to build a image for model server. <br>
+Add model.pkl to Docker folder -> Then you would have all the required files to build a image for model server. <br>
 ![Docker-Build](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/docker.png)<br>
 
 ## [Steps for end to end MLOps setup](mlops.md)
