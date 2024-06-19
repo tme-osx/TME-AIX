@@ -8,3 +8,6 @@ accelerate
 peft
 pyarrow
 fastparquet
+xgboost
+seaborn
+onnxmltools
