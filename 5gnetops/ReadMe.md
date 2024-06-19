@@ -6,6 +6,7 @@ Model-Card: https://huggingface.co/google-t5/t5-small <br><br>
 Data Sources:This data set is correlated child of following two real world datasets and feature engineered for the remaining ones: <br>
 [>>FCC Customer Complaints Data Set](https://opendata.fcc.gov/Consumer/CGB-Consumer-Complaints-Data/3xyp-aqkj/about_data)<br>
 [>>OpenWeather Data Set](https://openweathermap.org/)<br>
+Final-Data-Set: https://huggingface.co/datasets/fenar/5g_netops<br>
 
 ## Project Structure
 - Training with 5g Operation KPI Data Structures:
