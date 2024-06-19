@@ -12,7 +12,8 @@ The models are trained on synthetic telecom data to predict fraud cases  and ide
 
 (2) We gave a chance for a Transformer-NN (02-xxx Worx) model with the same dataset, but it has not been a super dope experience, as such models need much more data to capture complex patterns and interactions and also require significantly more computational power and time for training. <br> [ Test Accuracy: 0.999325] <br>
 
-The winner (So Far) is [Balanced Random Forest] with the data we have for training/fine-tuning.
+The winner (So Far) is [Balanced Random Forest] with the data we have for training/fine-tuning.<br>
+Final-Model: https://huggingface.co/fenar/revenue-assurance
 
 ## Data
 ![Revenue Assurance Data Structure](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/rev_ass_data.png)<br>
