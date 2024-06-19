@@ -5,7 +5,8 @@
 This project aims to deliver an RAFM prediction (if that particular telco transaction is fraudulent or not) with a AI model assistance with various options; <br>
 (1) Balanced Random Forest,<br>
 (2) a Transformer neural network.<br>
-The models are trained on synthetic telecom data to predict fraud cases  and identify potential anomalies. The goal is to provide proactive revenue management and enhance revenue workflows.
+The models are trained on synthetic telecom data to predict fraud cases  and identify potential anomalies. The goal is to provide proactive revenue management and enhance revenue workflows.<br>
+Data-Set: https://huggingface.co/datasets/fenar/revenue_assurance
 
 ## Options: 
 (1) Revenue Assurance is a domain where traditional machine learning models, such as tree-based methods, often perform very well. Specifically, models like the Balanced Random Forest (01-xxx Worx) can be advantageous due to their inherent ability to handle class imbalance and interpretability.<br>[ Test Accuracy: 0.9999833] <br>
