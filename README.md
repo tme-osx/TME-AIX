@@ -1,3 +1,7 @@
+<div align="center">
+    <img src="https://raw.githubusercontent.com/fenar/TME-AIX/main/images/TME-AiX-Logo.png" width="500"/>
+</div>
+
 # Telco Media Entertainment AI eXperiments
 This is a collaborative eXperimental workspace for various tme use-cases to be built around open source AI capabilities & use of open data sets.<br>
 (1) [Revenue Assurance and Fraud Management (RAFM)](https://github.com/fenar/TME-AIX/tree/main/revenueassurance) <br>
