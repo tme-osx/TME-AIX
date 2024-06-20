@@ -4,4 +4,5 @@ This is a collaborative eXperimental workspace for various tme use-cases to be b
 (2) [Service Assurance Latency & NPS Predictions](https://github.com/fenar/TME-AIX/tree/main/serviceassurance) <br>
 (3) [5G Network Operation Fault Predictions](https://github.com/fenar/TME-AIX/tree/main/5gnetops) <br>
 (4) [Sustainability](https://github.com/fenar/TME-AIX/tree/main/sustainability) <br>
-(5) SecOps-AI (WIP) <br>
+(5) [SecOps-AI](https://github.com/fenar/TME-AIX/tree/main/secops) <br>
+... {Fatih Goes Off-Grid 4aW}
