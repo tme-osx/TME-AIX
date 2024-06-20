@@ -69,4 +69,4 @@ curl -X POST -H "Content-Type: application/json" -d '{
 Add model.pkl to Docker folder -> Then you would have all the required files to build a image for model server. <br>
 ![Docker-Build](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/revenueassurance/data/docker.png)<br>
 
-## [Steps for end to end MLOps setup](mlops.md)
+## [>>> Steps for end to end MLOps setup](mlops.md)
