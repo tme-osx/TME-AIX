@@ -11,7 +11,7 @@ Welcome to the **TME-AIX** collaborative experimental workspace. This repository
 3. [5G Network Operation Fault Predictions](https://github.com/fenar/TME-AIX/tree/main/5gnetops)
 4. [Sustainability](https://github.com/fenar/TME-AIX/tree/main/sustainability)
 5. [SecOps-AI](https://github.com/fenar/TME-AIX/tree/main/secops)
-6. ... {Please Reach Us for Interesting Usecases and Interesting Data Minings}
+6. ... {Please Reach Us for Interesting Usecases and Interesting Big Data & Automation Projects}
 
 ## Explore More on HuggingFace
 Discover our models and datasets on HuggingFace:
