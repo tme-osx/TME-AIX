@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://raw.githubusercontent.com/fenar/TME-AIX/main/images/TME-AiX-Logo.png" width="500"/>
+    <img src="https://raw.githubusercontent.com/fenar/TME-AIX/main/images/TME-AiX-Logo.png" width="400"/>
 </div>
 
 # Telco Media Entertainment AI eXperiments
