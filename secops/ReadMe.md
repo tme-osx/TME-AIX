@@ -3,7 +3,7 @@
 
 ## Project Overview
 
-Here we are leveraging AI to assist us for better network security operations.
+We are leveraging AI to assist us in better network security operations.
 
 ## Data
 Data-Set: https://huggingface.co/datasets/fenar/sec_ops <br>
