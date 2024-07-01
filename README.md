@@ -10,7 +10,7 @@ Welcome to the **TME-AIX** collaborative experimental workspace. This repository
 2. [Service Assurance Latency & NPS Predictions](https://github.com/fenar/TME-AIX/tree/main/serviceassurance)
 3. [5G Network Operation Fault Predictions](https://github.com/fenar/TME-AIX/tree/main/5gnetops)
 4. [Sustainability & Energy Efficiency](https://github.com/fenar/TME-AIX/tree/main/sustainability)
-5. [SecOps-AI](https://github.com/fenar/TME-AIX/tree/main/secops)
+5. [SecOps-AI for Networking](https://github.com/fenar/TME-AIX/tree/main/secops)
 6. ... {Please Reach Us for Interesting Usecases and Interesting Big Data & Automation Projects}
 
 ## Explore More on HuggingFace
