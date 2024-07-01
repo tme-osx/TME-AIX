@@ -13,3 +13,4 @@ flask
 torch
 torchvision
 sentencepiece
+tf-keras
