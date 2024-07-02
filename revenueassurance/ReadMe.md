@@ -13,10 +13,10 @@
 
 ## Project Overview
 
-This project aims to deliver an RAFM prediction (if that particular telco transaction is fraudulent or not) with a AI model assistance with various options: <br>
+This project aims to deliver an RAFM prediction (if that particular telco transaction is fraudulent or not) with an AI model assistance with various options: <br>
 
-(1) Balanced Random Forest,<br>
-(2) a Transformer neural network.<br>
+(1) Balanced Random Forest Model<br>
+(2) Transformer Neural Network Model<br>
 
 The models are trained on synthetic telecom data to predict fraud cases and identify potential anomalies. The goal is to provide proactive revenue management and enhance revenue workflows.<br>
 
