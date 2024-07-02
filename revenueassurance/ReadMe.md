@@ -24,7 +24,7 @@ Data-Set: https://huggingface.co/datasets/fenar/revenue_assurance
 
 ## Options 
 
-(1) Revenue Assurance is a domain where traditional machine learning models, such as tree-based methods, often perform very well. Specifically, models like the `Balanced Random Forest` (01-xxx Worx) can be advantageous due to their inherent ability to handle class imbalance and interpretability.<br>[ Test Accuracy: 0.9999833] <br>
+(1) Revenue Assurance is a domain where traditional machine learning models, such as tree-based methods, often perform very well. Specifically, models like the `Balanced Random Forest` (01-xxx Worx) can be advantageous due to their inherent ability to handle class imbalance and interpretability.<br>[ Test Accuracy: 0.99962] <br>
 
 (2) We gave a chance for a `Transformer-NN` (02-xxx Worx) model with the same dataset, but it has not been a super dope experience, as such models need much more data to capture complex patterns and interactions and also require significantly more computational power and time for training. <br> [ Test Accuracy: 0.999325] <br>
 
