@@ -1,7 +1,3 @@
-# This is the Multi-GPU Parallel Training Version of 5gnetops
-# Author: Fatioh E. NAR
-# Run from a cli with; torchrun --nproc_per_node=2 5gnetops-mgpu.py
-#
 import os
 import lzma
 import shutil
@@ -89,7 +85,7 @@ def train_ddp(rank, world_size, model_name, model_save_path):
     training_args = Seq2SeqTrainingArguments(
         output_dir="./results",  # Output directory
         overwrite_output_dir=True,  # Overwrite the content of the output directory
-        num_train_epochs=100,  # Number of training epochs
+        num_train_epochs=1,  # Number of training epochs
         per_device_train_batch_size=34,  # Batch size per device during training
         gradient_accumulation_steps=42,  # Accumulate gradients over multiple steps
         learning_rate=5e-5,  # Learning rate
@@ -114,6 +110,26 @@ def train_ddp(rank, world_size, model_name, model_save_path):
     )
 
     trainer.train()
+
+    #model eval
+    model.eval()
+
+    # Save the model and tokenizer
+    print(f"Tokenizer Final Size = {len(tokenizer)}")
+    # Access the underlying model wrapped by DDP
+    if accelerator.distributed_type == 'MULTI_GPU':
+        model_to_save = model.module
+    else:
+        model_to_save = model
+
+    print(f"Model Final Size = {model_to_save.get_input_embeddings().weight.shape[0]}")
+    model_to_save.save_pretrained(model_save_path)
+    tokenizer.save_pretrained(model_save_path)
+    print("Training complete and model saved.")
+
+    # Results
+    results = trainer.evaluate(eval_dataset)
+    print("Evaluation Results:", results)
 
 if __name__ == "__main__":
     world_size = torch.cuda.device_count()

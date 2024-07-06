@@ -52,10 +52,10 @@ def predict():
                     max_length=512,  # Increase max_length for more room to generate
                     num_return_sequences=1,
                     do_sample=True,  # Enable sampling
-                    temperature=1.9,  # Adjust temperature for more variability
-                    top_k=50,  # Consider only top k tokens
-                    top_p=0.95,  # Consider only top p cumulative probability
-                    repetition_penalty=1.5  # Penalize repetition more heavily
+                    temperature=0.5,  # Adjust temperature for more variability
+                    top_k=5,  # Consider only top k tokens
+                    top_p=0.99,  # Consider only top p cumulative probability
+                    repetition_penalty=0.5  # Penalize repetition more heavily
                 )
             logging.debug(f"Model outputs: {outputs}")
         except Exception as e:
