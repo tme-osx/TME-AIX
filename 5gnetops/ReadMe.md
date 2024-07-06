@@ -17,3 +17,5 @@ Final-Data-Set: https://huggingface.co/datasets/fenar/5g_netops<br>
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/modelserver.png)<br>
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/testresults.png)<br>
 
+## Leveraging Multiple GPU for Training
+![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/5gnetops/data/5gnetops-mgpu.png)<br>
