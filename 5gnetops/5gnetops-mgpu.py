@@ -1,3 +1,7 @@
+# Multi-GPU Version of 5gran-predictions
+# Author: Fatih E. NAR
+# Run on cli: torchrun --nproc_per_node=2 5gnetops-mgpu.py
+#
 import os
 import lzma
 import shutil
@@ -13,6 +17,8 @@ from accelerate import Accelerator
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 gc.collect()
+
+fp16v = False # Set to True for mixed precision training
 
 # Initialize the accelerator with GPU use
 accelerator = Accelerator()
@@ -37,14 +43,14 @@ def load_data():
 
     # Fill NaN values and prepare input and target texts
     data = data.fillna('')
-    
+
     # Ensure 'Zip' column is treated as a string
     data['Zip'] = data['Zip'].astype(str)
-    
+
     # Create input and target texts
     data['input_text'] = data.apply(lambda row: f"Setup {row['Connection Setup Success Rate (%)']} Availability {row['Cell Availability (%)']} Changes {row['Parameter Changes']} Alarms {row['Alarm Count']}", axis=1)
     data['target_text'] = data.apply(lambda row: f"Success {row['Successful Configuration Changes (%)']} DropRate {row['Call Drop Rate (%)']}", axis=1)
-    
+
     # Prepare the dataset
     dataset = Dataset.from_pandas(data)
     return dataset
@@ -85,9 +91,9 @@ def train_ddp(rank, world_size, model_name, model_save_path):
     training_args = Seq2SeqTrainingArguments(
         output_dir="./results",  # Output directory
         overwrite_output_dir=True,  # Overwrite the content of the output directory
-        num_train_epochs=1,  # Number of training epochs
-        per_device_train_batch_size=34,  # Batch size per device during training
-        gradient_accumulation_steps=42,  # Accumulate gradients over multiple steps
+        num_train_epochs=10,  # Number of training epochs
+        per_device_train_batch_size=36,  # Batch size per device during training
+        gradient_accumulation_steps=54,  # Accumulate gradients over multiple steps
         learning_rate=5e-5,  # Learning rate
         save_steps=2000,  # Save checkpoint every 2000 steps
         save_total_limit=2,  # Limit the total amount of checkpoints
@@ -97,7 +103,7 @@ def train_ddp(rank, world_size, model_name, model_save_path):
         load_best_model_at_end=True,  # Load the best model at the end of training
         metric_for_best_model="loss",  # Use loss to evaluate the best model
         predict_with_generate=True,  # Use generation for evaluation
-        fp16=True,  # Load mixed precision training for CUDA only
+        fp16=fp16v,  # Load mixed precision training for CUDA only
         remove_unused_columns=False,  # Remove unused columns from the dataset
     )
 
@@ -132,7 +138,27 @@ def train_ddp(rank, world_size, model_name, model_save_path):
     print("Evaluation Results:", results)
 
 if __name__ == "__main__":
-    world_size = torch.cuda.device_count()
+    world_size = 0
+    # Check if any accelerator is available
+    if torch.cuda.is_available():
+        os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
+        device = torch.device("cuda")
+        fp16v = True
+        torch.cuda.empty_cache()
+        max_memory_mb = 11 * 1024 # Set the maximum memory to 11GB, Adjust this value based on the GPU memory
+        os.environ['PYTORCH_CUDA_ALLOC_CONF'] = f'max_split_size_mb:{max_memory_mb}'
+        if torch.cuda.device_count() > 1:
+            world_size = torch.cuda.device_count()
+            print("Using", torch.cuda.device_count(), "GPUs")
+    # Check if MPS (Apple Silicon GPU) is available
+    elif torch.backends.mps.is_available():
+        os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"
+        os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+        device = torch.device("mps")
+        world_size = 1
+    else:
+        device = torch.device("cpu")
+        world_size = 1
     # Save the model and tokenizer
     model_save_path = "models/5gran_faultprediction_model_multigpu"
     model_name = "t5-small"
