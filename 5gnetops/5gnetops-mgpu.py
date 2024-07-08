@@ -1,5 +1,5 @@
 # Multi-GPU Version of 5gran-predictions
-# Author: Fatih E. NAR
+# Author: Fatih E. NAR (He is such a great guy with a great heart)
 # Run on cli: torchrun --nproc_per_node=2 5gnetops-mgpu.py
 #
 import os
@@ -8,6 +8,7 @@ import shutil
 import pandas as pd
 import gc
 import torch
+import torch.distributed as dist
 from datasets import Dataset
 from transformers import T5ForConditionalGeneration, T5Tokenizer, Seq2SeqTrainer, Seq2SeqTrainingArguments
 from peft import get_peft_model, LoraConfig, TaskType
@@ -18,7 +19,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 gc.collect()
 
-fp16v = False # Set to True for mixed precision training
+fp16v = False
 
 # Initialize the accelerator with GPU use
 accelerator = Accelerator()
@@ -75,9 +76,9 @@ def train_ddp(rank, world_size, model_name, model_save_path):
     lora_config = LoraConfig(
         task_type=TaskType.SEQ_2_SEQ_LM,
         inference_mode=False,
-        r=2,
-        lora_alpha=16,
-        lora_dropout=0.05,
+        r=16, # Try followings to settle the model performance [16, 32, 64],
+        lora_alpha=32, # Try followings to settle the model performance [32, 64, 128]
+        lora_dropout=0.1, # Try followings to settle the model performance [0.1, 0.5, 1.0]
         target_modules=['q', 'v', 'k', 'o']
     )
     model = get_peft_model(model, lora_config)
@@ -91,12 +92,12 @@ def train_ddp(rank, world_size, model_name, model_save_path):
     training_args = Seq2SeqTrainingArguments(
         output_dir="./results",  # Output directory
         overwrite_output_dir=True,  # Overwrite the content of the output directory
-        num_train_epochs=10,  # Number of training epochs
+        num_train_epochs=42,  # Number of training epochs
         per_device_train_batch_size=36,  # Batch size per device during training
         gradient_accumulation_steps=54,  # Accumulate gradients over multiple steps
         learning_rate=5e-5,  # Learning rate
         save_steps=2000,  # Save checkpoint every 2000 steps
-        save_total_limit=2,  # Limit the total amount of checkpoints
+        save_total_limit=100,  # Limit the total amount of checkpoints
         eval_strategy="steps",  # Evaluate during training at each `logging_steps`
         logging_steps=500,  # Log every 500 steps
         eval_steps=2000,  # Evaluate every 2000 steps
@@ -115,10 +116,16 @@ def train_ddp(rank, world_size, model_name, model_save_path):
         tokenizer=tokenizer
     )
 
-    trainer.train()
+    try:
+        trainer.train()
+    except Exception as e:
+        print(f"Training exception: {e}")
 
-    #model eval
-    model.eval()
+    try:
+        #model eval
+        model.eval()
+    except Exception as e:
+        print(f"Evaluation exception: {e}")
 
     # Save the model and tokenizer
     print(f"Tokenizer Final Size = {len(tokenizer)}")
@@ -134,8 +141,15 @@ def train_ddp(rank, world_size, model_name, model_save_path):
     print("Training complete and model saved.")
 
     # Results
-    results = trainer.evaluate(eval_dataset)
-    print("Evaluation Results:", results)
+    try:
+        results = trainer.evaluate(eval_dataset)
+        print("Evaluation Results:", results)
+    except Exception as e:
+        print(f"Evaluation exception: {e}")
+
+    # Cleanup the process group
+    if dist.is_initialized():
+        dist.destroy_process_group()
 
 if __name__ == "__main__":
     world_size = 0
@@ -155,10 +169,10 @@ if __name__ == "__main__":
         os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"
         os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
         device = torch.device("mps")
-        world_size = 1
+        world_size = 1 # MPS does not support multi-GPU (yet)
     else:
         device = torch.device("cpu")
-        world_size = 1
+        world_size = 1  # CPU does not support multi-xcellerator (yet)
     # Save the model and tokenizer
     model_save_path = "models/5gran_faultprediction_model_multigpu"
     model_name = "t5-small"
