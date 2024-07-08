@@ -1,4 +1,4 @@
-# Smart-Grid Anolmaly Detection
+# Smart-Grid Anomaly Detection
 
 This project contains a machine learning model for anomaly detection of power consumption out of a powergrid.
 Data Sources: <br>
