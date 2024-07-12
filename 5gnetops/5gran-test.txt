@@ -16,6 +16,15 @@ Example Questions for Single Modal
 Example Questions for Multi-Modal
 
 (1) curl -X POST -H "Content-Type: application/json" -d '{"input_data": "Cell Availability: 95%, Throughput: 100Mbps, Latency: 20ms, Packet Loss Rate: 0.5%, Call Drop Rate: 1%"}' http://localhost:5000/predict | jq
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   505  100   385  100   120    246     76  0:00:01  0:00:01 --:--:--   322
+{
+  "fault_rate": 47.68732833862305,
+  "status": "Concerning",
+  "severity": "Moderate-High",
+  "explanation": "Predicted fault occurrence rate of 48%, Severity: Moderate-High, Threshold: 30%. This is above the threshold of 30%. Provide a concise explanation of the fault frequency and the likelihood of recurring issues. List three recommendations to improve customer satisfaction."
+}
 
 (2) curl -X POST -H "Content-Type: application/json" -d '{"input_data": "Cell Availability: 92%, MTTR: 2 hours, Throughput: 95Mbps, Latency: 25ms, Packet Loss Rate: 1%, Call Drop Rate: 2%, Handover Success Rate: 98%, Data Usage: 50GB, User Count: 1000, Signal Strength: -75dBm, Jitter: 5ms, Connection Setup Success Rate: 99%, Security Incidents: 2, Authentication Failures: 10, Temperature: 25°C, Humidity: 60%, Weather: Sunny"}' http://localhost:5000/predict  | jq
 
