@@ -1,3 +1,7 @@
+# Multi-Modal Version of 5gran-predictions.
+# Author: Fatih E. NAR (He is such a great guy with a great heart)
+# NOTES: This work leverages x2 models ; XGBoost for Failure Rate Prediction -> Outputs Creates Fine-Tuning Data for T5-Base Model
+#
 import os
 import shutil
 import lzma
