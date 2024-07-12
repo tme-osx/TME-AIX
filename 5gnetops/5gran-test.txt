@@ -1,4 +1,4 @@
-Example Questions
+Example Questions for Single Modal
 
 1. [Sunny Perfect Day]
    curl -X POST http://0.0.0.0:5000/predict -H "Content-Type: application/json" -d '{
@@ -11,3 +11,14 @@ Example Questions
      "input_data": "Cell Availability: 70.0, MTTR: 4.0, Throughput: 50.0, Latency: 1000, Packet Loss Rate: 0.96, Call Drop Rate: 0.97, Handover Success Rate: 77.0, Data Usage: 7000, User Count: 9000, Signal Strength: -80, Jitter: 600, Connection Setup Success Rate: 83.0, Security Incidents: 5, Authentication Failures: 5, Temperature: 10, Humidity: 70, Weather: Rain, Issue Reported: Yes, City: New York, State: NY, Zip: 10001",
      "question": "What would be the Fault Occurrence Rate?"
    }'
+
+---
+Example Questions for Multi-Modal
+
+(1) curl -X POST -H "Content-Type: application/json" -d '{"input_data": "Cell Availability: 95%, Throughput: 100Mbps, Latency: 20ms, Packet Loss Rate: 0.5%, Call Drop Rate: 1%"}' http://localhost:5000/predict | jq
+
+(2) curl -X POST -H "Content-Type: application/json" -d '{"input_data": "Cell Availability: 92%, MTTR: 2 hours, Throughput: 95Mbps, Latency: 25ms, Packet Loss Rate: 1%, Call Drop Rate: 2%, Handover Success Rate: 98%, Data Usage: 50GB, User Count: 1000, Signal Strength: -75dBm, Jitter: 5ms, Connection Setup Success Rate: 99%, Security Incidents: 2, Authentication Failures: 10, Temperature: 25°C, Humidity: 60%, Weather: Sunny"}' http://localhost:5000/predict  | jq
+
+(3) curl -X POST -H "Content-Type: application/json" -d '{"input_data": "Cell Availability: 80%, Throughput: 50Mbps, Latency: 100ms, Packet Loss Rate: 5%, Call Drop Rate: 10%, Handover Success Rate: 85%, Security Incidents: 15"}' http://localhost:5000/predict  | jq
+
+(4) curl -X POST -H "Content-Type: application/json" -d '{"input_data": "Cell Availability: 99%, Throughput: 200Mbps, Latency: 10ms, Packet Loss Rate: 0.1%, Call Drop Rate: 0.5%, Handover Success Rate: 99.9%, Security Incidents: 0"}' http://localhost:5000/predict  | jq
