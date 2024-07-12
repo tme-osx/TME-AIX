@@ -23,7 +23,7 @@ Example Questions for Multi-Modal
   "fault_rate": 47.68732833862305,
   "status": "Concerning",
   "severity": "Moderate-High",
-  "explanation": "Predicted fault occurrence rate of 48%, Severity: Moderate-High, Threshold: 30%. This is above the threshold of 30%. Provide a concise explanation of the fault frequency and the likelihood of recurring issues. List three recommendations to improve customer satisfaction."
+  "explanation": "Predicted fault occurrence rate of 48%, Severity: Moderate-High, Threshold: 30%. This is above the threshold of 30%. Recommendations to improve wireless customer satisfaction: 1. Conduct a thorough analysis of fault frequency and identify areas for improvement. \n2. Implement more robust fault detection measures. \n3. Develop measurable customer feedback loops to address issues such as cell availability and latency."
 }
 
 (2) curl -X POST -H "Content-Type: application/json" -d '{"input_data": "Cell Availability: 92%, MTTR: 2 hours, Throughput: 95Mbps, Latency: 25ms, Packet Loss Rate: 1%, Call Drop Rate: 2%, Handover Success Rate: 98%, Data Usage: 50GB, User Count: 1000, Signal Strength: -75dBm, Jitter: 5ms, Connection Setup Success Rate: 99%, Security Incidents: 2, Authentication Failures: 10, Temperature: 25°C, Humidity: 60%, Weather: Sunny"}' http://localhost:5000/predict  | jq
