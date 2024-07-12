@@ -1,3 +1,7 @@
+# Multi-Modal Version of 5gran-predictions-model-server.
+# Author: Fatih E. NAR (He is such a great guy with a great heart)
+# NOTES: This work leverages x2 models ; XGBoost for Failure Rate Prediction -> Outputs used for Querying Fine-Tuned T5-Base Model
+#
 import os
 import torch
 import joblib
