@@ -1,7 +1,9 @@
 # Multi-Modal Version of 5gran-predictions.
 # Author: Fatih E. NAR (He is such a great guy with a great heart)
-# NOTES: This work leverages x2 models ; XGBoost for Failure Rate Prediction -> Outputs Creates Fine-Tuning Data for T5-Base Model
-#
+# NOTES: This work leverages x2 models; XGBoost for Failure Rate Prediction -> Outputs Creates Fine-Tuning Data for BERT Model
+# Ensure the following libraries are installed:
+# pip install evaluate transformers datasets accelerate scikit-learn xgboost
+
 import os
 import shutil
 import lzma
@@ -15,13 +17,14 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder, PolynomialFeatu
 from sklearn.compose import ColumnTransformer
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 import xgboost as xgb
-from transformers import T5ForConditionalGeneration, T5Tokenizer, Trainer, Seq2SeqTrainingArguments, __version__ as transformers_version
+from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments
+from transformers import EvalPrediction
 import torch
 from datasets import Dataset
 from accelerate import Accelerator
 from accelerate.utils import set_seed
 from tqdm import tqdm
-from peft import get_peft_model, LoraConfig, TaskType
+import evaluate  # Updated to use evaluate library
 
 # Suppress warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="transformers.tokenization_utils_base")
@@ -39,16 +42,19 @@ device = accelerator.device
 set_seed(42)
 
 # Model paths
-MODEL_VERSION = "1.0.0"
+MODEL_VERSION = "1.0.3"
 models_dir = "models"
 model_path = os.path.join(models_dir, "5gran_faultprediction_model")
-model_name = "t5-base"  # Use "t5-small" for less powerful GPUs
+model_name = "bert-base-uncased"  # Use "bert-base-uncased" for BERT model
 
 # Create directories
 os.makedirs(model_path, exist_ok=True)
 
 # Check CUDA availability
 fp16v = torch.cuda.is_available()
+
+# Set environment variable to disable upper memory limit for MPS backend
+os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"
 
 def extract_data(input_path, output_path):
     with lzma.open(input_path, 'rb') as f_in:
@@ -131,7 +137,7 @@ def get_severity_level(fault_rate):
     else:
         return "Extreme"
 
-def prepare_t5_input(features_dict, prediction, threshold=30):
+def prepare_bert_input(features_dict, prediction, threshold=30):
     input_text = f"Predicted Fault Occurrence Rate: {prediction:.2f}%, Threshold: {threshold}%. "
     input_text += "Provide an explanation of the fault occurrence rate and suggest actions to improve wireless customer satisfaction. "
     input_text += "Key metrics: " + ", ".join([f"{name}: {value}" for name, value in features_dict.items()])
@@ -181,7 +187,6 @@ def generate_custom_explanation(features, fault_rate, severity, threshold):
     elif severity == "Very Critical":
         explanation += "1. Initiate emergency network reconfiguration to isolate and contain severe issues.\n"
         explanation += "2. Deploy all available resources, including third-party experts, to address the crisis.\n"
-        explanation += "3. Establish a war room for continuous monitoring and rapid decision-making.\n"
     else:  # Extreme
         explanation += "1. Declare network emergency and potentially initiate partial or full network reset.\n"
         explanation += "2. Engage with government and regulatory bodies for potential support and guidance.\n"
@@ -193,7 +198,7 @@ def create_custom_dataset(X, y, threshold=30):
     dataset = []
     for features, target in zip(X.to_dict('records'), y):
         severity = get_severity_level(target)  # Use actual severity based on target
-        input_text = prepare_t5_input(features, target, threshold)
+        input_text = prepare_bert_input(features, target, threshold)
         output_text = generate_custom_explanation(features, target, severity, threshold)
         dataset.append({"input_text": input_text, "target_text": output_text})
     return dataset
@@ -202,9 +207,9 @@ def preprocess_function(examples):
     inputs = examples['input_text']
     targets = examples['target_text']
     model_inputs = tokenizer(inputs, max_length=512, padding='max_length', truncation=True)
-    with tokenizer.as_target_tokenizer():
-        labels = tokenizer(targets, max_length=128, padding='max_length', truncation=True)
-    model_inputs['labels'] = labels['input_ids']
+    # Convert targets to integer labels: 1 for "Critical", 0 otherwise
+    labels = [1 if "Critical" in target else 0 for target in targets]
+    model_inputs['labels'] = labels
     return model_inputs
 
 def train_and_evaluate_xgboost(X_train, y_train, X_test, y_test, features):
@@ -217,7 +222,7 @@ def train_and_evaluate_xgboost(X_train, y_train, X_test, y_test, features):
         'colsample_bytree': [0.7, 0.8, 0.9],
     }
 
-    xgb_model = xgb.XGBRegressor(tree_method='hist', device='cpu', random_state=42)
+    xgb_model = xgb.XGBRegressor(tree_method='hist', random_state=42)
     random_search = RandomizedSearchCV(xgb_model, param_distributions=param_dist, n_iter=10, cv=3, random_state=42, n_jobs=-1)
     random_search.fit(X_train, y_train)
 
@@ -238,7 +243,7 @@ def train_and_evaluate_xgboost(X_train, y_train, X_test, y_test, features):
 
     return best_model
 
-def predict_and_explain(input_data, xgb_model, preprocessor, t5_model, tokenizer, features, threshold=30):
+def predict_and_explain(input_data, xgb_model, preprocessor, bert_model, tokenizer, features, threshold=30):
     try:
         if not isinstance(input_data, pd.DataFrame):
             input_data = pd.DataFrame([input_data], columns=features)
@@ -249,42 +254,36 @@ def predict_and_explain(input_data, xgb_model, preprocessor, t5_model, tokenizer
         # Determine severity based on fault_rate
         severity = get_severity_level(fault_rate)
 
-        t5_input = prepare_t5_input(input_data.iloc[0].to_dict(), fault_rate, threshold)
+        bert_input = prepare_bert_input(input_data.iloc[0].to_dict(), fault_rate, threshold)
 
-        input_ids = tokenizer(t5_input, return_tensors="pt", max_length=512, padding="max_length", truncation=True).input_ids.to(device)
+        inputs = tokenizer(bert_input, return_tensors="pt", max_length=512, padding="max_length", truncation=True).to(device)
 
-        t5_model.to(device)
-        t5_model.eval()
+        bert_model.to(device)
+        bert_model.eval()
 
         with torch.no_grad():
-            outputs = t5_model.generate(
-                input_ids=input_ids,
-                max_length=300,
-                num_return_sequences=1,
-                no_repeat_ngram_size=2,
-                temperature=0.7,
-                top_p=0.9,
-                do_sample=True
-            )
+            outputs = bert_model(**inputs)
+            logits = outputs.logits
+            predictions = torch.argmax(logits, dim=-1)
 
-        explanation = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        explanation = generate_custom_explanation(input_data.iloc[0].to_dict(), fault_rate, severity, threshold)
 
         status = "Good" if fault_rate < threshold else "Concerning"
 
-        # Post-process the explanation
-        explanation_lines = explanation.split('\n')
-        filtered_explanation = '\n'.join([line for line in explanation_lines if not line.startswith('Predicted Fault Occurrence Rate') and not line.startswith('Threshold')])
-
-        final_output = f"Predicted Fault Occurrence Rate: {fault_rate:.2f}%\nStatus: {status}\nSeverity: {severity}\n\nExplanation and Recommendations:\n{filtered_explanation}"
+        final_output = f"Predicted Fault Occurrence Rate: {fault_rate:.2f}%\nStatus: {status}\nSeverity: {severity}\n\nExplanation and Recommendations:\n{explanation}"
 
         return final_output
     except Exception as e:
         logging.error(f"Error in predict_and_explain: {str(e)}")
         return f"An error occurred: {str(e)}"
 
+def compute_metrics(p: EvalPrediction):
+    metric = evaluate.load("accuracy")
+    preds = np.argmax(p.predictions, axis=1)
+    return metric.compute(predictions=preds, references=p.label_ids)
+
 # Main Execution
 if __name__ == "__main__":
-    # Step 1: Load and preprocess data
     logging.info("Step 1: Loading and preprocessing data...")
     extract_data('data/5G_netops_data_100K.csv.xz', 'data/5G_netops_data_100K.csv')
 
@@ -305,11 +304,9 @@ if __name__ == "__main__":
     logging.info(f"Numeric features: {numeric_features}")
     logging.info(f"Categorical features: {categorical_features}")
 
-    # Step 2: Create preprocessing steps
     logging.info("Step 2: Creating preprocessing steps...")
     preprocessor = create_preprocessor(numeric_features, categorical_features)
 
-    # Step 3: Split the data
     logging.info("Step 3: Splitting the data...")
     X = data[features]
     y = data[target]
@@ -318,40 +315,28 @@ if __name__ == "__main__":
     logging.info(f"Shape of X_train: {X_train.shape}")
     logging.info(f"Shape of y_train: {y_train.shape}")
 
-    # Step 4: Preprocess the data
     logging.info("Step 4: Preprocessing the data...")
     X_train_preprocessed = preprocessor.fit_transform(X_train)
     X_test_preprocessed = preprocessor.transform(X_test)
 
-    # Step 5: Train XGBoost Regressor
     logging.info("Step 5: Training XGBoost Regressor...")
     xgb_model = train_and_evaluate_xgboost(X_train_preprocessed, y_train, X_test_preprocessed, y_test, features)
 
-    # Save the XGBoost model and preprocessor with version
     joblib.dump(xgb_model, os.path.join(model_path, f'xgboost_regressor_model_v{MODEL_VERSION}.joblib'))
     joblib.dump(preprocessor, os.path.join(model_path, f'preprocessor_v{MODEL_VERSION}.joblib'))
 
-    # Step 6: Prepare T5 input data
-    logging.info("Step 6: Preparing T5 input data...")
-
-    # Load the tokenizer from the pretrained model
-    tokenizer = T5Tokenizer.from_pretrained(model_name, model_max_length=512)
-
+    logging.info("Step 6: Preparing BERT input data...")
+    tokenizer = BertTokenizer.from_pretrained(model_name)
     logging.info(f"Tokenizer length: {len(tokenizer)}")
-
-    # Save the tokenizer with version
     tokenizer.save_pretrained(os.path.join(model_path, f'tokenizer_v{MODEL_VERSION}'))
 
     train_dataset = Dataset.from_list(create_custom_dataset(X_train, y_train))
     eval_dataset = Dataset.from_list(create_custom_dataset(X_test, y_test))
 
-    # Step 7: Fine-tune T5 model
-    logging.info("Step 7: Fine-tuning T5 model...")
+    logging.info("Step 7: Fine-tuning BERT model...")
+    bert_model = BertForSequenceClassification.from_pretrained(model_name, num_labels=2)
+    bert_model = accelerator.prepare(bert_model)
 
-    t5_model = T5ForConditionalGeneration.from_pretrained(model_name)
-    t5_model.resize_token_embeddings(len(tokenizer))
-
-    # Apply preprocessing
     train_dataset = train_dataset.map(preprocess_function, batched=True)
     eval_dataset = eval_dataset.map(preprocess_function, batched=True)
 
@@ -359,59 +344,43 @@ if __name__ == "__main__":
     train_dataset.set_format(type='torch', columns=columns)
     eval_dataset.set_format(type='torch', columns=columns)
 
-    # Define PEFT/LoRA configuration
-    lora_config = LoraConfig(
-        task_type=TaskType.SEQ_2_SEQ_LM,
-        inference_mode=False,
-        r=16,
-        lora_alpha=32,
-        lora_dropout=0.1,
-        target_modules=['q', 'v', 'k', 'o', 'wi', 'wo']
-    )
-    t5_model = get_peft_model(t5_model, lora_config)
-
-    # Prepare the model with Accelerator
-    t5_model = accelerator.prepare(t5_model)
-
-    training_args = Seq2SeqTrainingArguments(
+    training_args = TrainingArguments(
         output_dir="./results",
         overwrite_output_dir=True,
-        num_train_epochs=10,
-        per_device_train_batch_size=26,
-        gradient_accumulation_steps=14,
-        per_device_eval_batch_size=32,
+        num_train_epochs=3,
+        per_device_train_batch_size=32,  # Reduced batch size
+        gradient_accumulation_steps=8,   # Adjusted gradient accumulation steps
+        per_device_eval_batch_size=32,   # Reduced evaluation batch size
         learning_rate=2e-5,
         save_steps=100,
-        save_total_limit=10,
-        eval_strategy="steps",
+        save_total_limit=2,
         eval_steps=100,
         logging_steps=100,
+        evaluation_strategy="steps",  # Update to use eval_strategy
+        save_strategy="steps",  # Ensure this is set to "steps"
         load_best_model_at_end=True,
-        metric_for_best_model="loss",
-        predict_with_generate=True,
-        fp16=fp16v,
+        metric_for_best_model="accuracy",
         remove_unused_columns=False,
-        warmup_steps=100,
-        weight_decay=0.02,
+        fp16=fp16v,  # Use mixed precision if available
+        gradient_checkpointing=True,  # Enable gradient checkpointing
     )
 
     trainer = Trainer(
-        model=t5_model,
+        model=bert_model,
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
+        compute_metrics=compute_metrics,  # Include metrics computation
     )
 
     trainer.train()
 
-    # Save the T5 model with version
-    t5_model.save_pretrained(os.path.join(model_path, f't5_model_v{MODEL_VERSION}'), save_embedding_layers=True)
+    bert_model.save_pretrained(os.path.join(model_path, f'bert_model_v{MODEL_VERSION}'))
 
-    # Step 8: Generate sample prediction and explanation
     logging.info("Step 8: Generating sample prediction and explanation...")
     sample_input = X_test.iloc[0]
     try:
-        result = predict_and_explain(sample_input, xgb_model, preprocessor, t5_model, tokenizer, features)
+        result = predict_and_explain(sample_input, xgb_model, preprocessor, bert_model, tokenizer, features)
         logging.info(f"Sample prediction result:\n{result}")
         print(result)
     except Exception as e:
