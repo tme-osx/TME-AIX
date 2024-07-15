@@ -22,7 +22,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 
 # Model paths
 MODEL_VERSION = "1.0.3"
-models_dir = "models"
+models_dir = "../models"
 model_path = os.path.join(models_dir, "5gran_faultprediction_model")
 model_name = "bert-base-uncased"
 
