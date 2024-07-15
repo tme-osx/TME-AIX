@@ -34,12 +34,12 @@ def preprocess_function(examples, tokenizer):
 
 def load_data():
     # Extract the .xz file
-    with lzma.open('data/5G_netops_data_100K.csv.xz', 'rb') as f_in:
-        with open('data/5G_netops_data_100K.csv', 'wb') as f_out:
+    with lzma.open('../data/5G_netops_data_100K.csv.xz', 'rb') as f_in:
+        with open('../data/5G_netops_data_100K.csv', 'wb') as f_out:
             shutil.copyfileobj(f_in, f_out)
 
     # Load the synthetic telecom data
-    data_path = "data/5G_netops_data_100K.csv"
+    data_path = "../data/5G_netops_data_100K.csv"
     data = pd.read_csv(data_path)
 
     # Fill NaN values and prepare input and target texts
@@ -174,6 +174,6 @@ if __name__ == "__main__":
         device = torch.device("cpu")
         world_size = 1  # CPU does not support multi-xcellerator (yet)
     # Save the model and tokenizer
-    model_save_path = "models/5gran_faultprediction_model_multigpu"
+    model_save_path = "../models/5gran_faultprediction_model_multigpu"
     model_name = "t5-small"
     train_ddp(0, world_size, model_name, model_save_path)
