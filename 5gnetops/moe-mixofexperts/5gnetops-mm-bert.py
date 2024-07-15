@@ -43,7 +43,7 @@ set_seed(42)
 
 # Model paths
 MODEL_VERSION = "1.0.3"
-models_dir = "models"
+models_dir = "../models"
 model_path = os.path.join(models_dir, "5gran_faultprediction_model")
 model_name = "bert-base-uncased"  # Use "bert-base-uncased" for BERT model
 
@@ -285,9 +285,9 @@ def compute_metrics(p: EvalPrediction):
 # Main Execution
 if __name__ == "__main__":
     logging.info("Step 1: Loading and preprocessing data...")
-    extract_data('data/5G_netops_data_100K.csv.xz', 'data/5G_netops_data_100K.csv')
+    extract_data('../data/5G_netops_data_100K.csv.xz', '../data/5G_netops_data_100K.csv')
 
-    data_path = "data/5G_netops_data_100K.csv"
+    data_path = "../data/5G_netops_data_100K.csv"
     data = load_data(data_path)
     initial_features = [
         'Cell Availability', 'MTTR', 'Throughput', 'Latency', 'Packet Loss Rate', 'Call Drop Rate',
