@@ -1,0 +1,8 @@
+pandas
+numpy
+scikit-learn
+torch
+accelerate
+datasets
+torchvision
+tensorflow-gpu
