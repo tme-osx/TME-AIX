@@ -12,7 +12,7 @@ Welcome to the **TME-AIX** collaborative experimental workspace. This repository
 4. [Sustainability & Energy Efficiency](https://github.com/fenar/TME-AIX/tree/main/sustainability)
 5. [SecOps-AI for Networking](https://github.com/fenar/TME-AIX/tree/main/secops)
 6. [AI Powered SmartGrid](https://github.com/fenar/TME-AIX/tree/main/smartgrid)
-7. [IoT Perimeter Security](https://github.com/fenar/TME-AIX/tree/main/iot-ai)
+7. [IoT Perimeter Security](https://github.com/fenar/TME-AIX/tree/main/iot-sec)
 8. ... {Please Reach Us for Interesting Usecases and Interesting Big Data & Automation Projects}
 
 ## Explore More on HuggingFace
