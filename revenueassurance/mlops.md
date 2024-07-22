@@ -8,7 +8,7 @@
 - [Run Kubeflow Pipeline](#run-kubeflow-pipeline)
   - [Execute Kubeflow pipeline from Workbench](#execute-kubeflow-pipeline-from-workbench)
   - [Look at the Kubeflow Pipeline execution](#look-at-the-kubeflow-pipeline-execution)
-- [OpenShift Pipeline setup](#openshit-pipeline-setup)
+- [OpenShift Pipeline setup](#openshift-pipeline-setup)
   - [Create Tekton Pipeline](#create-tekton-pipeline)
   - [Run Tekton Pipeline](#run-tekton-pipeline)
   - [Pipeline results](#pipeline-results)
