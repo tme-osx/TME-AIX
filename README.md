@@ -13,7 +13,8 @@ Welcome to the **TME-AIX** collaborative experimental workspace. This repository
 5. [SecOps-AI for Networking](https://github.com/fenar/TME-AIX/tree/main/secops)
 6. [AI Powered SmartGrid](https://github.com/fenar/TME-AIX/tree/main/smartgrid)
 7. [IoT Perimeter Security](https://github.com/fenar/TME-AIX/tree/main/iot-sec)
-8. ... {Please Reach Us for Interesting Usecases and Interesting Big Data & Automation Projects}
+8. [5G CNF RCA with LLM](https://github.com/ansonmez/5g_llm_ilab_demo)
+9. ... {Please Reach Us for Interesting Usecases and Interesting Big Data & Automation Projects}
 
 ## Explore More on HuggingFace
 Discover our models and datasets on HuggingFace:
