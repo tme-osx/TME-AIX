@@ -1,3 +1,6 @@
+# Author: Fatih E. NAR
+# No_AI but simple text parser and generator
+#
 import yaml
 
 def extract_info(input_text):

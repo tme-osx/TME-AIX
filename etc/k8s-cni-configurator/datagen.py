@@ -1,3 +1,6 @@
+# Author: Fatih E. NAR
+# Synthetic Data Generator for NIC Config
+#
 import random
 import ipaddress
 import json
