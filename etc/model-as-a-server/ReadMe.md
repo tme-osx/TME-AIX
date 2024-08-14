@@ -1,6 +1,6 @@
 # ChatGPT UI Clone Flask App
 
-This repository contains a simple Flask application that mimics the ChatGPT UI. The app interacts with a specified API endpoint to process user inputs and display responses in a chat-like interface.
+This repository contains a simple Flask application that mimics the ChatGPT UI. The app interacts with a specified API endpoint to process user inputs and display responses in a chat-like interface. In order to utilize this app please get your access api key from https://maas.apps.prod.rhoai.rh-aiservices-bu.com/ 
 
 ## Prerequisites
 
