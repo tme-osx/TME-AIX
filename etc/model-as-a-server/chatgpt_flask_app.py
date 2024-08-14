@@ -135,7 +135,7 @@ def chat():
             }
         ],
         "model": "mistral-7b-instruct",
-        "max_tokens": 150,
+        "max_tokens": 6123, #set for max that is supported by maas at this given time
         "temperature": 0.7,
         "top_p": 1,
         "n": 1,
