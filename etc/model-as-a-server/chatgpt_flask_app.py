@@ -119,7 +119,7 @@ def chat():
     message_length = len(user_message.split())
 
     # Calculate the max_tokens based on the remaining context length
-    max_tokens = max(0, MAX_CONTEXT_LENGTH - message_length - 10)
+    max_tokens = max(0, (MAX_CONTEXT_LENGTH - message_length - 10))
     
     headers = {
         'accept': 'application/json',
