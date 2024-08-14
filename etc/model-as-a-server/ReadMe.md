@@ -27,3 +27,7 @@ docker run -d -p 5000:5000 --name chatgpt-flask-app -e API_KEY=your_api_key chat
 ```bash
 http://localhost:5000
 ```
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/fenar/TME-AIX/main/etc/model-as-a-server/maas.png"/>
+</div>
