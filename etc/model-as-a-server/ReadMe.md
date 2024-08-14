@@ -14,7 +14,7 @@ This repository contains a simple Flask application that mimics the ChatGPT UI. 
 Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/fenar/TME-AIX/blob/main/etc/model-as-a-server/chatgpt_flask_app.py
+git clone https://github.com/fenar/TME-AIX/blob/main/etc/model-as-a-server/
 cd chatgpt-flask-app
 
 docker build -t chatgpt-flask-app:ubi8 .
