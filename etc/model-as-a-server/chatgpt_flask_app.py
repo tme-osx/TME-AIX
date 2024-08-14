@@ -11,6 +11,7 @@ app = Flask(__name__)
 # Read the API key from the environment variable
 API_URL = 'https://mistral-7b-instruct-v0-3-maas-apicast-production.apps.prod.rhoai.rh-aiservices-bu.com:443/v1/chat/completions'
 API_KEY = os.getenv('API_KEY')
+MAX_CONTEXT_LENGTH = 6000
 
 # HTML content as a string
 HTML_CONTENT = """
@@ -114,7 +115,12 @@ def index():
 @app.route('/api/chat', methods=['POST'])
 def chat():
     user_message = request.json.get('message')
+    # Calculate the length of the user message
+    message_length = len(user_message.split())
 
+    # Calculate the max_tokens based on the remaining context length
+    max_tokens = max(0, MAX_CONTEXT_LENGTH - message_length - 10)
+    
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json',
@@ -135,7 +141,7 @@ def chat():
             }
         ],
         "model": "mistral-7b-instruct",
-        "max_tokens": 6123, #set for max that is supported by maas at this given time
+        "max_tokens": max_tokens, 
         "temperature": 0.7,
         "top_p": 1,
         "n": 1,
