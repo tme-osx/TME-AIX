@@ -9,7 +9,6 @@ import requests
 import os
 
 app = Flask(__name__)
-
 # Read the API key from the environment variable
 API_URL = 'https://mistral-7b-instruct-v0-3-maas-apicast-production.apps.prod.rhoai.rh-aiservices-bu.com:443/v1/chat/completions'
 API_KEY = os.getenv('API_KEY')
@@ -70,6 +69,8 @@ HTML_CONTENT = """
         <button onclick="startRecording()">Record Your Request</button>
     </div>
 
+    <audio id="response-audio" controls style="display: none;"></audio>
+
     <script>
         function startRecording() {
             fetch('/api/record_voice', {
@@ -91,14 +92,12 @@ HTML_CONTENT = """
                 aiMessageDiv.textContent = "Response: " + data.response;
                 chatBox.appendChild(aiMessageDiv);
 
-                // Play the AI's response
-                textToSpeech(data.response);
+                // Play the AI's response as audio
+                const audioElement = document.getElementById('response-audio');
+                audioElement.src = "/static/response.mp3";
+                audioElement.style.display = 'block';
+                audioElement.play();
             });
-        }
-
-        function textToSpeech(text) {
-            const audio = new Audio('/static/response.mp3');
-            audio.play();
         }
     </script>
 </body>
@@ -183,7 +182,6 @@ def get_model_response(user_message):
 def text_to_speech(text):
     tts = gTTS(text=text, lang='en')
     tts.save("static/response.mp3")
-    os.system("mpg321 static/response.mp3")
 
 if __name__ == '__main__':
     if not os.path.exists("static"):
