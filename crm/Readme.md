@@ -13,5 +13,5 @@ http://localhost:5000
 ```
 
 <div align="center">
-    <img src="https://github.com/tme-osx/TME-AIX/blob/main/crm/maas-vb.png"/>
+    <img src="https://github.com/tme-osx/TME-AIX/blob/main/crm/maas-vb2.png"/>
 </div>
