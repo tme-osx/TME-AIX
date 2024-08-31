@@ -9,7 +9,7 @@ from kfp import dsl
 
 load_dotenv(override=True)
 
-kubeflow_endpoint = os.getenv("KUBEFLOW_ENDPOINT", "http://ds-pipeline-dspa.tme-aix.svc.cluster.local:8888")
+kubeflow_endpoint = os.getenv("KUBEFLOW_ENDPOINT", "http://ds-pipeline-dspa-tme-aix.apps.acmhub2.narlabs.io")
 base_image = os.getenv("BASE_IMAGE", "image-registry.openshift-image-registry.svc.cluster.local:5000/tme-aix/environment:latest")
 
 @dsl.component(
@@ -270,7 +270,7 @@ if __name__ == "__main__":
     client = kfp.Client(
         host=kubeflow_endpoint,
         existing_token=bearer_token,
-        ssl_ca_cert=ssl_ca_cert,
+        verify_ssl=False,
     )
     result = client.create_run_from_pipeline_func(pipeline, arguments={}, experiment_name="revass")
     print(f"Starting pipeline run with run_id: {result.run_id}")
