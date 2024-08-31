@@ -5,7 +5,7 @@ metadata:
   namespace: tme-aix
 spec:
   params:
-    - default: 'https://github.com/fenar/TME-AIX.git'
+    - default: 'https://github.com/tme-osx/TME-AIX.git'
       description: Repo URL
       name: GIT_URL
       type: string
@@ -15,19 +15,19 @@ spec:
     - default: 3.11-ubi9
       name: PYTHON_IMAGE
       type: string
-    - default: 'https://ds-pipeline-dspa.tme-aix.svc.cluster.local:8443'
+    - default: 'http://ds-pipeline-dspa-tme-aix.apps.acmhub2.narlabs.io'
       name: KUBEFLOW_ENDPOINT
       type: string
-    - default: 'http://minio.tme-aix.svc.cluster.local:9000'
+    - default: 'http://minio-service.tme-aix.svc.cluster.local:9000'
       name: S3_ENDPOINT
       type: string
-    - default: T09QInleq4mA_Z4P
+    - default: c7JUO3bLSd6OpN5nUhAz
       name: AWS_ACCESS_KEY_ID
       type: string
-    - default: DrkayJjcyGtnT_cybQBWm605gMMOY4mO
+    - default: KtKnRPT6iIPBtNsBrPadOKhaXzd1glpVYCslkHIW
       name: AWS_SECRET_ACCESS_KEY
       type: string
-    - default: pipeline-artifacts
+    - default: tme-aix
       name: BUCKET_NAME
       type: string
   tasks:
