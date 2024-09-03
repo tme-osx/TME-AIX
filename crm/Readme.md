@@ -8,7 +8,7 @@ In order to utilize this app please get your access api key from https://maas.ap
 ## Prerequisites
 - An API key for the Desired Hosted GenAI Model from Model as a Server Backend
 
-### Open your web browser and navigate to:
+## Open your web browser and navigate to:
 
 ```bash
 http://localhost:15000
