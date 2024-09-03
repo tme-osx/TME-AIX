@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: api-key-secret
+type: Opaque
+data:
+  API_KEY: <base64-encoded-api-key>
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voice-to-text-chatbot
+  labels:
+    app: voice-to-text-chatbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: voice-to-text-chatbot
+  template:
+    metadata:
+      labels:
+        app: voice-to-text-chatbot
+    spec:
+      containers:
+      - name: voice-to-text-chatbot
+        image: quay.io/<your-quay-username>/voice-to-text-chatbot:latest
+        ports:
+        - containerPort: 15000
+        env:
+        - name: FLASK_ENV
+          value: "production"
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-key-secret
+              key: API_KEY
+        volumeMounts:
+        - name: static-files
+          mountPath: /app/static
+      volumes:
+      - name: static-files
+        emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: voice-to-text-chatbot
+  labels:
+    app: voice-to-text-chatbot
+spec:
+  selector:
+    app: voice-to-text-chatbot
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 15000
+
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: voice-to-text-chatbot
+  labels:
+    app: voice-to-text-chatbot
+spec:
+  to:
+    kind: Service
+    name: voice-to-text-chatbot
+  port:
+    targetPort: 80
+  tls:
+    termination: edge
