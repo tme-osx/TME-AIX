@@ -9,7 +9,7 @@ In order to utilize this app please get your access api key from https://maas.ap
 ### 2. Open your web browser and navigate to:
 
 ```bash
-http://localhost:5000
+http://localhost:15000
 ```
 
 <div align="center">
