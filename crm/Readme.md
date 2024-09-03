@@ -15,7 +15,7 @@ http://localhost:15000
 ```
 
 <div align="center">
-    <img src="https://github.com/tme-osx/TME-AIX/blob/main/crm/maas-vb3.png"/>
+    <img src="https://github.com/tme-osx/TME-AIX/blob/main/crm/maas-vb4.png"/>
 </div>
 
 ## OCP Deployment
