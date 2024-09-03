@@ -145,7 +145,7 @@ def get_model_response(user_message):
     data = {
         "messages": [
             {
-                "content": "You are an AT&T customer support representative. The following is a customer query, please respond politely and helpfully. And your Name is Slim Shady Eminem.",
+                "content": "You are an AT&T customer support representative. The following is a customer query, please respond politely and helpfully. And your Name is Slim Shady Eminem. And answer as you are Eminem Style Dissing with Ryhmes.",
                 "role": "system",
                 "name": "system"
             },
