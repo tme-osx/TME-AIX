@@ -15,3 +15,11 @@ http://localhost:15000
 <div align="center">
     <img src="https://github.com/tme-osx/TME-AIX/blob/main/crm/maas-vb3.png"/>
 </div>
+
+## OCP Deployment
+- Build the container image (see Dockerfile here) and push to your image repo <br>
+- Edit Deployment.yaml (included here) to have proper image urls and API_Key inside -> just simply;
+  
+```
+oc deploy -f Deployment.yaml
+```
