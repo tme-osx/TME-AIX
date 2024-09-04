@@ -8,7 +8,7 @@ This repository is dedicated to exploring various TME use-cases built around ope
 
 ## Article
 Our Project Summary: [TrueAI4Telco](https://medium.com/open-5g-hypercore/episode-xxiii-trueai4telco-3e372898ce06) <br>
-Short AI Native Telco Recording: [AINativeTelco-Video] (https://drive.google.com/file/d/1AuImD3qL28GGekMuSQSFP7aYV5kMxmPj/view?usp=sharing)
+Short AI Native Telco Recording: [AINativeTelco-Video](https://drive.google.com/file/d/1AuImD3qL28GGekMuSQSFP7aYV5kMxmPj/view?usp=sharing)
 
 ## Projects
 1. [Revenue Assurance and Fraud Management (RAFM)](https://github.com/fenar/TME-AIX/tree/main/revenueassurance)
