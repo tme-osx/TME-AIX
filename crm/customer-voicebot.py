@@ -61,7 +61,7 @@ HTML_CONTENT = """
     </style>
 </head>
 <body>
-    <h1>Telco Customer Support Chatbot</h1>
+    <h1>Telco CRM VoiceBot</h1>
     <div class="chat-box" id="chat-box">
         <!-- Chat messages will appear here -->
     </div>
