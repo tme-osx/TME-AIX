@@ -1,7 +1,7 @@
 
-# LLM with RCA after anomaly detection using RAG<br>
+# LangChainAI Driven Root Cause Analysis (RCA) with DataMesh <br>
 
-This project basically :<br>
+This project delivers multi-source data analysis with LangChain to detect and resolve Anomalies, break down :<br>
      - Process a csv files containing time-series telecom metrics<br>
      - Find anomalies within the data<br>
      - Employs RAG for the systemd log files to find the correlation between the logs and anomalies<br>
