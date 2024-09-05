@@ -1,5 +1,5 @@
 
-# AI Model Chaining Driven Root Cause Analysis (RCA) with Data-Correlation <br>
+# AI Model Chaining Driven Root Cause Analysis (RCA) with GenAI and RAG Use<br>
 
 This project delivers multi-source data analysis with Model Chaining to detect and resolve anomalies, break down :<br>
      - Process a csv files containing time-series telecom metrics<br>
