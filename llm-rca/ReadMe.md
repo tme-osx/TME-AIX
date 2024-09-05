@@ -1,7 +1,7 @@
 
-# LangChainAI Driven Root Cause Analysis (RCA) with DataMesh <br>
+# AI Model Chaining Driven Root Cause Analysis (RCA) with Data-Mesh <br>
 
-This project delivers multi-source data analysis with LangChain to detect and resolve Anomalies, break down :<br>
+This project delivers multi-source data analysis with Model Chaining to detect and resolve anomalies, break down :<br>
      - Process a csv files containing time-series telecom metrics<br>
      - Find anomalies within the data<br>
      - Employs RAG for the systemd log files to find the correlation between the logs and anomalies<br>
