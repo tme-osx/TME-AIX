@@ -2,44 +2,35 @@
 # LLM with RCA after anomaly detection using RAG<br>
 
 This project basically :<br>
--     Process a csv files containing time-series telecom metrics<br>
--     Find anomalies within the data<br>
--     Employs RAG for the systemd log files to find the correlation between the logs and anomalies<br>
--     Provides an root cause analysis and the end of the execution<br>
+     - Process a csv files containing time-series telecom metrics<br>
+     - Find anomalies within the data<br>
+     - Employs RAG for the systemd log files to find the correlation between the logs and anomalies<br>
+     - Provides an root cause analysis and the end of the execution<br>
 
 ## Metric file processing
 It starts with a processing a telecom metric file. The follwoing is an example of the metrics:<br>
 
-                 time  call_attempt  call_success  call_failure  \
-0 2024-09-04 00:00:00           114           110             0   
-1 2024-09-04 00:01:00           113           110             0   
-2 2024-09-04 00:02:00           114           111             0   
-3 2024-09-04 00:03:00           113           111             1   
-4 2024-09-04 00:04:00           112           111             1   
+|time                | call_attempt | call_success | call_failure | total_registered_subs |  call_success_rate |
+---------------------|--------------|--------------|--------------|-----------------------|--------------------|
+0 2024-09-04 00:00:00|           114|           110|             0|                   9031|               96.40|
+1 2024-09-04 00:01:00|           113|           110|             0|                   9084|               97.34|
+2 2024-09-04 00:02:00|           114|           111|             0|                   9089|               97.36|
+3 2024-09-04 00:03:00|           113|           111|             1|                   9035|               98.23|
+4 2024-09-04 00:04:00|           112|           111|             1|                   9092|               99.10|
 
-   total_registered_subs  call_success_rate  
-0                   9031              96.40  
-1                   9084              97.34  
-2                   9089              97.36  
-3                   9035              98.23  
-4                   9092              99.10  
 
 It contains a machine learning model for anomaly detection by using simple isolation forest algorithm.<br>
 
 
 ## Anomaly detection
 Anomalies found:<br>
-                   time  call_attempt  call_success  call_failure  \
-683 2024-09-04 11:23:00           114            27             0   
-684 2024-09-04 11:24:00           113            32             0   
-685 2024-09-04 11:25:00           112            40             0   
-686 2024-09-04 11:26:00           114            70             2   
 
-     total_registered_subs  call_success_rate  is_anomaly  
-683                   9029             23.491          -1  
-684                   9038             28.368          -1  
-685                   9033             35.730          -1  
-686                   9157             61.491          -1  
+|time                  | call_attempt | call_success | call_failure | total_registered_subs |  call_success_rate |is_anomaly|
+-----------------------|--------------|--------------|--------------|-----------------------|--------------------|----------|
+683 2024-09-04 11:23:00|           114|            27|             0|                   9031|               23.49|        -1|
+684 2024-09-04 11:24:00|           113|            32|             0|                   9084|               28.36|        -1|
+685 2024-09-04 11:25:00|           112|            40|             0|                   9089|               35.73|        -1|
+686 2024-09-04 11:26:00|           114|            70|             2|                   9035|               61.49|        -1|
 
 
 ## LLM with RAG
