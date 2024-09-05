@@ -41,6 +41,7 @@ After processing the log file via RAG, it provides and RCA accrodingly:<br>
 Root Cause Analysis:<br>
 Based on the provided logs and metrics, the anomalies in the metrics seem to be related to the OpenStack services, specifically the Open vSwitch service and the Nova Compute service.<br>
 
+```
 At 11:22:13, there is a log entry indicating an assertion failure in the Open vSwitch service, which leads to the service being killed and restarted. This could potentially disrupt network connectivity for the OpenStack services, affecting call attempts and successes.<br>
 
 The Nova Compute service logs show several instances being migrated, rebooted, created, and shut down around the same time. This could potentially cause disruptions in the service, affecting the call success rate. Specifically, at 11:23:01, there is a log entry indicating the start of a migration for an instance, which could potentially disrupt the service.<br>
@@ -48,7 +49,7 @@ The Nova Compute service logs show several instances being migrated, rebooted, c
 In addition, the total number of registered subscribers increases from 9033 to 9157 between 11:25:00 and 11:26:00. This sudden increase could potentially overload the system, leading to a decrease in the call success rate.<br>
 
 In conclusion, the anomalies in the metrics could be caused by disruptions in the OpenStack services due to the Open vSwitch service failure and the Nova Compute service operations, as well as a sudden increase in the number of registered subscribers.<br>
-
+```
 
 
 
