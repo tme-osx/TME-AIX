@@ -19,7 +19,7 @@ Our Project Summary: [TrueAI4Telco](https://medium.com/open-5g-hypercore/episode
 7. [IoT Perimeter Security](https://github.com/fenar/TME-AIX/tree/main/iot-sec)
 8. [5G CNF RCA with LLM](https://github.com/ansonmez/5g_llm_ilab_demo)
 9. [Customer Relation Management Voice App](https://github.com/tme-osx/TME-AIX/tree/main/crm)
-10. [RootCauseAnalysis & Resolution with GenAI](https://github.com/tme-osx/TME-AIX/tree/main/llm-rca)
+10. [RootCauseAnalysis & Resolution with GenAI + RAG](https://github.com/tme-osx/TME-AIX/tree/main/llm-rca)
 11. ... {Please Reach Us for Interesting Usecases and Interesting Big Data & Automation Projects}
 
 ## Explore More on HuggingFace
