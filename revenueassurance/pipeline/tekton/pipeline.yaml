@@ -9,25 +9,25 @@ spec:
       description: Repo URL
       name: GIT_URL
       type: string
-    - default: 'main'
+    - default: 'ali-test'
       name: GIT_REVISION
       type: string
     - default: 3.11-ubi9
       name: PYTHON_IMAGE
       type: string
-    - default: 'http://ds-pipeline-dspa-tme-aix.apps.acmhub2.narlabs.io'
+    - default: 'https://ds-pipeline-dspa-tme-aix.apps.mgmt2.npss.bos2.lab'
       name: KUBEFLOW_ENDPOINT
       type: string
-    - default: 'http://minio-service.tme-aix.svc.cluster.local:9000'
+    - default: 'https://minio.apps.mgmt2.npss.bos2.lab'
       name: S3_ENDPOINT
       type: string
-    - default: c7JUO3bLSd6OpN5nUhAz
+    - default: minio
       name: AWS_ACCESS_KEY_ID
       type: string
-    - default: KtKnRPT6iIPBtNsBrPadOKhaXzd1glpVYCslkHIW
+    - default: minioredhat
       name: AWS_SECRET_ACCESS_KEY
       type: string
-    - default: tme-aix
+    - default: revenue-pipeline
       name: BUCKET_NAME
       type: string
   tasks:
