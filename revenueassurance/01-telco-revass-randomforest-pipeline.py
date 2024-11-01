@@ -270,9 +270,8 @@ if __name__ == "__main__":
     client = kfp.Client(
         host=kubeflow_endpoint,
         existing_token=bearer_token,
-        enable_caching=False,
         verify_ssl=False,
     )
-    result = client.create_run_from_pipeline_func(pipeline, arguments={}, experiment_name="revass")
+    result = client.create_run_from_pipeline_func(pipeline, arguments={}, enable_caching=False, experiment_name="revass")
     print(f"Starting pipeline run with run_id: {result.run_id}")
     client.wait_for_run_completion(result.run_id, 300) #timeout after 5 mn
