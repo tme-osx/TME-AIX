@@ -1,5 +1,5 @@
 
-# 5G Root Cause Analysis (RCA) with GenAI and RAG Use<br>
+# 5G Operations (OSS) Root Cause Analysis (RCA) with GenAI and RAG Use<br>
 
 This project delivers multi-source data analysis with Model Chaining (Classic-AI -> GenAI) leveraging Vector Store for Log Data Association. 
 
