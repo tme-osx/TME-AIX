@@ -270,6 +270,7 @@ if __name__ == "__main__":
     client = kfp.Client(
         host=kubeflow_endpoint,
         existing_token=bearer_token,
+        enable_caching=False,
         verify_ssl=False,
     )
     result = client.create_run_from_pipeline_func(pipeline, arguments={}, experiment_name="revass")
