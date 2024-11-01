@@ -95,6 +95,7 @@ def train_model(
     import pickle
     import pandas as pd
     from imblearn.ensemble import BalancedRandomForestClassifier
+    from omlmd.helpers import Helper
 
     def load_df(object_file):
         return pd.read_pickle(object_file)
@@ -126,8 +127,10 @@ def train_model(
 
     model = train_default(x_train, y_train)
 
-    save_model(model_file.path, x_train, model)
+    omlmd = Helper()
+    omlmd.push("quay1.apps.mgmt1.npss.bos2.lab/rhoai/aiapp:1-1.0", "model", name="Model Example", author="Ali Bokhari", license="Apache-2.0", accuracy=acc_score)
 
+    save_model(model_file.path, x_train, model)
 
 
 @dsl.component(
@@ -143,7 +146,6 @@ def evaluate_model(
     import pickle
     import json
     import pandas as pd
-    from omlmd.helpers import Helper
 
     from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
@@ -188,9 +190,6 @@ def evaluate_model(
 
     with open(mlpipeline_metrics_file.path, "w") as f:
         json.dump(metrics, f)
-
-    omlmd = Helper()
-    omlmd.push("quay1.apps.mgmt1.npss.bos2.lab/rhoai/aiapp:1-1.0", "model", name="Model Example", author="Ali Bokhari", license="Apache-2.0", accuracy=acc_score)
 
 
 @dsl.component(
