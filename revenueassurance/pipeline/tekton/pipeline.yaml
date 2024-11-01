@@ -112,7 +112,8 @@ spec:
     - name: build-and-push-oci-artifact
       params:
         - name: IMAGE
-          value: 'image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/model:1-1.0'
+          #value: 'image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/model:1-1.0'
+          value: 'quay1.apps.mgmt1.npss.bos2.lab/rhoai/model:1-1.0'
         - name: BUILDER_IMAGE
           value: 'registry.redhat.io/rhel8/buildah@sha256:b48f410efa0ff8ab0db6ead420a5d8d866d64af846fece5efb185230d7ecf591'
         - name: STORAGE_DRIVER
@@ -139,6 +140,8 @@ spec:
       workspaces:
         - name: source
           workspace: source
+        - name: dockerconfig
+          workspace: quay-credentials
   workspaces:
     - name: source
     - name: quay-credentials

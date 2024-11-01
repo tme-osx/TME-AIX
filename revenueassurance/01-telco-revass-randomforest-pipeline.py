@@ -143,7 +143,7 @@ def evaluate_model(
     import pickle
     import json
     import pandas as pd
-    from omlmd.helpers import Helper
+    #from omlmd.helpers import Helper
 
     from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
@@ -189,8 +189,8 @@ def evaluate_model(
     with open(mlpipeline_metrics_file.path, "w") as f:
         json.dump(metrics, f)
 
-    omlmd = Helper()
-    omlmd.push("quay1.apps.mgmt1.npss.bos2.lab/rhoai/aiapp:1-1.0", "model", name="Model Example", author="Ali Bokhari", license="Apache-2.0", accuracy=acc_score)
+    #omlmd = Helper()
+    #omlmd.push("quay1.apps.mgmt1.npss.bos2.lab/rhoai/aiapp:1-1.0", "model", name="Model Example", author="Ali Bokhari", license="Apache-2.0", accuracy=acc_score)
 
 
 @dsl.component(
