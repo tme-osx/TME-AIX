@@ -12,6 +12,7 @@ pandas = "*"
 skl2onnx = "*"
 onnxruntime = "*"
 imblearn = "*"
+omlmd = "*"
 
 [dev-packages]
 

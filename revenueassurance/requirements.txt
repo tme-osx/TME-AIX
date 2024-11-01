@@ -18,3 +18,4 @@ datasets
 accelerate 
 peft 
 bitsandbytes
+omlmd
