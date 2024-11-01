@@ -12,7 +12,7 @@ This project delivers multi-source data analysis with Model Chaining (Classic-AI
 [2] Use of Red Hat Openshift AI Model as a Service backend for GenAI part: Select -> [maas-rca.ipynb](https://github.com/tme-osx/TME-AIX/blob/main/llm-rca/maas-rca.ipynb)
 
 ## Metric file processing
-It starts with a processing a telecom metric file. The following is an example set of the metric data<br>
+It starts with a processing a telecom metric file. The following is an example set of the metric data:<br>
 
 |time                | call_attempt | call_success | call_failure | total_registered_subs |  call_success_rate |
 ---------------------|--------------|--------------|--------------|-----------------------|--------------------|
