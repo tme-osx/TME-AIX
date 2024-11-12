@@ -20,7 +20,8 @@ Our Project Summary: [TrueAI4Telco](https://medium.com/open-5g-hypercore/episode
 8. [5G CNF RCA with LLM](https://github.com/ansonmez/5g_llm_ilab_demo)
 9. [Customer Relation Management Voice App](https://github.com/tme-osx/TME-AIX/tree/main/crm) 
 10. [Anomaly Detection & RootCauseAnalysis with Model Chaining + Use of RAG for DataMesh](https://github.com/tme-osx/TME-AIX/tree/main/llm-rca)
-11. ... {Please Reach Us for Interesting Usecases and Interesting Big Data & Automation Projects}
+11. [Starlink -Satellite ISP- Quality of Experience Predictions: WIP]
+12. [Autonomous 5G Core with AI : WIP]
 
 ## Explore More on HuggingFace
 Discover our models and datasets on HuggingFace:
