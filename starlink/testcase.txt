@@ -1,1 +1,1 @@
-curl -X POST http://localhost:35000/predict -H "Content-Type: application/json" -d '{"latitude": 33.87, "longitude": -98.59, "elevation": 307, "season": "Summer", "weather": "Clear"}'
+curl -X POST http://localhost:35001/predict -H "Content-Type: application/json" -d '{"latitude": 33.87, "longitude": -98.59, "elevation": 307, "season": "Summer", "weather": "Clear"}'
