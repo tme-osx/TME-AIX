@@ -1,0 +1,9 @@
+torch
+accelerate
+pandas
+numpy
+scikit-learn
+joblib
+flask
+flask-cors
+jupyter
