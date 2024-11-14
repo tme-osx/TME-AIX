@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlink Performance Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/recharts/umd/Recharts.min.js"></script>
+    <script src="https://unpkg.com/lucide-react@latest"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } = Recharts;
+        const { Satellite, Signal, Wifi, ActivitySquare, Loader2 } = lucide;
+
+        function StarlinkPredictor() {
+            const [location, setLocation] = useState({
+                latitude: 33.87,
+                longitude: -98.59,
+                elevation: 307,
+                season: 'Summer',
+                weather: 'Clear'
+            });
+
+            const [performance, setPerformance] = useState(null);
+            const [loading, setLoading] = useState(false);
+            const [error, setError] = useState(null);
+
+            const weatherOptions = [
+                'Clear', 'Light_Rain', 'Moderate_Rain', 'Rain', 
+                'Heavy_Rain', 'Snow', 'Dense_Fog'
+            ];
+
+            const seasonalData = [
+                { name: 'Winter', qoe: 85 },
+                { name: 'Spring', qoe: 92 },
+                { name: 'Summer', qoe: 95 },
+                { name: 'Fall', qoe: 88 }
+            ];
+
+            const fetchPrediction = async () => {
+                try {
+                    setLoading(true);
+                    setError(null);
+                    
+                    const response = await fetch('/predict', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(location)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Prediction failed');
+                    }
+
+                    const data = await response.json();
+                    setPerformance(data);
+                } catch (err) {
+                    setError(err.message);
+                } finally {
+                    setLoading(false);
+                }
+            };
+
+            useEffect(() => {
+                fetchPrediction();
+            }, [location]);
+
+            return (
+                <div className="w-full max-w-6xl mx-auto p-4 space-y-4">
+                    <div className="bg-white shadow rounded-lg">
+                        <div className="p-6">
+                            <h2 className="text-2xl font-bold mb-6">
+                                Starlink Performance Predictor
+                            </h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="space-y-4">
+                                    <div className="space-y-2">
+                                        <label className="block text-sm font-medium">Latitude</label>
+                                        <input
+                                            type="number"
+                                            value={location.latitude}
+                                            onChange={(e) => setLocation({...location, latitude: parseFloat(e.target.value)})}
+                                            className="border rounded p-2 w-full"
+                                            min="-90"
+                                            max="90"
+                                            step="0.1"
+                                        />
+                                    </div>
+                                    
+                                    <div className="space-y-2">
+                                        <label className="block text-sm font-medium">Longitude</label>
+                                        <input
+                                            type="number"
+                                            value={location.longitude}
+                                            onChange={(e) => setLocation({...location, longitude: parseFloat(e.target.value)})}
+                                            className="border rounded p-2 w-full"
+                                            min="-180"
+                                            max="180"
+                                            step="0.1"
+                                        />
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <label className="block text-sm font-medium">Weather</label>
+                                        <select 
+                                            className="border rounded p-2 w-full"
+                                            value={location.weather}
+                                            onChange={(e) => setLocation({...location, weather: e.target.value})}
+                                        >
+                                            {weatherOptions.map(w => (
+                                                <option key={w} value={w}>{w.replace('_', ' ')}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <label className="block text-sm font-medium">Season</label>
+                                        <select 
+                                            className="border rounded p-2 w-full"
+                                            value={location.season}
+                                            onChange={(e) => setLocation({...location, season: e.target.value})}
+                                        >
+                                            {['Winter', 'Spring', 'Summer', 'Fall'].map(s => (
+                                                <option key={s} value={s}>{s}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-4">
+                                    {loading ? (
+                                        <div className="col-span-2 flex items-center justify-center">
+                                            <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
+                                        </div>
+                                    ) : error ? (
+                                        <div className="col-span-2 p-4 bg-red-50 text-red-500 rounded">
+                                            {error}
+                                        </div>
+                                    ) : performance && (
+                                        <>
+                                            <div className="flex flex-col items-center p-4 bg-blue-50 rounded">
+                                                <Satellite className="w-6 h-6 text-blue-600" />
+                                                <div className="text-sm">Satellites</div>
+                                                <div className="text-xl font-bold">{performance.satellites}</div>
+                                            </div>
+                                            
+                                            <div className="flex flex-col items-center p-4 bg-green-50 rounded">
+                                                <Signal className="w-6 h-6 text-green-600" />
+                                                <div className="text-sm">QoE Score</div>
+                                                <div className="text-xl font-bold">{performance.qoe}</div>
+                                            </div>
+                                            
+                                            <div className="flex flex-col items-center p-4 bg-purple-50 rounded">
+                                                <Wifi className="w-6 h-6 text-purple-600" />
+                                                <div className="text-sm">Download</div>
+                                                <div className="text-xl font-bold">{performance.download} Mbps</div>
+                                            </div>
+                                            
+                                            <div className="flex flex-col items-center p-4 bg-orange-50 rounded">
+                                                <ActivitySquare className="w-6 h-6 text-orange-600" />
+                                                <div className="text-sm">Latency</div>
+                                                <div className="text-xl font-bold">{performance.latency} ms</div>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<StarlinkPredictor />, document.getElementById('root'));
+    </script>
+</body>
+</html>
