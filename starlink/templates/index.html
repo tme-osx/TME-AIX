@@ -1,185 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>Starlink Predictor</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starlink Performance Predictor</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/recharts/umd/Recharts.min.js"></script>
-    <script src="https://unpkg.com/lucide-react@latest"></script>
 </head>
-<body>
-    <div id="root"></div>
-    <script type="text/babel">
-        const { useState, useEffect } = React;
-        const { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } = Recharts;
-        const { Satellite, Signal, Wifi, ActivitySquare, Loader2 } = lucide;
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold text-center mb-8 text-blue-600">Starlink Performance Predictor</h1>
+        <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-6">
+            <form id="predictionForm" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Latitude:</label>
+                        <input type="number" id="latitude" value="33.87" step="0.01" min="-90" max="90" 
+                               class="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500"/>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Longitude:</label>
+                        <input type="number" id="longitude" value="-98.59" step="0.01" min="-180" max="180"
+                               class="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500"/>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Elevation (meters):</label>
+                    <input type="number" id="elevation" value="307" step="1"
+                           class="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500"/>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Season:</label>
+                        <select id="season" 
+                                class="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500">
+                            <option>Summer</option>
+                            <option>Winter</option>
+                            <option>Spring</option>
+                            <option>Fall</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Weather:</label>
+                        <select id="weather"
+                                class="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500">
+                            <option>Clear</option>
+                            <option>Light_Rain</option>
+                            <option>Moderate_Rain</option>
+                            <option>Rain</option>
+                            <option>Heavy_Rain</option>
+                            <option>Snow</option>
+                            <option>Dense_Fog</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" 
+                        class="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+                    Predict Performance
+                </button>
+            </form>
 
-        function StarlinkPredictor() {
-            const [location, setLocation] = useState({
-                latitude: 33.87,
-                longitude: -98.59,
-                elevation: 307,
-                season: 'Summer',
-                weather: 'Clear'
-            });
+            <div id="loading" class="hidden mt-6">
+                <div class="flex justify-center items-center">
+                    <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
+                </div>
+                <p class="text-center mt-2 text-gray-600">Processing prediction...</p>
+            </div>
 
-            const [performance, setPerformance] = useState(null);
-            const [loading, setLoading] = useState(false);
-            const [error, setError] = useState(null);
+            <div id="result" class="mt-6"></div>
+        </div>
+    </div>
 
-            const weatherOptions = [
-                'Clear', 'Light_Rain', 'Moderate_Rain', 'Rain', 
-                'Heavy_Rain', 'Snow', 'Dense_Fog'
-            ];
-
-            const seasonalData = [
-                { name: 'Winter', qoe: 85 },
-                { name: 'Spring', qoe: 92 },
-                { name: 'Summer', qoe: 95 },
-                { name: 'Fall', qoe: 88 }
-            ];
-
-            const fetchPrediction = async () => {
-                try {
-                    setLoading(true);
-                    setError(null);
-                    
-                    const response = await fetch('/predict', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(location)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error('Prediction failed');
-                    }
-
-                    const data = await response.json();
-                    setPerformance(data);
-                } catch (err) {
-                    setError(err.message);
-                } finally {
-                    setLoading(false);
-                }
+    <script>
+        document.getElementById('predictionForm').onsubmit = async (e) => {
+            e.preventDefault();
+            
+            const loadingElement = document.getElementById('loading');
+            const resultElement = document.getElementById('result');
+            
+            // Show loading, hide previous results
+            loadingElement.classList.remove('hidden');
+            resultElement.innerHTML = '';
+            
+            const data = {
+                latitude: parseFloat(document.getElementById('latitude').value),
+                longitude: parseFloat(document.getElementById('longitude').value),
+                elevation: parseFloat(document.getElementById('elevation').value),
+                season: document.getElementById('season').value,
+                weather: document.getElementById('weather').value
             };
 
-            useEffect(() => {
-                fetchPrediction();
-            }, [location]);
+            try {
+                const basePath = window.location.pathname.replace(/\/$/, '');
+                console.log('Making prediction request to:', `${window.location.origin}${basePath}/predict`);
+                
+                const response = await fetch(`${basePath}/predict`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
 
-            return (
-                <div className="w-full max-w-6xl mx-auto p-4 space-y-4">
-                    <div className="bg-white shadow rounded-lg">
-                        <div className="p-6">
-                            <h2 className="text-2xl font-bold mb-6">
-                                Starlink Performance Predictor
-                            </h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="space-y-4">
-                                    <div className="space-y-2">
-                                        <label className="block text-sm font-medium">Latitude</label>
-                                        <input
-                                            type="number"
-                                            value={location.latitude}
-                                            onChange={(e) => setLocation({...location, latitude: parseFloat(e.target.value)})}
-                                            className="border rounded p-2 w-full"
-                                            min="-90"
-                                            max="90"
-                                            step="0.1"
-                                        />
-                                    </div>
-                                    
-                                    <div className="space-y-2">
-                                        <label className="block text-sm font-medium">Longitude</label>
-                                        <input
-                                            type="number"
-                                            value={location.longitude}
-                                            onChange={(e) => setLocation({...location, longitude: parseFloat(e.target.value)})}
-                                            className="border rounded p-2 w-full"
-                                            min="-180"
-                                            max="180"
-                                            step="0.1"
-                                        />
-                                    </div>
+                if (!response.ok) {
+                    throw new Error(`Request failed with status: ${response.status}`);
+                }
 
-                                    <div className="space-y-2">
-                                        <label className="block text-sm font-medium">Weather</label>
-                                        <select 
-                                            className="border rounded p-2 w-full"
-                                            value={location.weather}
-                                            onChange={(e) => setLocation({...location, weather: e.target.value})}
-                                        >
-                                            {weatherOptions.map(w => (
-                                                <option key={w} value={w}>{w.replace('_', ' ')}</option>
-                                            ))}
-                                        </select>
-                                    </div>
-
-                                    <div className="space-y-2">
-                                        <label className="block text-sm font-medium">Season</label>
-                                        <select 
-                                            className="border rounded p-2 w-full"
-                                            value={location.season}
-                                            onChange={(e) => setLocation({...location, season: e.target.value})}
-                                        >
-                                            {['Winter', 'Spring', 'Summer', 'Fall'].map(s => (
-                                                <option key={s} value={s}>{s}</option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-2 gap-4">
-                                    {loading ? (
-                                        <div className="col-span-2 flex items-center justify-center">
-                                            <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
-                                        </div>
-                                    ) : error ? (
-                                        <div className="col-span-2 p-4 bg-red-50 text-red-500 rounded">
-                                            {error}
-                                        </div>
-                                    ) : performance && (
-                                        <>
-                                            <div className="flex flex-col items-center p-4 bg-blue-50 rounded">
-                                                <Satellite className="w-6 h-6 text-blue-600" />
-                                                <div className="text-sm">Satellites</div>
-                                                <div className="text-xl font-bold">{performance.satellites}</div>
-                                            </div>
-                                            
-                                            <div className="flex flex-col items-center p-4 bg-green-50 rounded">
-                                                <Signal className="w-6 h-6 text-green-600" />
-                                                <div className="text-sm">QoE Score</div>
-                                                <div className="text-xl font-bold">{performance.qoe}</div>
-                                            </div>
-                                            
-                                            <div className="flex flex-col items-center p-4 bg-purple-50 rounded">
-                                                <Wifi className="w-6 h-6 text-purple-600" />
-                                                <div className="text-sm">Download</div>
-                                                <div className="text-xl font-bold">{performance.download} Mbps</div>
-                                            </div>
-                                            
-                                            <div className="flex flex-col items-center p-4 bg-orange-50 rounded">
-                                                <ActivitySquare className="w-6 h-6 text-orange-600" />
-                                                <div className="text-sm">Latency</div>
-                                                <div className="text-xl font-bold">{performance.latency} ms</div>
-                                            </div>
-                                        </>
-                                    )}
-                                </div>
+                const result = await response.json();
+                
+                resultElement.innerHTML = `
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">Prediction Results</h2>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <p class="text-sm text-gray-600">QoE Score</p>
+                                <p class="text-2xl font-bold text-green-600">${result.qoe}</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <p class="text-sm text-gray-600">Download Speed</p>
+                                <p class="text-2xl font-bold text-blue-600">${result.download} Mbps</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <p class="text-sm text-gray-600">Upload Speed</p>
+                                <p class="text-2xl font-bold text-blue-600">${result.upload} Mbps</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <p class="text-sm text-gray-600">Latency</p>
+                                <p class="text-2xl font-bold text-orange-600">${result.latency} ms</p>
                             </div>
                         </div>
                     </div>
-                </div>
-            );
-        }
+                `;
+            } catch (error) {
+                console.error('Error:', error);
+                resultElement.innerHTML = `
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                        <p class="text-red-600 font-medium">Error: ${error.message}</p>
+                    </div>
+                `;
+            } finally {
+                loadingElement.classList.add('hidden');
+            }
+        };
 
-        ReactDOM.render(<StarlinkPredictor />, document.getElementById('root'));
+        // Debug information on page load
+        window.onload = () => {
+            console.log('Page loaded successfully');
+            console.log('Current URL:', window.location.href);
+            console.log('Base path:', window.location.pathname);
+        };
     </script>
 </body>
 </html>
