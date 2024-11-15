@@ -70,25 +70,11 @@
         "serving_satellites": 4
     },
     {
-        "name": "Sample Camping Location 11",
-        "latitude": -6.6162569556247846,
-        "longitude": 130.4456574870817,
-        "visible_satellites": 12,
-        "serving_satellites": 2
-    },
-    {
         "name": "Sample Camping Location 12",
         "latitude": -24.572580488140993,
         "longitude": 128.10504992248343,
         "visible_satellites": 13,
         "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 13",
-        "latitude": -25.741722946080266,
-        "longitude": -28.219176211863953,
-        "visible_satellites": 19,
-        "serving_satellites": 2
     },
     {
         "name": "Sample Camping Location 14",
@@ -102,34 +88,6 @@
         "latitude": 50.01350828851358,
         "longitude": 60.51066183809107,
         "visible_satellites": 13,
-        "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 16",
-        "latitude": 29.927171361136516,
-        "longitude": -131.79751425286662,
-        "visible_satellites": 16,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 17",
-        "latitude": 23.128658443980456,
-        "longitude": -57.80024009078326,
-        "visible_satellites": 12,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 18",
-        "latitude": 23.514262707872433,
-        "longitude": -82.10830995400684,
-        "visible_satellites": 14,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 19",
-        "latitude": -2.9145392495410434,
-        "longitude": 131.1252742998459,
-        "visible_satellites": 16,
         "serving_satellites": 4
     },
     {
@@ -161,46 +119,11 @@
         "serving_satellites": 4
     },
     {
-        "name": "Sample Camping Location 24",
-        "latitude": 17.22967882959405,
-        "longitude": -142.27123087511458,
-        "visible_satellites": 13,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 25",
-        "latitude": -8.674177045288943,
-        "longitude": -125.23185794066401,
-        "visible_satellites": 18,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 26",
-        "latitude": 20.871065888268674,
-        "longitude": 138.91012381992317,
-        "visible_satellites": 12,
-        "serving_satellites": 3
-    },
-    {
         "name": "Sample Camping Location 27",
         "latitude": -12.339369664321481,
         "longitude": -42.76791495757857,
         "visible_satellites": 16,
         "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 28",
-        "latitude": 27.658083409162202,
-        "longitude": -31.88975785230562,
-        "visible_satellites": 15,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 29",
-        "latitude": -35.68145917235748,
-        "longitude": 77.73047920454275,
-        "visible_satellites": 13,
-        "serving_satellites": 2
     },
     {
         "name": "Sample Camping Location 30",
@@ -210,104 +133,6 @@
         "serving_satellites": 2
     },
     {
-        "name": "Sample Camping Location 31",
-        "latitude": 57.330181456165406,
-        "longitude": -35.93452015175686,
-        "visible_satellites": 19,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 32",
-        "latitude": -57.22033896030965,
-        "longitude": -83.92756256399556,
-        "visible_satellites": 17,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 33",
-        "latitude": 0.7762494248281726,
-        "longitude": -110.47427830553538,
-        "visible_satellites": 18,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 34",
-        "latitude": -44.783193541377194,
-        "longitude": 26.668694434413226,
-        "visible_satellites": 17,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 35",
-        "latitude": 55.01510838503859,
-        "longitude": -23.452871921444682,
-        "visible_satellites": 18,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 36",
-        "latitude": -39.1047224899108,
-        "longitude": -50.07688368883203,
-        "visible_satellites": 15,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 37",
-        "latitude": -21.121167487441156,
-        "longitude": -106.6717257014205,
-        "visible_satellites": 19,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 38",
-        "latitude": 24.461001711416216,
-        "longitude": -72.58515326263696,
-        "visible_satellites": 13,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 39",
-        "latitude": -2.0631375784566046,
-        "longitude": -138.53296180656946,
-        "visible_satellites": 19,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 40",
-        "latitude": -29.722322872404284,
-        "longitude": -111.52925236541955,
-        "visible_satellites": 19,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 41",
-        "latitude": 46.585432944344916,
-        "longitude": -152.84282320918143,
-        "visible_satellites": 14,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 42",
-        "latitude": -0.05717210930195904,
-        "longitude": -117.65310893122435,
-        "visible_satellites": 17,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 43",
-        "latitude": 20.975016279641864,
-        "longitude": -72.638477382426,
-        "visible_satellites": 19,
-        "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 44",
-        "latitude": 39.33777200533376,
-        "longitude": -64.68062951261199,
-        "visible_satellites": 18,
-        "serving_satellites": 3
-    },
-    {
         "name": "Sample Camping Location 45",
         "latitude": 33.79022536016009,
         "longitude": -98.5952714693848,
@@ -315,38 +140,10 @@
         "serving_satellites": 4
     },
     {
-        "name": "Sample Camping Location 46",
-        "latitude": -52.80369522377468,
-        "longitude": -148.27926602750748,
-        "visible_satellites": 12,
-        "serving_satellites": 3
-    },
-    {
         "name": "Sample Camping Location 47",
         "latitude": 30.077056192782337,
         "longitude": 6.409093841335476,
         "visible_satellites": 18,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 48",
-        "latitude": -10.197130813458415,
-        "longitude": -18.58584562031905,
-        "visible_satellites": 15,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 49",
-        "latitude": 28.489677393670775,
-        "longitude": -141.09585654737924,
-        "visible_satellites": 13,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 50",
-        "latitude": -57.04046141257165,
-        "longitude": 38.607059880774386,
-        "visible_satellites": 16,
         "serving_satellites": 2
     },
     {
@@ -357,102 +154,11 @@
         "serving_satellites": 4
     },
     {
-        "name": "Sample Camping Location 52",
-        "latitude": -54.58360896371524,
-        "longitude": -74.39534194806654,
-        "visible_satellites": 18,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 53",
-        "latitude": -39.42366435106344,
-        "longitude": -127.47252341684307,
-        "visible_satellites": 12,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 54",
-        "latitude": -37.73728844332178,
-        "longitude": -104.48524725819652,
-        "visible_satellites": 14,
-        "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 55",
-        "latitude": -35.58618254582965,
-        "longitude": -104.99261929097891,
-        "visible_satellites": 18,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 56",
-        "latitude": -35.3352054440471,
-        "longitude": -173.4434896067516,
-        "visible_satellites": 19,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 57",
-        "latitude": 48.01849961344578,
-        "longitude": -41.25203150346479,
-        "visible_satellites": 14,
-        "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 58",
-        "latitude": -11.612369228349522,
-        "longitude": 12.843419743665635,
-        "visible_satellites": 14,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 59",
-        "latitude": 8.3435419771629,
-        "longitude": -116.3952955579837,
-        "visible_satellites": 17,
-        "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 60",
-        "latitude": -20.3168551476698,
-        "longitude": 58.48865171803257,
-        "visible_satellites": 12,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 61",
-        "latitude": 32.46167972067322,
-        "longitude": -25.254828620196918,
-        "visible_satellites": 17,
-        "serving_satellites": 2
-    },
-    {
         "name": "Sample Camping Location 62",
         "latitude": -10.773473404462528,
         "longitude": 28.83320489518158,
         "visible_satellites": 19,
         "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 63",
-        "latitude": -54.92948674159478,
-        "longitude": -57.95908279453431,
-        "visible_satellites": 14,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 64",
-        "latitude": -32.445054762048485,
-        "longitude": 67.15991010500235,
-        "visible_satellites": 19,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 65",
-        "latitude": 19.50632733552763,
-        "longitude": -178.0258323367668,
-        "visible_satellites": 15,
-        "serving_satellites": 4
     },
     {
         "name": "Sample Camping Location 66",
@@ -462,73 +168,10 @@
         "serving_satellites": 3
     },
     {
-        "name": "Sample Camping Location 67",
-        "latitude": 14.766957194864474,
-        "longitude": -23.721414219143355,
-        "visible_satellites": 17,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 68",
-        "latitude": -10.658579020713177,
-        "longitude": 77.85923398522743,
-        "visible_satellites": 18,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 69",
-        "latitude": 3.2150342325140784,
-        "longitude": -33.18072113486406,
-        "visible_satellites": 13,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 70",
-        "latitude": 23.33502259969535,
-        "longitude": 155.05921497730316,
-        "visible_satellites": 15,
-        "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 71",
-        "latitude": -47.855742890188296,
-        "longitude": 173.24312475138055,
-        "visible_satellites": 14,
-        "serving_satellites": 2
-    },
-    {
         "name": "Sample Camping Location 72",
         "latitude": -9.37661378144216,
         "longitude": 38.93067548604466,
         "visible_satellites": 13,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 73",
-        "latitude": 30.377549082144796,
-        "longitude": -166.62579360637505,
-        "visible_satellites": 15,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 74",
-        "latitude": -42.10119066594656,
-        "longitude": 67.85160409997135,
-        "visible_satellites": 19,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 75",
-        "latitude": -25.382920589821566,
-        "longitude": 154.31375642944272,
-        "visible_satellites": 17,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 76",
-        "latitude": -27.894716121346278,
-        "longitude": -119.10975515873696,
-        "visible_satellites": 12,
         "serving_satellites": 3
     },
     {
@@ -539,24 +182,10 @@
         "serving_satellites": 3
     },
     {
-        "name": "Sample Camping Location 78",
-        "latitude": 35.12538124686628,
-        "longitude": -59.59887435941734,
-        "visible_satellites": 16,
-        "serving_satellites": 2
-    },
-    {
         "name": "Sample Camping Location 79",
         "latitude": 33.570218734732066,
         "longitude": 127.35292584285071,
         "visible_satellites": 12,
-        "serving_satellites": 3
-    },
-    {
-        "name": "Sample Camping Location 80",
-        "latitude": -34.09496444081576,
-        "longitude": -92.52419297669094,
-        "visible_satellites": 16,
         "serving_satellites": 3
     },
     {
@@ -574,13 +203,6 @@
         "serving_satellites": 3
     },
     {
-        "name": "Sample Camping Location 83",
-        "latitude": 6.333574675222337,
-        "longitude": 68.10394777009239,
-        "visible_satellites": 12,
-        "serving_satellites": 4
-    },
-    {
         "name": "Sample Camping Location 84",
         "latitude": -8.11520861205446,
         "longitude": 135.83153724973806,
@@ -593,20 +215,6 @@
         "longitude": -2.259959787346162,
         "visible_satellites": 15,
         "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 86",
-        "latitude": -9.371102819762655,
-        "longitude": -113.46131184731011,
-        "visible_satellites": 18,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 87",
-        "latitude": -10.208809180651755,
-        "longitude": -10.940370523548893,
-        "visible_satellites": 13,
-        "serving_satellites": 3
     },
     {
         "name": "Sample Camping Location 88",
@@ -630,34 +238,6 @@
         "serving_satellites": 2
     },
     {
-        "name": "Sample Camping Location 91",
-        "latitude": 15.984497945125014,
-        "longitude": -48.9489774221754,
-        "visible_satellites": 17,
-        "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 92",
-        "latitude": 8.640089259158401,
-        "longitude": -162.57825020905568,
-        "visible_satellites": 19,
-        "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 93",
-        "latitude": 23.273303521358272,
-        "longitude": 36.617084483264875,
-        "visible_satellites": 18,
-        "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 94",
-        "latitude": -35.83677013544059,
-        "longitude": -160.3536097188837,
-        "visible_satellites": 18,
-        "serving_satellites": 4
-    },
-    {
         "name": "Sample Camping Location 95",
         "latitude": 45.26244518927656,
         "longitude": -101.15776386357071,
@@ -665,32 +245,11 @@
         "serving_satellites": 4
     },
     {
-        "name": "Sample Camping Location 96",
-        "latitude": -44.32229054021523,
-        "longitude": -136.75876649334563,
-        "visible_satellites": 15,
-        "serving_satellites": 3
-    },
-    {
         "name": "Sample Camping Location 97",
         "latitude": -37.37380023343026,
         "longitude": 149.0930452953018,
         "visible_satellites": 19,
         "serving_satellites": 4
-    },
-    {
-        "name": "Sample Camping Location 98",
-        "latitude": 36.726951670724404,
-        "longitude": -7.2734141034745505,
-        "visible_satellites": 16,
-        "serving_satellites": 2
-    },
-    {
-        "name": "Sample Camping Location 99",
-        "latitude": -4.5831104309406,
-        "longitude": -5.093505366727015,
-        "visible_satellites": 18,
-        "serving_satellites": 2
     },
     {
         "name": "Sample Camping Location 100",
