@@ -1,6 +1,6 @@
 # Starlink Internet Service Quality of Experience Predictions
-We train a neural network transformer model to predict ISP QoE. <br>
-Data-Set: <br>
-Final-Model: <br>
-## Result
-[Starlink Coverage Predictions]<br>
+We have traind a neural network transformer model to predict ISP QoE. <br>
+## Data
+![Data Structure](https://raw.githubusercontent.com/tme-osx/TME-AIX/refs/heads/main/starlink/images/starlink-data.png)<br>
+## Web UI
+![Interface](https://raw.githubusercontent.com/tme-osx/TME-AIX/refs/heads/main/starlink/images/starlink-main.png)<br>
