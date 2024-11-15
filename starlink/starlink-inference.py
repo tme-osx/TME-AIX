@@ -1,33 +1,55 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, make_response
 from flask_cors import CORS
 import torch
 import joblib
 import numpy as np
+import pandas as pd
 import os
+import json
 from pathlib import Path
 
 app = Flask(__name__)
+
+# CORS configuration
 CORS(app, resources={
     r"/*": {
-        "origins": "*",
+        "origins": ["*"],
         "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type", "Authorization"]
+        "allow_headers": ["Content-Type", "Authorization"],
+        "expose_headers": ["Content-Type"],
+        "max_age": 3600
     }
 })
 
-# Global variables
-model = None
-scaler = None
-label_encoders = None
-
-# Get the current working directory for Jupyter
+# Directory setup
 BASE_DIR = os.getcwd()
+DATA_DIR = os.path.join(BASE_DIR, 'data')
 MODELS_DIR = os.path.join(BASE_DIR, 'models')
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
+# Create directories
+os.makedirs(DATA_DIR, exist_ok=True)
+os.makedirs(MODELS_DIR, exist_ok=True)
+os.makedirs(TEMPLATES_DIR, exist_ok=True)
+
 print(f"Base directory: {BASE_DIR}")
+print(f"Data directory: {DATA_DIR}")
 print(f"Models directory: {MODELS_DIR}")
 print(f"Templates directory: {TEMPLATES_DIR}")
+
+# Load data
+try:
+    with open(os.path.join(DATA_DIR, 'starlink_locations.json'), 'r') as f:
+        locations_data = json.load(f)
+    print(f"Loaded {len(locations_data)} locations")
+
+    with open(os.path.join(DATA_DIR, 'elevation_cache.json'), 'r') as f:
+        elevation_cache = json.load(f)
+    print("Loaded elevation cache")
+except Exception as e:
+    print(f"Error loading data: {str(e)}")
+    locations_data = []
+    elevation_cache = {}
 
 class StarlinkTransformer(torch.nn.Module):
     def __init__(self, input_dim, num_heads=4, dim_feedforward=128, dropout=0.1):
@@ -49,185 +71,144 @@ class StarlinkTransformer(torch.nn.Module):
         x = torch.mean(x, dim=1)
         return self.fc(x)
 
+# Global model variables
+model = None
+scaler = None
+label_encoders = None
+
 def load_model():
-    """Load model and preprocessing objects"""
     global model, scaler, label_encoders
-    
     try:
-        model_path = os.path.join(MODELS_DIR, 'starlink_transformer.pth')
-        scaler_path = os.path.join(MODELS_DIR, 'scaler.joblib')
-        encoders_path = os.path.join(MODELS_DIR, 'label_encoders.joblib')
-        
-        print("\nChecking model files:")
-        print(f"Model path exists: {os.path.exists(model_path)}")
-        print(f"Scaler path exists: {os.path.exists(scaler_path)}")
-        print(f"Encoders path exists: {os.path.exists(encoders_path)}")
-        
-        if not all(os.path.exists(p) for p in [model_path, scaler_path, encoders_path]):
-            raise FileNotFoundError(f"Missing model files in {MODELS_DIR}")
-        
-        # Load model
         model = StarlinkTransformer(input_dim=8)
-        model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
+        model.load_state_dict(torch.load(os.path.join(MODELS_DIR, 'starlink_transformer.pth')))
         model.eval()
         
-        # Load preprocessing objects
-        scaler = joblib.load(scaler_path)
-        label_encoders = joblib.load(encoders_path)
-        
-        print("Model and preprocessing objects loaded successfully")
+        scaler = joblib.load(os.path.join(MODELS_DIR, 'scaler.joblib'))
+        label_encoders = joblib.load(os.path.join(MODELS_DIR, 'label_encoders.joblib'))
         return True
-    
     except Exception as e:
         print(f"Error loading model: {str(e)}")
         return False
 
+# Routes with CORS handling
 @app.route('/')
 def home():
-    try:
-        template_path = os.path.join(TEMPLATES_DIR, 'index.html')
-        print(f"Template path: {template_path}")
-        print(f"Template exists: {os.path.exists(template_path)}")
-        
-        if not os.path.exists(template_path):
-            return "Template not found", 404
-            
-        return render_template('index.html')
-    except Exception as e:
-        print(f"Error rendering template: {str(e)}")
-        return str(e), 500
+    response = make_response(render_template('index.html'))
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
-@app.route('/api')
-def api_info():
-    return jsonify({
-        'endpoints': {
-            '/': 'Web interface',
-            '/api': 'This API documentation',
-            '/predict': 'POST endpoint for predictions',
-            '/health': 'Health check'
-        },
-        'predict_example': {
-            'method': 'POST',
-            'content-type': 'application/json',
-            'body': {
-                'latitude': 33.87,
-                'longitude': -98.59,
-                'elevation': 307,
-                'season': 'Summer',
-                'weather': 'Clear'
-            }
-        }
-    })
+@app.route('/locations', methods=['GET', 'OPTIONS'])
+def get_locations():
+    if request.method == 'OPTIONS':
+        return handle_preflight()
+    
+    response = make_response(jsonify(locations_data))
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
-@app.route('/health')
-def health():
-    return jsonify({
-        'status': 'healthy',
-        'cwd': os.getcwd(),
-        'models_dir': MODELS_DIR,
-        'templates_dir': TEMPLATES_DIR,
-        'model_loaded': model is not None,
-        'preprocessors_loaded': scaler is not None and label_encoders is not None
-    })
+@app.route('/elevation/<float:lat>/<float:lon>', methods=['GET', 'OPTIONS'])
+def get_elevation(lat, lon):
+    if request.method == 'OPTIONS':
+        return handle_preflight()
+    
+    key = f"{lat},{lon}"
+    elevation = elevation_cache.get(key, 100.0)
+    response = make_response(jsonify({'elevation': elevation}))
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route('/predict', methods=['POST', 'OPTIONS'])
 def predict():
     if request.method == 'OPTIONS':
-        return '', 204
-        
-    global model, scaler, label_encoders
+        return handle_preflight()
+    
+    if model is None and not load_model():
+        return jsonify({'error': 'Model not loaded'}), 500
     
     try:
-        if model is None or scaler is None or label_encoders is None:
-            if not load_model():
-                return jsonify({'error': 'Model not loaded properly'}), 500
-        
         data = request.json
-        print(f"Received request data: {data}")
+        lat = data['latitude']
+        lon = data['longitude']
+        season = data['season']
+        weather = data['weather']
         
-        # Ensure all required fields are present
-        required_fields = ['latitude', 'longitude', 'elevation', 'season', 'weather']
-        if not all(field in data for field in required_fields):
-            missing = [f for f in required_fields if f not in data]
-            return jsonify({'error': f'Missing required fields: {missing}'}), 400
+        elevation = elevation_cache.get(f"{lat},{lon}", 100.0)
         
-        # Transform categorical variables
-        try:
-            season_encoded = label_encoders['season'].transform([data['season']])[0]
-            weather_encoded = label_encoders['weather'].transform([data['weather']])[0]
-        except ValueError as e:
-            return jsonify({'error': f'Invalid season or weather value: {str(e)}'}), 400
-        
-        # Prepare features
         features = np.array([[
-            data['latitude'],
-            data['longitude'],
-            data['elevation'],
-            15,  # visible_satellites default
-            3,   # serving_satellites default
-            0.51, # signal_loss_db default
-            season_encoded,
-            weather_encoded
+            lat,
+            lon,
+            elevation,
+            15,  # visible_satellites
+            3,   # serving_satellites
+            0.51, # signal_loss_db
+            label_encoders['season'].transform([season])[0],
+            label_encoders['weather'].transform([weather])[0]
         ]])
         
-        # Scale features
         features_scaled = scaler.transform(features)
         
-        # Make prediction
         with torch.no_grad():
             X = torch.FloatTensor(features_scaled)
             prediction = model(X.unsqueeze(1))
             qoe = prediction.item()
         
-        return jsonify({
+        response = make_response(jsonify({
             'qoe': round(qoe, 2),
             'satellites': 15,
             'download': round(130 * (qoe/100)),
             'upload': round(15 * (qoe/100)),
-            'latency': round(40 + abs(data['latitude'])/90 * 20)
-        })
+            'latency': round(40 + abs(lat)/90 * 20)
+        }))
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
         
     except Exception as e:
-        print(f"Prediction error: {str(e)}")
         return jsonify({'error': str(e)}), 500
+
+@app.route('/debug/cors', methods=['GET', 'OPTIONS'])
+def debug_cors():
+    """Debug endpoint to test CORS"""
+    if request.method == 'OPTIONS':
+        return handle_preflight()
+    
+    return jsonify({
+        'status': 'ok',
+        'headers': dict(request.headers),
+        'origin': request.headers.get('Origin', 'none'),
+        'method': request.method
+    })
+
+def handle_preflight():
+    """Handle CORS preflight requests"""
+    response = make_response()
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+    response.headers.add('Access-Control-Max-Age', '3600')
+    return response
 
 @app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
     return response
 
 if __name__ == '__main__':
-    # Create directories if they don't exist
-    os.makedirs(MODELS_DIR, exist_ok=True)
-    os.makedirs(TEMPLATES_DIR, exist_ok=True)
+    print("\nStarlink Performance Predictor")
+    print("=============================")
     
-    # Set Flask template folder
-    app.template_folder = TEMPLATES_DIR
-    
-    print("\nStarlink Predictor Server")
-    print("=========================")
-    print("\nDirectory Structure:")
-    print(f"BASE_DIR: {BASE_DIR}")
-    print(f"MODELS_DIR: {MODELS_DIR}")
-    print(f"TEMPLATES_DIR: {TEMPLATES_DIR}")
-    
-    # Initial model load
     if load_model():
-        print("\nModel loaded successfully")
+        print("Model loaded successfully")
     else:
-        print("\nWarning: Model not loaded. Please check the model files location")
-        print(f"Expected model files in: {MODELS_DIR}")
-        print("Required files:")
-        print("- starlink_transformer.pth")
-        print("- scaler.joblib")
-        print("- label_encoders.joblib")
+        print("Warning: Model not loaded")
     
     print("\nAvailable endpoints:")
     print("1. Web Interface: http://localhost:35001/")
-    print("2. API Info:      http://localhost:35001/api")
-    print("3. Health Check:  http://localhost:35001/health")
-    print("4. Predictions:   http://localhost:35001/predict (POST)\n")
+    print("2. API Endpoints:")
+    print("   - GET  /locations")
+    print("   - GET  /elevation/<lat>/<lon>")
+    print("   - POST /predict")
+    print("3. Debug: /debug/cors\n")
     
     app.run(host='0.0.0.0', port=35001, debug=False)
