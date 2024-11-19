@@ -1,14 +1,18 @@
 
-# AI Model Chaining Driven Root Cause Analysis (RCA) with GenAI and RAG Use<br>
+# 5G Operations (OSS) Root Cause Analysis (RCA) with GenAI and RAG Use<br>
 
-This project delivers multi-source data analysis with Model Chaining to detect and resolve anomalies, break down :<br>
-     - Process a csv files containing time-series telecom metrics<br>
-     - Find anomalies within the data<br>
-     - Employs RAG for the systemd log files to find the correlation between the logs and anomalies<br>
-     - Provides an root cause analysis and the end of the execution<br>
+This project delivers multi-source data analysis with Model Chaining (Classic-AI -> GenAI) leveraging Vector Store for Log Data Association. 
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/tme-osx/TME-AIX/refs/heads/main/llm-rca/images/flow.png"/>
+</div>
+
+**Options:**<br>
+[1] Use of OpenAI backend for GenAI part: Select -> [llm-ml-rca.ipynb](https://github.com/tme-osx/TME-AIX/blob/main/llm-rca/llm-ml-rca.ipynb) <br>
+[2] Option-A: Open-AI's ChatGPT or Option-B: Use of Red Hat Openshift AI Model as a Service backend for GenAI part: Select -> [maas-rca.ipynb](https://github.com/tme-osx/TME-AIX/blob/main/llm-rca/maas-rca.ipynb)
 
 ## Metric file processing
-It starts with a processing a telecom metric file. The follwoing is an example of the metrics:<br>
+It starts with a processing a telecom metric file. The following is an example set of the metric data:<br>
 
 |time                | call_attempt | call_success | call_failure | total_registered_subs |  call_success_rate |
 ---------------------|--------------|--------------|--------------|-----------------------|--------------------|
@@ -18,12 +22,8 @@ It starts with a processing a telecom metric file. The follwoing is an example o
 3 2024-09-04 00:03:00|           113|           111|             1|                   9035|               98.23|
 4 2024-09-04 00:04:00|           112|           111|             1|                   9092|               99.10|
 
-
-It contains a machine learning model for anomaly detection by using simple isolation forest algorithm.<br>
-
-
 ## Anomaly detection
-Anomalies found:<br>
+It uses a machine learning model for anomaly detection by using simple isolation forest algorithm.<br>Anomalies found:<br>
 
 |time                  | call_attempt | call_success | call_failure | total_registered_subs |  call_success_rate |is_anomaly|
 -----------------------|--------------|--------------|--------------|-----------------------|--------------------|----------|
@@ -32,12 +32,10 @@ Anomalies found:<br>
 685 2024-09-04 11:25:00|           112|            40|             0|                   9089|               35.73|        -1|
 686 2024-09-04 11:26:00|           114|            70|             2|                   9035|               61.49|        -1|
 
+## Root Cause Analysis 
+After detection of the anomalies -> builds a VectorDB with Logs and finds assocated data pieces inside -> Passes to GenAI model that provides and RCA accrodingly<br>
 
-## LLM with RAG
-After processing the log file via RAG, it provides and RCA accrodingly:<br>
-
-
-## RCA (Root Cause Analysis)
+## Example Test Output
 Root Cause Analysis:<br>
 Based on the provided logs and metrics, the anomalies in the metrics seem to be related to the OpenStack services, specifically the Open vSwitch service and the Nova Compute service.<br>
 

@@ -1,7 +1,8 @@
 pandas
 numpy
 scikit-learn
-dotenv
+python-dotenv
 langchain
 langchain_openai
 langchain_community
+faiss-cpu

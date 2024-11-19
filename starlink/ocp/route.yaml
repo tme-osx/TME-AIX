@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: starlink-predictor
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: starlink-predictor

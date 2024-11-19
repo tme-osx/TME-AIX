@@ -8,20 +8,20 @@ This repository is dedicated to exploring various TME use-cases built around ope
 
 ## Article
 Our Project Summary: [TrueAI4Telco](https://medium.com/open-5g-hypercore/episode-xxiii-trueai4telco-3e372898ce06) <br>
-Short AI Native Telco Recording: [AINativeTelco-Video](https://drive.google.com/file/d/1AuImD3qL28GGekMuSQSFP7aYV5kMxmPj/view?usp=sharing)
 
 ## Projects
-1. [Revenue Assurance and Fraud Management (RAFM)](https://github.com/fenar/TME-AIX/tree/main/revenueassurance) & [ShortDemoVideo](https://drive.google.com/file/d/19XQey7w_q6xW79fwUebDXJbCDQWXQcFs/view?usp=drive_link)
-2. [Service Assurance Latency & NPS Predictions](https://github.com/fenar/TME-AIX/tree/main/serviceassurance) & [ShortDemoVideo](https://drive.google.com/file/d/1QIm2rmIkZOiozLVoDhKVgUimPJH3WUi7/view?usp=drive_link)
+1. [Revenue Assurance and Fraud Management (RAFM)](https://github.com/fenar/TME-AIX/tree/main/revenueassurance) 
+2. [Service Assurance Latency & NPS Predictions](https://github.com/fenar/TME-AIX/tree/main/serviceassurance) 
 3. [5G Network Operation Fault Predictions](https://github.com/fenar/TME-AIX/tree/main/5gnetops)
 4. [Sustainability & Energy Efficiency](https://github.com/fenar/TME-AIX/tree/main/sustainability)
 5. [SecOps-AI for Networking](https://github.com/fenar/TME-AIX/tree/main/secops)
 6. [AI Powered SmartGrid](https://github.com/fenar/TME-AIX/tree/main/smartgrid)
 7. [IoT Perimeter Security](https://github.com/fenar/TME-AIX/tree/main/iot-sec)
 8. [5G CNF RCA with LLM](https://github.com/ansonmez/5g_llm_ilab_demo)
-9. [Customer Relation Management Voice App](https://github.com/tme-osx/TME-AIX/tree/main/crm) & [ShortDemoVideo](https://drive.google.com/file/d/1SwPuo9_eCwWnHfqjMYXAgCoTEeFhnB_H/view?usp=drive_link)
-10. [RootCauseAnalysis & Resolution with GenAI + RAG](https://github.com/tme-osx/TME-AIX/tree/main/llm-rca)
-11. ... {Please Reach Us for Interesting Usecases and Interesting Big Data & Automation Projects}
+9. [Customer Relation Management Voice App](https://github.com/tme-osx/TME-AIX/tree/main/crm) 
+10. [Anomaly Detection & RootCauseAnalysis with Model Chaining + Use of RAG for DataMesh](https://github.com/tme-osx/TME-AIX/tree/main/llm-rca)
+11. [Starlink -Satellite ISP- Quality of Experience Predictions](https://github.com/tme-osx/TME-AIX/tree/main/starlink)
+12. [Autonomous 5G Core with AI : WIP]
 
 ## Explore More on HuggingFace
 Discover our models and datasets on HuggingFace:
