@@ -1,6 +1,10 @@
 # Starlink Internet Service Quality of Experience Predictions
 
-AIM: When a nomadic user (ex; Camper with RV) likes to reach internet sometimes mobile cellular radio access solutions may not be feasible (no-coverage, bad price/performance), instead satellite internet access can be a good alternative. As Starlink becoming more robust by means of coverage and connection speeds, the quality of experience still varios per geo-location due to altitude, number satellites being visible, impact of weather, satellite line of sight obstruction etc. For a traveler to be aware of the quality of internet service on Starlink, we have trained a neural network transformer model to predict QoE. <br>
+Objective: Nomadic users, such as RV campers, often face challenges accessing the internet in remote locations. While mobile cellular radio access solutions may sometimes prove inadequate due to limited coverage or suboptimal price-to-performance ratios, satellite internet offers a compelling alternative.
+
+With Starlink emerging as a robust option, providing improved coverage and connection speeds, its Quality of Experience (QoE) remains variable across different geographic locations. Factors such as altitude, the number of visible satellites, weather conditions, and potential obstructions affecting satellite line-of-sight significantly influence service quality.
+
+To empower travelers with insights into Starlink's internet service quality at their destination, we have developed and trained a neural network transformer model. This model predicts QoE by analyzing key parameters, offering nomadic users a AI-Tool to anticipate and plan their connectivity needs effectively.<br>
 
 <div align="center">
     <img src="https://raw.githubusercontent.com/tme-osx/TME-AIX/refs/heads/RedHat-Special/starlink/images/starling-qoe-moods.png" width="640"/>
