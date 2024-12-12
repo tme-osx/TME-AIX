@@ -8,8 +8,8 @@ This project delivers multi-source data analysis with Model Chaining (Classic-AI
 </div>
 
 **Options:**<br>
-[1] Use of OpenAI backend for GenAI part: Select -> [llm-ml-rca.ipynb](https://github.com/tme-osx/TME-AIX/blob/main/llm-rca/llm-ml-rca.ipynb) <br>
-[2] Option-A: Open-AI's ChatGPT or Option-B: Use of Red Hat Openshift AI Model as a Service backend for GenAI part: Select -> [maas-rca.ipynb](https://github.com/tme-osx/TME-AIX/blob/main/llm-rca/maas-rca.ipynb)
+[1] Option-A: Use of OpenAI backend for GenAI part: Select -> [llm-ml-rca.ipynb](https://github.com/tme-osx/TME-AIX/blob/main/llm-rca/llm-ml-rca.ipynb) <br>
+[2] Option-B: Use of Red Hat Openshift AI Model as a Service backend for GenAI part: Select -> [maas-rca.ipynb](https://github.com/tme-osx/TME-AIX/blob/main/llm-rca/maas-rca.ipynb)
 
 ## Metric file processing
 It starts with a processing a telecom metric file. The following is an example set of the metric data:<br>
