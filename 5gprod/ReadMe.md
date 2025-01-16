@@ -1,5 +1,5 @@
 
-# Network Operation Center AI Augmented WorkFlow Enrichment 
+# Network Operation Center AI Augmented Operational WorkFlow Enrichment 
 This project delivers multi-source data analysis with Model Chaining (Classic-AI -> GenAI) leveraging Vector Store for Log Data Association. 
 
 ## DataSet
