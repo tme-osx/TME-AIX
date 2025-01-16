@@ -1,49 +1,98 @@
 {
-  "generation_time": "2025-01-13T10:23:31.438182",
-  "total_alerts": 6,
+  "generation_time": "2025-01-16T12:01:56.100077",
+  "total_alerts": 7,
   "alerts_by_type": {
-    "SMF_CPU_OVERLOAD_CASCADE": 2,
-    "UPF_DATAPATH_DEGRADATION": 2,
-    "REGISTRATION_STORM": 2
+    "REGISTRATION_STORM": 2,
+    "RESOURCE_EXHAUSTION": 2,
+    "SESSION_MANAGEMENT_FAILURE": 3
   },
   "alerts_by_component": {
-    "SMF": 3,
     "AMF": 2,
-    "UPF": 1
+    "SMF": 3,
+    "UPF": 2
   },
   "alerts": [
     {
-      "type": "SMF_CPU_OVERLOAD_CASCADE",
+      "type": "REGISTRATION_STORM",
       "severity": "CRITICAL",
-      "component": "SMF",
-      "description": "SMF affected by smf_cpu_overload_cascade",
-      "start_time": "2025-01-13 13:53:31.133476",
-      "end_time": "2025-01-13 14:03:31.133476",
+      "component": "AMF",
+      "description": "AMF affected by amf_registration_storm",
+      "start_time": "2025-01-16 16:37:55.775630",
+      "end_time": "2025-01-16 16:42:55.775630",
       "metrics_snapshot": {
         "before": {
-          "cpu_utilization": 39.11652262791415,
-          "memory_utilization": 48.398982881477835,
-          "session_establishment_rate": 100.97616786186123,
-          "n4_message_rate": 166.21642941470137,
-          "session_modification_rate": 54.3598840953175,
-          "policy_installation_rate": 103.13269641642698,
-          "pfcp_message_rate": 202.7416819484812,
-          "session_success_rate": 105.81200812290463
+          "http_connectivity": 1.2332146303688922,
+          "cpu_utilization": 39.05341504818977,
+          "memory_utilization": 52.263694826859684,
+          "registration_rate": 130.01424726529876,
+          "session_setup_rate": 107.46664622676818,
+          "authentication_success_rate": 130.5761325141248,
+          "n1n2_message_rate": 257.7765410728756,
+          "registration_success_rate": 129.06574373500098,
+          "slice_selection_success_rate": 130.42106712129458,
+          "nas_security_success_rate": 130.03816018567505,
+          "ngap_success_rate": 127.55743965250636
         },
         "during": {
-          "cpu_utilization": 35.3780551470838,
-          "memory_utilization": 42.53733540997041,
-          "session_establishment_rate": 78.99084238042454,
-          "n4_message_rate": 166.21642941470137,
-          "session_modification_rate": 54.3598840953175,
-          "policy_installation_rate": 103.13269641642698,
-          "pfcp_message_rate": 202.7416819484812,
-          "session_success_rate": 105.81200812290463
+          "http_connectivity": 1.2332146303688922,
+          "cpu_utilization": 35.93700089361211,
+          "memory_utilization": 52.263694826859684,
+          "registration_rate": 130.01424726529876,
+          "session_setup_rate": 107.46664622676818,
+          "authentication_success_rate": 115.26242169444738,
+          "n1n2_message_rate": 257.7765410728756,
+          "registration_success_rate": 129.06574373500098,
+          "slice_selection_success_rate": 130.42106712129458,
+          "nas_security_success_rate": 130.03816018567505,
+          "ngap_success_rate": 127.55743965250636
         },
         "delta_percent": {
-          "cpu_utilization": -9.557259259447882,
-          "memory_utilization": -12.111096396099397,
-          "session_establishment_rate": -21.772786536634413,
+          "http_connectivity": 0.0,
+          "cpu_utilization": -7.9798761535506575,
+          "memory_utilization": 0.0,
+          "registration_rate": 0.0,
+          "session_setup_rate": 0.0,
+          "authentication_success_rate": -11.727802412911014,
+          "n1n2_message_rate": 0.0,
+          "registration_success_rate": 0.0,
+          "slice_selection_success_rate": 0.0,
+          "nas_security_success_rate": 0.0,
+          "ngap_success_rate": 0.0
+        }
+      }
+    },
+    {
+      "type": "REGISTRATION_STORM",
+      "severity": "CRITICAL",
+      "component": "SMF",
+      "description": "SMF affected by amf_registration_storm",
+      "start_time": "2025-01-17 07:12:55.775630",
+      "end_time": "2025-01-17 07:17:55.775630",
+      "metrics_snapshot": {
+        "before": {
+          "cpu_utilization": 33.62600370986668,
+          "memory_utilization": 43.500845606301155,
+          "session_establishment_rate": 93.29185607699235,
+          "n4_message_rate": 150.93469248232662,
+          "session_modification_rate": 47.81848076568794,
+          "policy_installation_rate": 95.45766688962148,
+          "pfcp_message_rate": 184.3792903018621,
+          "session_success_rate": 101.87665620352476
+        },
+        "during": {
+          "cpu_utilization": 33.62600370986668,
+          "memory_utilization": 43.500845606301155,
+          "session_establishment_rate": 76.68378838643645,
+          "n4_message_rate": 150.93469248232662,
+          "session_modification_rate": 47.81848076568794,
+          "policy_installation_rate": 95.45766688962148,
+          "pfcp_message_rate": 184.3792903018621,
+          "session_success_rate": 101.87665620352476
+        },
+        "delta_percent": {
+          "cpu_utilization": 0.0,
+          "memory_utilization": 0.0,
+          "session_establishment_rate": -17.80226955378561,
           "n4_message_rate": 0.0,
           "session_modification_rate": 0.0,
           "policy_installation_rate": 0.0,
@@ -53,45 +102,168 @@
       }
     },
     {
-      "type": "SMF_CPU_OVERLOAD_CASCADE",
-      "severity": "CRITICAL",
-      "component": "AMF",
-      "description": "AMF affected by smf_cpu_overload_cascade",
-      "start_time": "2025-01-13 13:17:31.133476",
-      "end_time": "2025-01-13 13:27:31.133476",
+      "type": "RESOURCE_EXHAUSTION",
+      "severity": "MAJOR",
+      "component": "UPF",
+      "description": "UPF affected by upf_resource_exhaustion",
+      "start_time": "2025-01-17 02:42:55.775630",
+      "end_time": "2025-01-17 02:47:55.775630",
       "metrics_snapshot": {
         "before": {
-          "http_connectivity": 1.0169442082287077,
-          "cpu_utilization": 30.442581201259923,
-          "memory_utilization": 39.61372813771889,
-          "registration_rate": 102.22837005625715,
-          "session_setup_rate": 80.48458763233741,
-          "authentication_success_rate": 97.6214292210945,
-          "n1n2_message_rate": 199.24546942532527,
-          "registration_success_rate": 97.20373294921711,
-          "slice_selection_success_rate": 98.78108643587485,
-          "nas_security_success_rate": 99.45122197981154,
-          "ngap_success_rate": 100.88345312416949
+          "cpu_utilization": 27.754373414452107,
+          "memory_utilization": 34.478876119337,
+          "packet_processing_rate": 6789.798655697712,
+          "tunnel_establishment_rate": 60.08089611104812,
+          "buffer_utilization": 21.392090881552956,
+          "qos_flow_success_rate": 72.33481071781303,
+          "throughput_mbps": 696.8086848773667,
+          "packet_drop_rate": 0.0684534891611026,
+          "latency_ms": 7.101272075145593
         },
         "during": {
-          "http_connectivity": 0.5686344610893115,
-          "cpu_utilization": 30.442581201259923,
-          "memory_utilization": 39.61372813771889,
-          "registration_rate": 102.22837005625715,
-          "session_setup_rate": 66.24077088071223,
-          "authentication_success_rate": 97.6214292210945,
-          "n1n2_message_rate": 199.24546942532527,
-          "registration_success_rate": 97.20373294921711,
-          "slice_selection_success_rate": 98.78108643587485,
-          "nas_security_success_rate": 99.45122197981154,
-          "ngap_success_rate": 100.88345312416949
+          "cpu_utilization": 27.754373414452107,
+          "memory_utilization": 34.478876119337,
+          "packet_processing_rate": 5595.960519112227,
+          "tunnel_establishment_rate": 60.08089611104812,
+          "buffer_utilization": 20.116815899209243,
+          "qos_flow_success_rate": 72.33481071781303,
+          "throughput_mbps": 696.8086848773667,
+          "packet_drop_rate": 0.0684534891611026,
+          "latency_ms": 5.690316457435175
         },
         "delta_percent": {
-          "http_connectivity": -44.08400613444201,
+          "cpu_utilization": 0.0,
+          "memory_utilization": 0.0,
+          "packet_processing_rate": -17.582820892393713,
+          "tunnel_establishment_rate": 0.0,
+          "buffer_utilization": -5.96143214520195,
+          "qos_flow_success_rate": 0.0,
+          "throughput_mbps": 0.0,
+          "packet_drop_rate": 0.0,
+          "latency_ms": -19.869054484600767
+        }
+      }
+    },
+    {
+      "type": "RESOURCE_EXHAUSTION",
+      "severity": "MAJOR",
+      "component": "SMF",
+      "description": "SMF affected by upf_resource_exhaustion",
+      "start_time": "2025-01-16 12:22:55.775630",
+      "end_time": "2025-01-16 12:27:55.775630",
+      "metrics_snapshot": {
+        "before": {
+          "cpu_utilization": 34.56565874141229,
+          "memory_utilization": 45.22456588714935,
+          "session_establishment_rate": 91.50267615823836,
+          "n4_message_rate": 150.94377638219345,
+          "session_modification_rate": 49.26073433803391,
+          "policy_installation_rate": 93.7634777384454,
+          "pfcp_message_rate": 180.0868430707732,
+          "session_success_rate": 96.20790067231906
+        },
+        "during": {
+          "cpu_utilization": 34.56565874141229,
+          "memory_utilization": 45.22456588714935,
+          "session_establishment_rate": 77.75559794633287,
+          "n4_message_rate": 124.27332674200443,
+          "session_modification_rate": 49.26073433803391,
+          "policy_installation_rate": 93.7634777384454,
+          "pfcp_message_rate": 180.0868430707732,
+          "session_success_rate": 96.20790067231906
+        },
+        "delta_percent": {
+          "cpu_utilization": 0.0,
+          "memory_utilization": 0.0,
+          "session_establishment_rate": -15.023689786003903,
+          "n4_message_rate": -17.66912838635941,
+          "session_modification_rate": 0.0,
+          "policy_installation_rate": 0.0,
+          "pfcp_message_rate": 0.0,
+          "session_success_rate": 0.0
+        }
+      }
+    },
+    {
+      "type": "SESSION_MANAGEMENT_FAILURE",
+      "severity": "MAJOR",
+      "component": "SMF",
+      "description": "SMF affected by smf_session_management_failure",
+      "start_time": "2025-01-16 22:29:55.775630",
+      "end_time": "2025-01-16 22:34:55.775630",
+      "metrics_snapshot": {
+        "before": {
+          "cpu_utilization": 35.52215982467392,
+          "memory_utilization": 43.60936249743776,
+          "session_establishment_rate": 91.06591276731235,
+          "n4_message_rate": 154.36119858281208,
+          "session_modification_rate": 48.84531877677638,
+          "policy_installation_rate": 96.07675543656174,
+          "pfcp_message_rate": 180.0971679854222,
+          "session_success_rate": 99.25431245197626
+        },
+        "during": {
+          "cpu_utilization": 33.41821624882961,
+          "memory_utilization": 43.60936249743776,
+          "session_establishment_rate": 69.45834828461238,
+          "n4_message_rate": 122.10681432951124,
+          "session_modification_rate": 48.84531877677638,
+          "policy_installation_rate": 96.07675543656174,
+          "pfcp_message_rate": 180.0971679854222,
+          "session_success_rate": 99.25431245197626
+        },
+        "delta_percent": {
+          "cpu_utilization": -5.9229044242487205,
+          "memory_utilization": 0.0,
+          "session_establishment_rate": -23.72739022328879,
+          "n4_message_rate": -20.895396349230168,
+          "session_modification_rate": 0.0,
+          "policy_installation_rate": 0.0,
+          "pfcp_message_rate": 0.0,
+          "session_success_rate": 0.0
+        }
+      }
+    },
+    {
+      "type": "SESSION_MANAGEMENT_FAILURE",
+      "severity": "MAJOR",
+      "component": "AMF",
+      "description": "AMF affected by smf_session_management_failure",
+      "start_time": "2025-01-17 00:47:55.775630",
+      "end_time": "2025-01-17 00:52:55.775630",
+      "metrics_snapshot": {
+        "before": {
+          "http_connectivity": 0.9488922323550508,
+          "cpu_utilization": 30.244951134249163,
+          "memory_utilization": 38.44282711287148,
+          "registration_rate": 101.99022424270855,
+          "session_setup_rate": 78.88253751720364,
+          "authentication_success_rate": 101.16330567071932,
+          "n1n2_message_rate": 205.60145907140313,
+          "registration_success_rate": 97.61207629730649,
+          "slice_selection_success_rate": 96.4061439686553,
+          "nas_security_success_rate": 95.65215242364778,
+          "ngap_success_rate": 103.33683235562572
+        },
+        "during": {
+          "http_connectivity": 0.9488922323550508,
+          "cpu_utilization": 30.244951134249163,
+          "memory_utilization": 38.44282711287148,
+          "registration_rate": 101.99022424270855,
+          "session_setup_rate": 64.52092192960228,
+          "authentication_success_rate": 101.16330567071932,
+          "n1n2_message_rate": 205.60145907140313,
+          "registration_success_rate": 97.61207629730649,
+          "slice_selection_success_rate": 96.4061439686553,
+          "nas_security_success_rate": 95.65215242364778,
+          "ngap_success_rate": 103.33683235562572
+        },
+        "delta_percent": {
+          "http_connectivity": 0.0,
           "cpu_utilization": 0.0,
           "memory_utilization": 0.0,
           "registration_rate": 0.0,
-          "session_setup_rate": -17.697570641341322,
+          "session_setup_rate": -18.2063306273194,
           "authentication_success_rate": 0.0,
           "n1n2_message_rate": 0.0,
           "registration_success_rate": 0.0,
@@ -102,174 +274,45 @@
       }
     },
     {
-      "type": "UPF_DATAPATH_DEGRADATION",
+      "type": "SESSION_MANAGEMENT_FAILURE",
       "severity": "MAJOR",
       "component": "UPF",
-      "description": "UPF affected by upf_datapath_degradation",
-      "start_time": "2025-01-13 12:09:31.133476",
-      "end_time": "2025-01-13 12:14:31.133476",
+      "description": "UPF affected by smf_session_management_failure",
+      "start_time": "2025-01-17 06:37:55.775630",
+      "end_time": "2025-01-17 06:42:55.775630",
       "metrics_snapshot": {
         "before": {
-          "cpu_utilization": 39.270490708515915,
-          "memory_utilization": 49.72557055910086,
-          "packet_processing_rate": 10005.552585117319,
-          "tunnel_establishment_rate": 80.45817557100362,
-          "buffer_utilization": 29.51553190913244,
-          "qos_flow_success_rate": 99.44212400711262,
-          "throughput_mbps": 1022.1959299997513,
-          "packet_drop_rate": 0.1009024612360544,
-          "latency_ms": 9.771417719675515
+          "cpu_utilization": 40.83992437339822,
+          "memory_utilization": 52.26398505602119,
+          "packet_processing_rate": 10199.83095027114,
+          "tunnel_establishment_rate": 84.88359221124843,
+          "buffer_utilization": 29.925129223164657,
+          "qos_flow_success_rate": 100.49847709063083,
+          "throughput_mbps": 989.2744012246251,
+          "packet_drop_rate": 0.10501906450785589,
+          "latency_ms": 9.665805310771793
         },
         "during": {
-          "cpu_utilization": 39.270490708515915,
-          "memory_utilization": 49.72557055910086,
-          "packet_processing_rate": 8813.700382447614,
-          "tunnel_establishment_rate": 80.45817557100362,
-          "buffer_utilization": 27.73467798059578,
-          "qos_flow_success_rate": 99.44212400711262,
-          "throughput_mbps": 1022.1959299997513,
-          "packet_drop_rate": 0.1009024612360544,
-          "latency_ms": 7.769359293088672
+          "cpu_utilization": 40.83992437339822,
+          "memory_utilization": 52.26398505602119,
+          "packet_processing_rate": 10199.83095027114,
+          "tunnel_establishment_rate": 71.71286478876736,
+          "buffer_utilization": 29.925129223164657,
+          "qos_flow_success_rate": 100.49847709063083,
+          "throughput_mbps": 989.2744012246251,
+          "packet_drop_rate": 0.10501906450785589,
+          "latency_ms": 9.665805310771793
         },
         "delta_percent": {
           "cpu_utilization": 0.0,
           "memory_utilization": 0.0,
-          "packet_processing_rate": -11.911907838478763,
-          "tunnel_establishment_rate": 0.0,
-          "buffer_utilization": -6.033616246589291,
+          "packet_processing_rate": 0.0,
+          "tunnel_establishment_rate": -15.51622295826417,
+          "buffer_utilization": 0.0,
           "qos_flow_success_rate": 0.0,
           "throughput_mbps": 0.0,
           "packet_drop_rate": 0.0,
-          "latency_ms": -20.48892478064408
-        }
-      }
-    },
-    {
-      "type": "UPF_DATAPATH_DEGRADATION",
-      "severity": "MAJOR",
-      "component": "SMF",
-      "description": "SMF affected by upf_datapath_degradation",
-      "start_time": "2025-01-13 18:10:31.133476",
-      "end_time": "2025-01-13 18:15:31.133476",
-      "metrics_snapshot": {
-        "before": {
-          "cpu_utilization": 34.86753856208924,
-          "memory_utilization": 44.74504733743678,
-          "session_establishment_rate": 92.58326462368147,
-          "n4_message_rate": 153.11668397551512,
-          "session_modification_rate": 49.74736737397889,
-          "policy_installation_rate": 96.65728614301962,
-          "pfcp_message_rate": 183.2641742118836,
-          "session_success_rate": 100.99507478310976
-        },
-        "during": {
-          "cpu_utilization": 34.86753856208924,
-          "memory_utilization": 44.74504733743678,
-          "session_establishment_rate": 84.13280283459746,
-          "n4_message_rate": 135.02464067486284,
-          "session_modification_rate": 49.74736737397889,
-          "policy_installation_rate": 96.65728614301962,
-          "pfcp_message_rate": 183.2641742118836,
-          "session_success_rate": 100.99507478310976
-        },
-        "delta_percent": {
-          "cpu_utilization": 0.0,
-          "memory_utilization": 0.0,
-          "session_establishment_rate": -9.12741824716614,
-          "n4_message_rate": -11.81585365546799,
-          "session_modification_rate": 0.0,
-          "policy_installation_rate": 0.0,
-          "pfcp_message_rate": 0.0,
-          "session_success_rate": 0.0
-        }
-      }
-    },
-    {
-      "type": "REGISTRATION_STORM",
-      "severity": "CRITICAL",
-      "component": "AMF",
-      "description": "AMF affected by registration_storm",
-      "start_time": "2025-01-13 12:01:31.133476",
-      "end_time": "2025-01-13 12:06:31.133476",
-      "metrics_snapshot": {
-        "before": {
-          "http_connectivity": 0.9845460120849422,
-          "cpu_utilization": 30.542385882545023,
-          "memory_utilization": 40.2211553401546,
-          "registration_rate": 93.43369410361308,
-          "session_setup_rate": 80.02634015385351,
-          "authentication_success_rate": 100.23741486223193,
-          "n1n2_message_rate": 204.7528553318905,
-          "registration_success_rate": 100.52898911998611,
-          "slice_selection_success_rate": 98.08781326407545,
-          "nas_security_success_rate": 104.23667218520045,
-          "ngap_success_rate": 94.36222494119893
-        },
-        "during": {
-          "http_connectivity": 0.9845460120849422,
-          "cpu_utilization": 27.436911907361406,
-          "memory_utilization": 40.2211553401546,
-          "registration_rate": 129.775819879337,
-          "session_setup_rate": 80.02634015385351,
-          "authentication_success_rate": 94.14887937635993,
-          "n1n2_message_rate": 204.7528553318905,
-          "registration_success_rate": 100.52898911998611,
-          "slice_selection_success_rate": 98.08781326407545,
-          "nas_security_success_rate": 104.23667218520045,
-          "ngap_success_rate": 94.36222494119893
-        },
-        "delta_percent": {
-          "http_connectivity": 0.0,
-          "cpu_utilization": -10.167751750390908,
-          "memory_utilization": 0.0,
-          "registration_rate": 38.8961670887404,
-          "session_setup_rate": 0.0,
-          "authentication_success_rate": -6.074114634979555,
-          "n1n2_message_rate": 0.0,
-          "registration_success_rate": 0.0,
-          "slice_selection_success_rate": 0.0,
-          "nas_security_success_rate": 0.0,
-          "ngap_success_rate": 0.0
-        }
-      }
-    },
-    {
-      "type": "REGISTRATION_STORM",
-      "severity": "CRITICAL",
-      "component": "SMF",
-      "description": "SMF affected by registration_storm",
-      "start_time": "2025-01-14 06:14:31.133476",
-      "end_time": "2025-01-14 06:19:31.133476",
-      "metrics_snapshot": {
-        "before": {
-          "cpu_utilization": 36.82462372806455,
-          "memory_utilization": 45.33900377142843,
-          "session_establishment_rate": 87.44163991736363,
-          "n4_message_rate": 152.9820762014595,
-          "session_modification_rate": 49.35035095245396,
-          "policy_installation_rate": 97.05257682489423,
-          "pfcp_message_rate": 180.0987531740668,
-          "session_success_rate": 102.08207569182072
-        },
-        "during": {
-          "cpu_utilization": 36.82462372806455,
-          "memory_utilization": 45.33900377142843,
-          "session_establishment_rate": 105.02899642700336,
-          "n4_message_rate": 152.9820762014595,
-          "session_modification_rate": 49.35035095245396,
-          "policy_installation_rate": 97.05257682489423,
-          "pfcp_message_rate": 180.0987531740668,
-          "session_success_rate": 102.08207569182072
-        },
-        "delta_percent": {
-          "cpu_utilization": 0.0,
-          "memory_utilization": 0.0,
-          "session_establishment_rate": 20.113250993760623,
-          "n4_message_rate": 0.0,
-          "session_modification_rate": 0.0,
-          "policy_installation_rate": 0.0,
-          "pfcp_message_rate": 0.0,
-          "session_success_rate": 0.0
+          "latency_ms": 0.0
         }
       }
     }
