@@ -2,9 +2,11 @@
 # 5GCore 
 This project delivers multi-source data analysis with Model Chaining (Classic-AI -> GenAI) leveraging Vector Store for Log Data Association. 
 
+## DataSet
+👉 https://huggingface.co/datasets/fenar/5gcore-prod
+
 ## Metric file processing
 It starts with a processing a telecom metric files for AMF, SMF and UPF<br>
-
 
 ## Anomaly detection
 It uses a machine learning model for anomaly detection by using simple isolation forest algorithm.
