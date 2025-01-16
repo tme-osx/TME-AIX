@@ -21,7 +21,7 @@ Our Project Summary: [TrueAI4Telco](https://medium.com/open-5g-hypercore/episode
 9. [Customer Relation Management Voice App](https://github.com/tme-osx/TME-AIX/tree/main/crm) 
 10. [Anomaly Detection & RootCauseAnalysis with Model Chaining + Use of RAG for DataMesh](https://github.com/tme-osx/TME-AIX/tree/main/llm-rca)
 11. [Starlink -Satellite ISP- Quality of Experience Predictions](https://github.com/tme-osx/TME-AIX/tree/main/starlink)
-12. [NoC AI Augmention for OSS - In Progress- ](https://github.com/tme-osx/TME-AIX/tree/main/5gprod)
+12. [NoC AI Augmention for OSS](https://github.com/tme-osx/TME-AIX/tree/main/5gprod)
 
 ## Explore More on HuggingFace
 Discover our models and datasets on HuggingFace:
