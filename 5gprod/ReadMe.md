@@ -31,13 +31,4 @@ In conclusion, the root cause of the anomalies appears to be a combination of a 
 ```
 
 ## NOC Web UI & Demo
-<div align="center">
-  <img src="https://raw.githubusercontent.com/tme-osx/TME-AIX/refs/heads/main/5gprod/data2/webui.png" alt="NOC Web UI">
-
-  <video width="720" height="480" controls>
-    <source src="https://github.com/tme-osx/TME-AIX/raw/refs/heads/main/5gprod/data2/5gprod-3.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
-
-
+[![Demo](https://raw.githubusercontent.com/tme-osx/TME-AIX/refs/heads/main/5gprod/data2/webui.png)](https://www.youtube.com/watch?v=iXVYt57uH0k)
