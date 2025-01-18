@@ -30,8 +30,14 @@ Based on the provided system logs and alerts, the anomalies in the metrics can b
 In conclusion, the root cause of the anomalies appears to be a combination of a registration storm, resource exhaustion, and session management failures, all of which led to increased CPU and memory utilization and increased latency. Further investigation would be needed to determine the exact cause of these issues and to develop appropriate solutions.
 ```
 
-## NOC Web UI
+## NOC Web UI & Demo
 <div align="center">
-    <img src="https://raw.githubusercontent.com/tme-osx/TME-AIX/refs/heads/main/5gprod/data2/webui.png"/>
+  <img src="https://raw.githubusercontent.com/tme-osx/TME-AIX/refs/heads/main/5gprod/data2/webui.png" alt="NOC Web UI">
+
+  <video width="720" height="480" controls>
+    <source src="https://github.com/tme-osx/TME-AIX/raw/refs/heads/main/5gprod/data2/5gprod-3.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </div>
+
 
