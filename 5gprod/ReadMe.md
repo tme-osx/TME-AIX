@@ -8,28 +8,13 @@ This project delivers multi-source data analysis with Model Chaining (Classic-AI
     <img src="https://raw.githubusercontent.com/tme-osx/TME-AIX/refs/heads/main/5gprod/data/data.png"/>
 </div>
 
-## Metric file processing
-It starts with a processing a telecom metric files for AMF, SMF and UPF<br>
+## Files
+[1] Jupyter Notebooks: 5gprod.ipynb and 5gprod-v2.ipynb are for self experimentation with lang chain and inplace code runs. <br>
+[2] preprocess_data.py: Creates ready to use vector dbs and trained model instances. <br>
+[3] noc-web.py: This is the sample NoC Web UI that can replay the datastream back and on the fly anomaly and issue resolution presentations. <br>
 
-## Anomaly detection
-It uses a machine learning model for anomaly detection by using simple isolation forest algorithm.
-
-```
-Based on the provided logs, the anomaly detected is related to the latency_ms metric, which is a measure of the delay in data transmission. This metric is flagged as True in the anomaly column, indicating that there is an issue with the latency in the system.
-
-Looking at the relevant UPF metrics information, we can see that the latency_ms value has increased from 13.37484865015994 at 09:46:55.775630 to 13.86797014781209 at 11:17:55.775630. This increase in latency could be due to several reasons such as network congestion, hardware issues, or software issues.
-
-The CPU utilization and memory utilization have also increased during this time period. The CPU utilization has increased from 45.181238864488 to 50.542563686731 and the memory utilization has increased from 58.74739464810597 to 65.30386944707406. This increase in resource utilization could be contributing to the increased latency as the system may be struggling to process data efficiently due to the high resource usage.
-
-The packet_processing_rate has decreased from 13404.863581966032 to 12357.272237015131, which could also be contributing to the increased latency. If the system is processing packets at a slower rate, this could lead to delays in data transmission.
-
-The buffer_utilization has also increased from 37.98646570464442 to 40.893310839631, indicating that the system is storing more data in the buffer. This could be a result of the system struggling to process data efficiently, leading to an increase in latency.
-
-In conclusion, the root cause of the anomaly in the latency_ms metric could be due to high CPU and memory utilization, a decrease in packet processing rate, and an increase in buffer utilization. Further investigation would be needed to determine the exact cause and to implement appropriate solutions.
-```
-
-## Root Cause Analysis -> Issue Resolution
-After detection of the anomalies -> builds a VectorDB with Logs and finds assocated data pieces inside -> Passes to GenAI model that provides and RCA accrodingly<br>
+## Anomaly detection & Root Cause Analysis
+It uses a machine learning model for anomaly detection by using simple isolation forest algorithm. After detection of the anomalies -> Builds a VectorDB with Logs and finds assocated data pieces inside -> Passes to GenAI model that provides and RCA accrodingly<br>
 
 ```
 Based on the provided system logs and alerts, the anomalies in the metrics can be attributed to several issues affecting different components of the system. 
@@ -45,4 +30,8 @@ Based on the provided system logs and alerts, the anomalies in the metrics can b
 In conclusion, the root cause of the anomalies appears to be a combination of a registration storm, resource exhaustion, and session management failures, all of which led to increased CPU and memory utilization and increased latency. Further investigation would be needed to determine the exact cause of these issues and to develop appropriate solutions.
 ```
 
+## NOC Web UI
+<div align="center">
+    <img src="https://raw.githubusercontent.com/tme-osx/TME-AIX/refs/heads/main/5gprod/data2/webui.png"/>
+</div>
 
