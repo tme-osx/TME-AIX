@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: tmeaix-5gprod
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: tmeaix-5gprod
