@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: tmeaix-5gprod
+  labels:
+    app: tmeaix-5gprod
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 35004
+      targetPort: 35004
+  selector:
+    app: tme-aix-wb01
