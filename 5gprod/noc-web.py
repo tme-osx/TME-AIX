@@ -812,5 +812,5 @@ def update_dashboard(n_intervals, slider_value, play_state, speed, current_time,
 if __name__ == '__main__':
     print("Starting 5G Core Network Operations Center...")
     print(f"Loading data from {os.getcwd()}/data directory")
-    print("Server starting on http://127.0.0.1:8050/")
-    app.run_server(debug=True, port=8050)
+    print("Server starting on http://127.0.0.1:35004/")
+    app.run(host='0.0.0.0', port=35004, debug=False)
