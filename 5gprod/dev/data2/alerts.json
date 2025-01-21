@@ -1,0 +1,194 @@
+{
+  "generation_time": "2025-01-17T09:56:35.545574",
+  "total_alerts": 3,
+  "alerts": [
+    {
+      "type": "RESOURCE_EXHAUSTION",
+      "severity": "CRITICAL",
+      "component": "SMF",
+      "description": "SMF affected by upf_resource_exhaustion",
+      "start_time": "2025-01-18 09:15:35.106449",
+      "end_time": "2025-01-18 09:35:35.106449",
+      "metrics_impact": {
+        "cpu_utilization": {
+          "before": 34.596534106563034,
+          "during": 37.99808396568423,
+          "change_percent": 9.832053837080501
+        },
+        "memory_utilization": {
+          "before": 44.31772526903267,
+          "during": 44.31772526903267,
+          "change_percent": 0.0
+        },
+        "session_establishment_rate": {
+          "before": 89.32449069258357,
+          "during": 63.08461128997951,
+          "change_percent": -29.375907099107256
+        },
+        "session_success_rate": {
+          "before": 99.53058649948267,
+          "during": 75.02237682328824,
+          "change_percent": -24.623797104141264
+        },
+        "n4_message_rate": {
+          "before": 149.72598368550487,
+          "during": 149.72598368550487,
+          "change_percent": 0.0
+        },
+        "ip_pool_utilization": {
+          "before": 58.959232629074656,
+          "during": 86.55052054260698,
+          "change_percent": 46.79723036274082
+        }
+      },
+      "logs": {
+        "eventTime": "2025-01-17T09:56:35.406942",
+        "nfType": "SMF",
+        "nfInstanceId": "5b501f4e-e6a1-4653-8970-82777f763fc7",
+        "correlationId": "7b0fb037-80f9-454d-aa44-d4b3a679f7a6",
+        "sourceIndicator": "RESOURCE_OPERATION",
+        "additional_info": {},
+        "probableCause": "ip_pool_exhaustion",
+        "perceivedSeverity": "CRITICAL",
+        "specificProblem": [
+          "[CRITICAL] SMF-RSRC-1001: IP Pool exhaustion detected (>95% utilization).",
+          "[CRITICAL] SMF-PERF-2001: PDU session establishments failing due to IP resource constraints.",
+          "[CRITICAL] SMF-PERF-2002: Session establishment success rate degraded.",
+          "[CRITICAL] SMF-RSRC-1002: Emergency IP pool allocation activated (TS 23.501)."
+        ]
+      },
+      "recovery_actions": [
+        "Activate emergency IP pool",
+        "Release inactive sessions",
+        "Request IP pool expansion"
+      ]
+    },
+    {
+      "type": "RESOURCE_EXHAUSTION",
+      "severity": "CRITICAL",
+      "component": "AMF",
+      "description": "AMF affected by smf_resource_exhaustion",
+      "start_time": "2025-01-18 05:09:35.106449",
+      "end_time": "2025-01-18 05:24:35.106449",
+      "metrics_impact": {
+        "cpu_utilization": {
+          "before": 11.725022106342948,
+          "during": 16.39716310566571,
+          "change_percent": 39.84760930041447
+        },
+        "memory_utilization": {
+          "before": 15.691016358336949,
+          "during": 15.691016358336949,
+          "change_percent": 0.0
+        },
+        "registration_rate": {
+          "before": 39.027914990491475,
+          "during": 39.027914990491475,
+          "change_percent": 0.0
+        },
+        "registration_success_rate": {
+          "before": 39.4309731789692,
+          "during": 32.47438213009185,
+          "change_percent": -17.642453350828525
+        },
+        "session_setup_rate": {
+          "before": 31.47792000862888,
+          "during": 27.299986736515013,
+          "change_percent": -13.272583674425098
+        },
+        "n1n2_message_rate": {
+          "before": 78.52978409819711,
+          "during": 71.57995797483518,
+          "change_percent": -8.84992388960545
+        },
+        "authentication_success_rate": {
+          "before": 39.09203705640543,
+          "during": 39.09203705640543,
+          "change_percent": 0.0
+        }
+      },
+      "logs": {
+        "eventTime": "2025-01-17T09:56:35.440445",
+        "nfType": "AMF",
+        "nfInstanceId": "0503991f-51a0-437f-aeb8-a2b7322a2b5e",
+        "correlationId": "0077f4b3-173f-4748-a866-4095ffcde6ec",
+        "sourceIndicator": "RESOURCE_OPERATION",
+        "additional_info": {},
+        "probableCause": "cpu_overload",
+        "perceivedSeverity": "CRITICAL",
+        "specificProblem": [
+          "[CRITICAL] AMF-RSRC-1001: CPU threshold exceeded (>85%). Performance impact on registration and mobility procedures.",
+          "[CRITICAL] AMF-RSRC-1002: Registration throttling activated due to CPU overload (TS 23.501 5.19.5).",
+          "[CRITICAL] AMF-PERF-2001: Degraded service state due to resource saturation (TS 23.501 5.19.7).",
+          "[CRITICAL] AMF-RSRC-1003: Overload control activated for N1/N2 interfaces (TS 29.518)."
+        ]
+      },
+      "recovery_actions": [
+        "Activate overload protection (TS 23.501)",
+        "Throttle non-emergency traffic",
+        "Scale AMF resources if possible"
+      ]
+    },
+    {
+      "type": "PERFORMANCE_DEGRADATION",
+      "severity": "MAJOR",
+      "component": "UPF",
+      "description": "UPF affected by upf_resource_exhaustion",
+      "start_time": "2025-01-17 23:14:35.106449",
+      "end_time": "2025-01-17 23:24:35.106449",
+      "metrics_impact": {
+        "cpu_utilization": {
+          "before": 48.42891069894091,
+          "during": 57.166864926075235,
+          "change_percent": 18.042846929706833
+        },
+        "memory_utilization": {
+          "before": 59.86568638151387,
+          "during": 59.86568638151387,
+          "change_percent": 0.0
+        },
+        "active_bearers": {
+          "before": 6030.736882862356,
+          "during": 8527.676946030817,
+          "change_percent": 41.4035649650718
+        },
+        "throughput_mbps": {
+          "before": 1190.5064362198652,
+          "during": 1024.667991405422,
+          "change_percent": -13.930075451000402
+        },
+        "packet_drop_rate": {
+          "before": 0.1198747171097512,
+          "during": 0.15251292840292277,
+          "change_percent": 27.226934986874408
+        },
+        "latency_ms": {
+          "before": 11.944773470171338,
+          "during": 16.16875584550825,
+          "change_percent": 35.36259926473369
+        }
+      },
+      "logs": {
+        "eventTime": "2025-01-17T09:56:35.461705",
+        "nfType": "UPF",
+        "nfInstanceId": "8c6b4b22-ee65-482e-8a13-6e7db77f2e57",
+        "correlationId": "e99e01d0-b162-42d6-b81e-0978721edd3d",
+        "sourceIndicator": "RESOURCE_OPERATION",
+        "additional_info": {},
+        "probableCause": "bearer_congestion",
+        "perceivedSeverity": "MAJOR",
+        "specificProblem": [
+          "[MAJOR] UPF-RSRC-3001: GTP bearer congestion detected.",
+          "[MAJOR] UPF-PERF-4001: QoS degradation due to bearer congestion.",
+          "[MAJOR] UPF-PERF-4002: Increased packet latency on congested bearers.",
+          "[MAJOR] UPF-PERF-4003: Bearer management impacted by congestion."
+        ]
+      },
+      "recovery_actions": [
+        "Apply QoS based prioritization",
+        "Activate congestion control",
+        "Redirect traffic if possible"
+      ]
+    }
+  ]
+}

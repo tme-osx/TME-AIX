@@ -10,7 +10,7 @@ This project delivers multi-source data analysis with Model Chaining (Classic-AI
 
 ## Files
 [1] Jupyter Notebooks: 5gprod.ipynb and 5gprod-v2.ipynb are for self experimentation with lang chain and inplace code runs. <br>
-[2] preprocess_data.py: Creates ready to use vector dbs and trained model instances. <br>
+[2] preprocess_data.py: Creates ready to use vector dbs and trained isolation forest model instances. <br>
 [3] noc-web.py: This is the sample NoC Web UI that can replay the datastream back and on the fly anomaly and issue resolution presentations. <br>
 
 ## Anomaly detection & Root Cause Analysis
