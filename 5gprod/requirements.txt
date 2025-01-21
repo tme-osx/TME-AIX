@@ -8,3 +8,5 @@ langchain_community
 faiss-cpu
 openai
 seaborn
+dash
+accelerate
