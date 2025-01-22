@@ -2,8 +2,8 @@
     <img src="https://raw.githubusercontent.com/fenar/TME-AIX/main/images/TME-AiX-Logo.png" width="321"/>
 </div>
 
-# Telco Media Entertainment AI eXperiments (TME-AIX)
-Welcome to the **TME-AIX** collaborative experimental workspace. <br>
+# Telco AI eXperiments (Telco-AIX)
+Welcome to the **Telco-AIX** collaborative experimental workspace. <br>
 This repository is dedicated to exploring various TME use-cases built around open source AI capabilities and utilizing open datasets.
 
 ## Article
