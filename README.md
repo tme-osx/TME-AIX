@@ -25,7 +25,7 @@ Our Project Summary: [TrueAI4Telco](https://medium.com/open-5g-hypercore/episode
 
 ## Explore More on HuggingFace
 Discover our models and datasets on HuggingFace:
-[TME-AIX on HuggingFace](https://huggingface.co/collections/fenar/tme-aix-66737384ab5687fe3d9a4b94)
+[Telco-AIX on HuggingFace](https://huggingface.co/collections/fenar/tme-aix-66737384ab5687fe3d9a4b94)
 
 ## Contact Us
 For collaboration or inquiries about interesting use cases and data mining opportunities, feel free to reach out:<br>
