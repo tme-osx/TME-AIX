@@ -1,6 +1,8 @@
 # Author: Fatih E. NAR
 # 2025 Texas US
 # This batch data preprocessing uses TransformerNN for Anomaly Detection.
+# Please Go to -> https://platform.openai.com/settings/organization/api-keys and get your api-key
+# And place in to "your_openai_apikey" below in line#30 this is to retrive VectorDB for your Metrics Datasets.
 #
 import pandas as pd
 import numpy as np
@@ -24,6 +26,8 @@ from tqdm import tqdm
 import traceback
 
 print("Starting preprocessing of 5G Core Network data...")
+#OpenAI API Key
+os.environ["OPENAI_API_KEY"] = "your_openai_apikey"
 
 class MetricsTransformer(nn.Module):
     def __init__(self, input_dim, num_heads=4, num_layers=2, dim_feedforward=128):
@@ -188,7 +192,6 @@ def create_vector_stores(dfs, anomalies_dict, alerts):
     """Create and save vector stores for context retrieval."""
     print("Creating enhanced vector stores...")
     try:
-        #os.environ["OPENAI_API_KEY"] = "your_key"
         embeddings = OpenAIEmbeddings()
         vector_stores = {}
         
