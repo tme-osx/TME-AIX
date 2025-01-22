@@ -22,6 +22,7 @@ from langchain.text_splitter import CharacterTextSplitter
 warnings.filterwarnings('ignore')
 
 print("Starting 5G Core Network Operations Center...")
+os.environ["OPENAI_API_KEY"] = ""
 
 class NOCState:
     def __init__(self):
