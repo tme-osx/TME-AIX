@@ -195,7 +195,7 @@ def load_alerts():
 @accelerator.on_main_process
 def load_preprocessed_data():
     print("Loading preprocessed data...")
-    
+    os.environ["OPENAI_API_KEY"] = "your_key"
     embeddings = OpenAIEmbeddings()
     vector_stores = {}
     
