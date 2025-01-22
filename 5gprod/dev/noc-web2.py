@@ -27,6 +27,7 @@ from langchain.text_splitter import CharacterTextSplitter
 warnings.filterwarnings('ignore')
 
 print("Starting Enhanced 5G Core Network Operations Center...")
+os.environ["OPENAI_API_KEY"] = ""
 
 # Initialize accelerator for GPU support
 accelerator = Accelerator()
@@ -196,7 +197,6 @@ def load_alerts():
 @accelerator.on_main_process
 def load_preprocessed_data():
     print("Loading preprocessed data...")
-    #os.environ["OPENAI_API_KEY"] = "your_key"
     embeddings = OpenAIEmbeddings()
     vector_stores = {}
     
