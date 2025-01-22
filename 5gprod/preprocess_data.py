@@ -1,6 +1,7 @@
 # Author: Fatih E. NAR
 # 2025 Texas US
-#  
+# This batch data preprocessing uses Isolation Forest for Anomaly Detection.
+#
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
@@ -16,6 +17,9 @@ import pickle
 from tqdm import tqdm
 
 print("Starting preprocessing of 5G Core Network data...")
+
+# Get your api key from your embedding AIaaS endpoint and place below.
+os.environ["OPENAI_API_KEY"] = "your_key"
 
 # Create directories for saved data
 os.makedirs('processed_data', exist_ok=True)
