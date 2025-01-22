@@ -29,9 +29,10 @@ Discover our models and datasets on HuggingFace:
 
 ## Contact Us
 For collaboration or inquiries about interesting use cases and data mining opportunities, feel free to reach out:<br>
-| **Role**      | **Name**                      | **LinkedIn Profile**                                         |
-|---------------|-------------------------------|-------------------------------------------------------------|
-| **Maintainer**| Alessandro Arrichiello        | [LinkedIn](https://www.linkedin.com/in/alessandroarrichiello/) |
-| **Maintainer**| Ali Bokhari                   | [LinkedIn](https://www.linkedin.com/in/ali-bokhari/)         |
-| **Maintainer**| Atul Deshpande                | [LinkedIn](https://www.linkedin.com/in/atulrdeshpande/)      |
-| **Founder**   | Fatih E. NAR                  | [LinkedIn](https://www.linkedin.com/in/fenar/)              |
+| **Role**      | **Name**                      | **LinkedIn Profile**                                         | **Geo-Location** |
+|---------------|-------------------------------|-------------------------------------------------------------|------------------|
+| **Maintainer**| Alessandro Arrichiello        | [LinkedIn](https://www.linkedin.com/in/alessandroarrichiello/) | EU               |
+| **Maintainer**| Ali Bokhari                   | [LinkedIn](https://www.linkedin.com/in/ali-bokhari/)         | NA               |
+| **Maintainer**| Atul Deshpande                | [LinkedIn](https://www.linkedin.com/in/atulrdeshpande/)      | APAC             |
+| **Founder**   | Fatih E. NAR                  | [LinkedIn](https://www.linkedin.com/in/fenar/)              | Texas            |
+
