@@ -187,6 +187,7 @@ def create_vector_stores(dfs, anomalies_dict, alerts):
     """Create and save vector stores for context retrieval."""
     print("Creating enhanced vector stores...")
     try:
+        #os.environ["OPENAI_API_KEY"] = "your_key"
         embeddings = OpenAIEmbeddings()
         vector_stores = {}
         
@@ -219,9 +220,9 @@ def create_vector_stores(dfs, anomalies_dict, alerts):
             # Create and save vector store
             texts = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200).split_documents(descriptions)
             vector_stores[name] = FAISS.from_documents(texts, embeddings)
-            vector_stores[name].save_local(f"processed_data/{name}_vector_store")
+            vector_stores[name].save_local(f"processed_data2/{name}_vector_store")
             
-            with open(f"processed_data/{name}_documents.pkl", 'wb') as f:
+            with open(f"processed_data2/{name}_documents.pkl", 'wb') as f:
                 pickle.dump(descriptions, f)
         
         return vector_stores
