@@ -195,20 +195,20 @@ def load_alerts():
 @accelerator.on_main_process
 def load_preprocessed_data():
     print("Loading preprocessed data...")
-    os.environ["OPENAI_API_KEY"] = "your_key"
+    
     embeddings = OpenAIEmbeddings()
     vector_stores = {}
     
     try:
         for component in ['amf', 'smf', 'upf']:
             vector_stores[component] = FAISS.load_local(
-                f"processed_data/{component}_vector_store",
+                f"processed_data2/{component}_vector_store",
                 embeddings,
                 allow_dangerous_deserialization=True
             )
             print(f"Successfully loaded {component} vector store")
             
-            with open(f"processed_data/{component}_documents.pkl", 'rb') as f:
+            with open(f"processed_data2/{component}_documents.pkl", 'rb') as f:
                 docs = pickle.load(f)
                 print(f"Loaded {len(docs)} documents for {component}")
     except Exception as e:
@@ -216,7 +216,7 @@ def load_preprocessed_data():
         vector_stores = {}
     
     try:
-        with open('processed_data/anomalies.pkl', 'rb') as f:
+        with open('processed_data2/anomalies.pkl', 'rb') as f:
             anomalies = pickle.load(f)
         print("Successfully loaded anomalies")
     except Exception as e:
