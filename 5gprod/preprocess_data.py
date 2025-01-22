@@ -2,6 +2,9 @@
 # 2025 Texas US
 # This batch data preprocessing uses Isolation Forest for Anomaly Detection.
 #
+# Please Go to -> https://platform.openai.com/settings/organization/api-keys and get your api-key
+# And place in to "your_openai_apikey" below in line#25 this is to retrive VectorDB for your Metrics Datasets.
+#
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
@@ -19,7 +22,7 @@ from tqdm import tqdm
 print("Starting preprocessing of 5G Core Network data...")
 
 # Get your api key from your embedding AIaaS endpoint and place below.
-os.environ["OPENAI_API_KEY"] = "your_key"
+os.environ["OPENAI_API_KEY"] = "your_openai_apikey"
 
 # Create directories for saved data
 os.makedirs('processed_data', exist_ok=True)
