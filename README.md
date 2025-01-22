@@ -34,5 +34,7 @@ For collaboration or inquiries about interesting use cases and data mining oppor
 | **Maintainer**| Alessandro Arrichiello        | [LinkedIn](https://www.linkedin.com/in/alessandroarrichiello/) | EU               |
 | **Maintainer**| Ali Bokhari                   | [LinkedIn](https://www.linkedin.com/in/ali-bokhari/)         | NA               |
 | **Maintainer**| Atul Deshpande                | [LinkedIn](https://www.linkedin.com/in/atulrdeshpande/)      | APAC             |
+| **ProgramManager**   | Arun Thomas                 | [LinkedIn](https://www.linkedin.com/in/arun-thomas-17a49359/)              | Texas            |
+| **Business Development**   | Paul Lancaster                 | [LinkedIn](https://www.linkedin.com/in/paullancaster/)              | Texas            |
 | **Founder**   | Fatih E. NAR                  | [LinkedIn](https://www.linkedin.com/in/fenar/)              | Texas            |
 
