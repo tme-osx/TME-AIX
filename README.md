@@ -28,6 +28,10 @@ Discover our models and datasets on HuggingFace:
 [TME-AIX on HuggingFace](https://huggingface.co/collections/fenar/tme-aix-66737384ab5687fe3d9a4b94)
 
 ## Contact Us
-For collaboration or inquiries about interesting use cases and data mining opportunities, feel free to reach out:
-[Contact](https://www.linkedin.com/in/fenar/)
-
+For collaboration or inquiries about interesting use cases and data mining opportunities, feel free to reach out:<br>
+| **Role**      | **Name**                      | **LinkedIn Profile**                                         |
+|---------------|-------------------------------|-------------------------------------------------------------|
+| **Maintainer**| Alessandro Arrichiello        | [LinkedIn](https://www.linkedin.com/in/alessandroarrichiello/) |
+| **Maintainer**| Ali Bokhari                   | [LinkedIn](https://www.linkedin.com/in/ali-bokhari/)         |
+| **Maintainer**| Atul Deshpande                | [LinkedIn](https://www.linkedin.com/in/atulrdeshpande/)      |
+| **Founder**   | Fatih E. NAR                  | [LinkedIn](https://www.linkedin.com/in/fenar/)              |
