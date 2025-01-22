@@ -1,7 +1,8 @@
 # Author: Fatih E. NAR
 # 2025 Texas US
 # Enhanced with GPU acceleration and improved visualizations
-
+# Please do pip install -r requirements.txt before running web ui
+#
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output, State
@@ -195,7 +196,7 @@ def load_alerts():
 @accelerator.on_main_process
 def load_preprocessed_data():
     print("Loading preprocessed data...")
-    os.environ["OPENAI_API_KEY"] = "your_key"
+    #os.environ["OPENAI_API_KEY"] = "your_key"
     embeddings = OpenAIEmbeddings()
     vector_stores = {}
     
