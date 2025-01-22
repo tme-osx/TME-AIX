@@ -1,6 +1,7 @@
 # Author: Fatih E. NAR
 # 2025 Texas US
-# Enhanced with Transformer-based anomaly detection and improved correlation
+# This batch data preprocessing uses TransformerNN for Anomaly Detection.
+#
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
