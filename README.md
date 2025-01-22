@@ -28,7 +28,7 @@ Discover our models and datasets on HuggingFace:
 [Telco-AIX on HuggingFace](https://huggingface.co/collections/fenar/tme-aix-66737384ab5687fe3d9a4b94)
 
 ## Contact Us
-For collaboration or inquiries about interesting use cases and data mining opportunities, feel free to reach out:<br>
+For collaboration or inquiries about interesting AI/ML use cases and Data-Engineering opportunities, feel free to reach out:<br>
 | **Role**      | **Name**                      | **LinkedIn Profile**                                         | **Geo-Location** |
 |---------------|-------------------------------|-------------------------------------------------------------|------------------|
 | **Maintainer**| Alessandro Arrichiello        | [LinkedIn](https://www.linkedin.com/in/alessandroarrichiello/) | EU               |
