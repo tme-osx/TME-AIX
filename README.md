@@ -31,7 +31,7 @@ Discover our models and datasets on HuggingFace:
 For collaboration or inquiries about interesting AI/ML use cases and Data-Engineering opportunities, feel free to reach out:<br>
 | **Role**      | **Name**                      | **LinkedIn Profile**                                         | **Geo-Location** |
 |---------------|-------------------------------|-------------------------------------------------------------|------------------|
-| **Maintainer**| Alessandro Arrichiello        | [LinkedIn](https://www.linkedin.com/in/alessandroarrichiello/) | EU               |
+| **Maintainer**| Alessandro Arrichiello        | [LinkedIn](https://www.linkedin.com/in/alessandroarrichiello/) | EMEA           |
 | **Maintainer**| Ali Bokhari                   | [LinkedIn](https://www.linkedin.com/in/ali-bokhari/)         | NA               |
 | **Maintainer**| Atul Deshpande                | [LinkedIn](https://www.linkedin.com/in/atulrdeshpande/)      | APAC             |
 | **Program Manager**   | Arun Thomas                 | [LinkedIn](https://www.linkedin.com/in/arun-thomas-17a49359/)              | Texas            |
