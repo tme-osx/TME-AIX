@@ -35,7 +35,7 @@ For collaboration or inquiries about interesting AI/ML use cases and Data-Engine
 | **Business Development**   | Paul Lancaster                 | [LinkedIn](https://www.linkedin.com/in/paullancaster/)              | NA            |
 | **Founder**   | Fatih E. NAR                  | [LinkedIn](https://www.linkedin.com/in/fenar/)              | Texas            |
 
-# Our Published Work
+## Our Published Work
 
 | Title                                             | Link                                                                                               | Authors                                                       |
 |---------------------------------------------------|---------------------------------------------------------------------------------------------------|---------------------------------------------------------------|
