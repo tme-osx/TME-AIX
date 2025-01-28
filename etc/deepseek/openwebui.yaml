@@ -69,16 +69,13 @@ spec:
       port: 35020
       targetPort: 8080
 ---
-apiVersion: v1
-kind: Service
+kind: Route
+apiVersion: route.openshift.io/v1
 metadata:
-  name: open-webui-service
+  name: route-openwebui
 spec:
-  type: ClusterIP
-  selector:
-    app: open-webui
-  ports:
-    - name: http
-      protocol: TCP
-      port: 35020
-      targetPort: http
+  to:
+    kind: Service
+    name: open-webui-service
+  port:
+    targetPort: http
