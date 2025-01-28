@@ -8,7 +8,7 @@ spec:
   accessModes: ["ReadWriteOnce"]
   resources:
     requests:
-      storage: 100Gi
+      storage: 10Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -43,7 +43,7 @@ spec:
             memory: "1Gi"
         env:
         - name: OLLAMA_BASE_URL
-          value: "http://route-ollama-ollama.apps.sandbox01.narlabs.io"
+          value: "http://your-ollama-route-here" # Replace with a ollama route
         - name: WEBUI_SECRET_KEY
           value: "your-secret-key-here"  # Replace with a secure secret key
         - name: OPENWEBUI_ROOT_KEY
