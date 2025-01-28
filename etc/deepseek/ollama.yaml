@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ollama-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: ollama
+  template:
+    metadata:
+      labels:
+        name: ollama
+    spec:
+      containers:
+      - name: ollama
+        image: ollama/ollama:latest
+        env:
+        - name: PATH
+          value: /usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+        - name: LD_LIBRARY_PATH
+          value: /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+        - name: NVIDIA_DRIVER_CAPABILITIES
+          value: compute,utility
+        ports:
+        - name: http
+          containerPort: 11434
+          protocol: TCP
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+        volumeMounts:
+        - name: ollama-volume
+          mountPath: /.ollama
+      volumes:
+      - name: ollama-volume
+        persistentVolumeClaim:
+          claimName: ollama-pvc
+      tolerations:
+      - key: nvidia.com/gpu
+        operator: Exists
+        effect: NoSchedule
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama
+spec:
+  type: ClusterIP
+  selector:
+    name: ollama
+  ports:
+  - port: 35010
+    name: http
+    targetPort: 11434
+    protocol: TCP
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: route-ollama
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: ollama
+---
