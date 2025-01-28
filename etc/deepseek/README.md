@@ -7,7 +7,7 @@
     <img src="https://raw.githubusercontent.com/tme-osx/Telco-AIX/refs/heads/main/etc/deepseek/images/ollama.png"/>
 </div>
 
-(3) And enjoy responsibly:
+(3) And enjoy responsibly :-)
 <div align="center">
-    <img src="https://raw.githubusercontent.com/tme-osx/Telco-AIX/refs/heads/main/etc/deepseek/images/test.png"/>
+    <img src="https://raw.githubusercontent.com/tme-osx/Telco-AIX/refs/heads/main/etc/deepseek/images/deepseek.png"/>
 </div>
