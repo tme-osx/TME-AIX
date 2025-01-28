@@ -7,7 +7,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Gi
+      storage: 100Gi #Choose your PV size wisely as these LLMs can vary from 1G to >400GB
 ---
 apiVersion: apps/v1
 kind: Deployment
