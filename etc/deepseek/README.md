@@ -7,9 +7,16 @@
     <img src="https://raw.githubusercontent.com/tme-osx/Telco-AIX/refs/heads/main/etc/deepseek/images/ollama.png" width="800"/>
 </div>
 
-(3) And enjoy responsibly :-)
+## Sandbox
+Our Sandbox is a Single Node Openshift (12 Cores Xeon with 128GB Memory) with Dual NVIDIA RTX 4090 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/tme-osx/Telco-AIX/refs/heads/main/etc/deepseek/images/deepseek.png" width="800"/>
+    <img src="https://raw.githubusercontent.com/tme-osx/Telco-AIX/refs/heads/main/etc/deepseek/images/smi.png" width="1200"/>
+</div>
+
+## Test
+Enjoy responsibly :-)
+<div align="center">
+    <img src="https://raw.githubusercontent.com/tme-osx/Telco-AIX/refs/heads/main/etc/deepseek/images/deepseek.png" width="1200"/>
 </div>
 
 ### References:
