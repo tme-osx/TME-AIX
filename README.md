@@ -21,6 +21,9 @@ This repository is dedicated to exploring various data driven decision making us
 12. [NoC AI Augmention for OSS](https://github.com/tme-osx/Telco-AIX/tree/main/5gprod)
 13. [ITSM Automation with AI](https://github.com/tme-osx/Telco-AIX/tree/main/itsm-ai-automation)
 
+## Easter Eggs
+A. [Run DeepSeek Locally on Single K8s Node](https://github.com/tme-osx/Telco-AIX/tree/main/etc/deepseek)
+
 ## Explore More on HuggingFace
 Discover our models and datasets on HuggingFace:
 [Telco-AIX on HuggingFace](https://huggingface.co/collections/fenar/telco-aix-66737384ab5687fe3d9a4b94)
