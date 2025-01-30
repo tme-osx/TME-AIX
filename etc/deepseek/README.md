@@ -14,7 +14,7 @@ Our Sandbox is a Single Node Openshift (12 Cores Xeon with 128GB Memory) with Du
 </div>
 
 ## Test
-Enjoy responsibly :-)
+Ask AI for the meaning of life :-)
 <div align="center">
     <img src="https://raw.githubusercontent.com/tme-osx/Telco-AIX/refs/heads/main/etc/deepseek/images/42.png" width="1200"/>
 </div>
