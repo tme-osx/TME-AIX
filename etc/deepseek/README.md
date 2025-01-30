@@ -1,4 +1,4 @@
-## DeepSeek Models on Openshift with Ollama
+## DeepSeek Models on Openshift
 
 (1) Use ollama and openwebui deployment manifests to deploy both ollama and openwebui in same namespace. <br>
 (2) Go to ollama pod terminal and pull the deepseek model that will fit on your system.<br>
