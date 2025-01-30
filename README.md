@@ -25,7 +25,7 @@ This repository is dedicated to exploring various data driven decision making us
 Discover our models and datasets on HuggingFace:
 [Telco-AIX on HuggingFace](https://huggingface.co/collections/fenar/telco-aix-66737384ab5687fe3d9a4b94)
 
-## Contact Us
+## Team
 For collaboration or inquiries about interesting AI/ML use cases and Data-Engineering opportunities, feel free to reach out:<br>
 | **Role**      | **Name**                      | **LinkedIn Profile**                                         | **Geo-Location** |
 |---------------|-------------------------------|-------------------------------------------------------------|------------------|
