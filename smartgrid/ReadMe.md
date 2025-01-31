@@ -9,6 +9,4 @@ Data Sources: <br>
 ## Sample Outcome
 ![](https://raw.githubusercontent.com/fenar/etc-ai-wrx/main/smartgrid/data/smartgrid.png)<br>
 
-## Project Structure
-(WIP)
 
