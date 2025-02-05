@@ -35,8 +35,9 @@ For collaboration or inquiries about interesting AI/ML use cases and Data-Engine
 | **Maintainer**| Alessandro Arrichiello        | [LinkedIn](https://www.linkedin.com/in/alessandroarrichiello/) | EMEA           |
 | **Maintainer**| Ali Bokhari                   | [LinkedIn](https://www.linkedin.com/in/ali-bokhari/)         | NA               |
 | **Maintainer**| Atul Deshpande                | [LinkedIn](https://www.linkedin.com/in/atulrdeshpande/)      | APAC             |
-| **Program Manager**   | Arun Thomas                 | [LinkedIn](https://www.linkedin.com/in/arun-thomas-17a49359/)              | Texas            |
-| **Business Development**   | Paul Lancaster                 | [LinkedIn](https://www.linkedin.com/in/paullancaster/)              | NA            |
+| **Program Manager**   | Arun Thomas           | [LinkedIn](https://www.linkedin.com/in/arun-thomas-17a49359/)              | Texas            |
+| **Business Development**   | Paul Lancaster   | [LinkedIn](https://www.linkedin.com/in/paullancaster/)              | NA            |
+| **Business Development**   | Sankar Panneerselvam  | [LinkedIn](https://www.linkedin.com/in/sankarpanneerselvam-mba/)              | Texas            |
 | **Founder**   | Fatih E. NAR                  | [LinkedIn](https://www.linkedin.com/in/fenar/)              | Texas            |
 
 ## Our Published Work
